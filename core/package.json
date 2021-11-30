@@ -1,6 +1,6 @@
 {
   "name": "auth-composables",
-  "version": "1.0.0-alpha.22",
+  "version": "1.0.0-alpha.23",
   "description": "Abstracts for dealing with authenticating a vue app",
   "main": "dist/auth-composables.esm.js",
   "typings": "dist/src/main.d.ts",
@@ -15,7 +15,7 @@
     "@rollup/plugin-typescript": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "@typescript-eslint/parser": "^5.3.0",
-    "eslint": "^8.1.0",
+    "eslint": "^7.0.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-node": "^11.1.0",
