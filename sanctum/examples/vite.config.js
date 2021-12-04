@@ -9,7 +9,7 @@ export default defineConfig({
       // with options
       '/api': {
         target: 'http://localhost',
-        changeOrigin: true,
+        changeOrigin: true
       },
       '/sanctum/csrf-cookie': 'http://localhost',
       '/login': 'http://localhost',
