@@ -1,6 +1,6 @@
 {
   "name": "sanctum-composables",
-  "version": "1.0.0-alpha.21",
+  "version": "1.0.0-alpha.22",
   "description": "A collection of composables for authenticating with Laravel Sanctum",
   "main": "dist/sanctum-composables.esm.js",
   "typings": "dist/src/main.d.ts",
