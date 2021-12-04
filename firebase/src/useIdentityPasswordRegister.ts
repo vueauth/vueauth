@@ -22,6 +22,7 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
     password: '',
     password_confirmation: ''
   })
+  const customFields = ref({})
 
   watch(form.value, () => {
     resetErrors()
@@ -29,6 +30,14 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
 
   const register = async () => {
     loading.value = true
+    if (form.value.password !== form.value.password_confirmation) {
+      validationErrors.value = {
+        password: ['The password confirmation does not match.']
+      }
+      loading.value = false
+      return
+    }
+
     let response
     try {
       const auth = getAuth()
@@ -51,6 +60,7 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
 
   return {
     form,
+    customFields,
     register,
     loading,
     validationErrors,

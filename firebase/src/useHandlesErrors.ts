@@ -5,7 +5,7 @@ import { AuthError } from 'firebase/auth'
 
 export const useHandlesErrors: UseHandlesErrors = () => {
   const errors = ref<ResponseErrors>([])
-  const hasErrors = computed(() => !!errors.value.length)
+  const hasErrors = computed(() => !!errors.value.length || !!validationErrors.value.length)
   function resetStandardErrors () {
     errors.value = []
   }
@@ -29,10 +29,6 @@ export const useHandlesErrors: UseHandlesErrors = () => {
       type: response.code.toString() || 'unknown',
       message: response.message || 'unknown error'
     })
-    // if (response.statusCode === 422 && response.asJson()?.errors) {
-    //   const errorBag = response.asJson().errors as ValidationErrors
-    //   validationErrors.value = errorBag
-    // }
   }
 
   return {
