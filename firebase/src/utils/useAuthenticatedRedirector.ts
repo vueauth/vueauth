@@ -1,10 +1,10 @@
-import { useAuthRedirector } from "./useAuthRedirector"
-import { RouteLocationRaw, Router } from 'vue-router'
+import { useAuthRedirector } from './useAuthRedirector'
+import { RouteLocationRaw, Router, useRouter } from 'vue-router'
 import { MaybeRef } from '@vueuse/core'
-import { useRouter } from "vue-router"
 import { ref } from 'vue-demi'
+import { UseAuthenticatedRedirector } from 'auth-composables'
 
-export const useAuthenticatedRedirector = (
+export const useAuthenticatedRedirector: UseAuthenticatedRedirector = (
   redirectTo: MaybeRef<RouteLocationRaw> = ref('/'),
   router: Router = useRouter()
 ) => {

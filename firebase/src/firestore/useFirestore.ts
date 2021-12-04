@@ -18,8 +18,8 @@ export type FirebaseDocRef<T> =
   Query<T> |
   DocumentReference<T>
 
-function getData<T>(
-  docRef: DocumentSnapshot<T> | QueryDocumentSnapshot<T>,
+function getData<T> (
+  docRef: DocumentSnapshot<T> | QueryDocumentSnapshot<T>
 ) {
   const data = docRef.data()
 
@@ -33,7 +33,8 @@ function getData<T>(
   return data
 }
 
-function isDocumentReference<T>(docRef: any): docRef is DocumentReference<T> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function isDocumentReference<T> (docRef: any): docRef is DocumentReference<T> {
   return (docRef.path?.match(/\//g) || []).length % 2 !== 0
 }
 
@@ -69,9 +70,9 @@ export function useFirestore<T extends DocumentData>(
  * @param initialValue
  * @param options
  */
-export function useFirestore<T extends DocumentData>(
+export function useFirestore<T extends DocumentData> (
   docRef: FirebaseDocRef<T>,
-  initialValue: any = undefined,
+  initialValue: unknown = undefined,
   options: FirestoreOptions = {}
 ) {
   const {

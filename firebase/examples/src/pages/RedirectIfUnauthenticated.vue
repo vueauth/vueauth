@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useUnauthenticatedRedirector } from 'firebase-composables'
+import { useUnauthenticatedRedirector } from 'auth-composables'
 
 const {
   onChecked,
   checking,
   exec,
   execOnAuthStateEnsured
-} = useUnauthenticatedRedirector('/')
+} = useUnauthenticatedRedirector()
 execOnAuthStateEnsured()
 
 onChecked.value = () => {

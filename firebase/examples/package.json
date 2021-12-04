@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "firebase": "^9.3.0",
-    "firebase-composables": "^1.0.0-alpha8",
+    "firebase-composables": "^1.0.0-alpha.18",
     "vue": "^3.2.16",
     "vue-router": "4"
   },

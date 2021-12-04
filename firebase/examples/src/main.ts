@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import {
-  firebasePlugin,
+  FirebasePlugin,
   useIdentityPasswordLogin,
   useIdentityPasswordLogout,
   useIdentityPasswordRegister,
@@ -13,14 +13,14 @@ import {
   useFetchUser
 } from 'firebase-composables'
 import router from './router/router'
-import { VuePlugin as AuthPlugin, PluginOptions } from 'auth-composables'
+import { AuthPlugin, PluginOptions } from 'auth-composables'
 
 const app = createApp(App)
 
 app.use(router)
 
-app.use(firebasePlugin, {
-  config: {
+app.use(FirebasePlugin, {
+  credentials: {
     apiKey: 'AIzaSyD1R9dykDYOG-5gh7ZnrxnJRSJLRDJd7rE',
     authDomain: 'quasarv2-firebase.firebaseapp.com',
     projectId: 'quasarv2-firebase',
@@ -34,7 +34,7 @@ app.use(firebasePlugin, {
 app.use(AuthPlugin, {
   default: 'firebase',
   providers: {
-    sanctum: {
+    firebase: {
       features: {
         'identityPassword:register': useIdentityPasswordRegister,
         'identityPassword:login': useIdentityPasswordLogin,

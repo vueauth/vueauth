@@ -1,5 +1,5 @@
 // Plugin
-export { sanctumPlugin } from './sanctumPlugin'
+export { SanctumPlugin } from './SanctumPlugin'
 
 // implementations
 export { makeFetchRequester } from './implementations/makeFetchRequester'

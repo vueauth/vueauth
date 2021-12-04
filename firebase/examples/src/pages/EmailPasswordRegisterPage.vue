@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { useEmailRegister, useAuthState } from 'firebase-composables'
+import { useIdentityPasswordRegister, useAuthState } from 'auth-composables'
 
 const {
   form,
   loading,
   register,
-  hasError,
-  error
-} = useEmailRegister()
+} = useIdentityPasswordRegister()
 
 const authState = useAuthState()
 </script>
@@ -16,43 +14,23 @@ const authState = useAuthState()
   <form>
     <!-- Email -->
     <label for="email">Email</label>
-    <input
-      id="email"
-      v-model="form.email"
-      type="email"
-    >
+    <input id="email" v-model="form.email" type="email" />
 
-    <br>
+    <br />
 
     <!-- Password -->
     <label for="password">Password</label>
-    <input
-      id="password"
-      v-model="form.password"
-      type="password"
-    >
+    <input id="password" v-model="form.password" type="password" />
 
-    <br>
+    <br />
 
     <!-- Register Button -->
-    <button
-      v-if="!loading"
-      @click="register"
-    >
-      Register
-    </button>
-    <div v-else>
-      Registering...
-    </div>
+    <button v-if="!loading" @click="register">Register</button>
+    <div v-else>Registering...</div>
 
-    <br>
+    <br />
 
-    <div
-      v-if="hasError"
-      style="color: red;"
-    >
-      {{ error.message }}
-    </div>
+    <!-- <div v-if="hasError" style="color: red;">{{ error.message }}</div> -->
 
     <pre>{{ authState }}</pre>
   </form>

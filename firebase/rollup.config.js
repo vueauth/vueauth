@@ -1,7 +1,7 @@
-const production = !process.env.ROLLUP_WATCH;
-
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
+
+const production = !process.env.ROLLUP_WATCH
 
 export default {
   input: './src/main.ts',
@@ -9,9 +9,10 @@ export default {
     'firebase',
     'firebase/auth',
     'vue',
+    'vue-demi',
     'vue-router',
     'firebase/app',
-    'firebase/firestore',
+    'firebase/firestore'
   ],
 
   output: [
@@ -22,13 +23,14 @@ export default {
   ],
   plugins: [
     nodeResolve({
-      resolveOnly: [/^(?!firebase).*/],
+      resolveOnly: [/^(?!firebase).*/, /^(?!vue-demi).*/],
       modulesOnly: true,
       dedupe: [
         'firebase',
         'firebase/auth',
         'firebase/app',
-        'firebase/firestore'
+        'firebase/firestore',
+        'vue-demi'
       ]
     }),
     typescript({

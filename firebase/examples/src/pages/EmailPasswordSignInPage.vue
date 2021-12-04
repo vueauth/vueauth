@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { useEmailSignIn, useAuthState } from 'firebase-composables'
+import { useIdentityPasswordLogin, useAuthState } from 'auth-composables'
 
 const {
   form,
-  signIn,
-  loading,
-  error,
-  hasError
-} = useEmailSignIn()
+  login,
+  loading
+} = useIdentityPasswordLogin()
 
 const authState = useAuthState()
 
@@ -31,12 +29,12 @@ const {
     <br />
 
     <!-- Sign In -->
-    <button v-if="!loading" :disabled="isAuthenticated" @click="signIn">Sign In</button>
+    <button v-if="!loading" :disabled="isAuthenticated" @click="login">Sign In</button>
     <div v-else>Signing In...</div>
 
     <br />
 
-    <div v-if="hasError" style="color: red;">{{ error.message }}</div>
+    <!-- <div v-if="hasError" style="color: red;">{{ error.message }}</div> -->
 
     <pre>{{ authState }}</pre>
   </form>

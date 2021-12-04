@@ -1,4 +1,4 @@
-import useHandlesErrors from '../useHandlesErrors'
+import useHandlesErrors from './useHandlesErrors'
 import { getAuth, signInWithEmailAndPassword, AuthError } from 'firebase/auth'
 import { ref, watch } from 'vue-demi'
 import { UseIdentityPasswordLogin } from 'auth-composables'

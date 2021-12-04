@@ -1,5 +1,5 @@
 import { FirebaseApp } from 'firebase/app'
-import { InjectionKey } from '@vue/runtime-core'
+import { InjectionKey } from 'vue-demi'
 
 const FirebaseAppKey: InjectionKey<FirebaseApp> = Symbol('FirebaseDefaultApp')
 

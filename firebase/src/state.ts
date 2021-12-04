@@ -1,7 +1,6 @@
-import { createGlobalState } from "@vueuse/shared"
+import { createGlobalState } from '@vueuse/shared'
 
 export const useGlobalState = createGlobalState(() => {
-
   return {
     authIsReady: false
   }

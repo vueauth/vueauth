@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue-demi'
-import ResponseErrors from './firebase/types/ResponseErrors'
+import ResponseErrors from './types/ResponseErrors'
 import { UseHandlesErrors, ValidationErrors } from 'auth-composables'
-import { FirebaseError } from 'firebase/util'
+import { AuthError } from 'firebase/auth'
 
 export const useHandlesErrors: UseHandlesErrors = () => {
   const errors = ref<ResponseErrors>([])
@@ -23,7 +23,7 @@ export const useHandlesErrors: UseHandlesErrors = () => {
     resetValidationErrors()
   }
 
-  function fromResponse (response: FirebaseError) {
+  function fromResponse (response: AuthError) {
     resetErrors()
     errors.value.push({
       type: response.code.toString() || 'unknown',

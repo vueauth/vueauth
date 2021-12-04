@@ -16,4 +16,4 @@ export { RequestErrors } from './Types/RequestErrors'
 export { UserOnCheckedFunction } from './Types/UserOnCheckedFunction'
 export { AuthState } from './Types/AuthState'
 
-export { VuePlugin as authPlugin } from './vuePlugin'
+export { AuthPlugin } from './authPlugin'

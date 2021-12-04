@@ -34,8 +34,8 @@ fetchUser()
 const authState = useAuthState()
 
 form.value = {
-  name: 'John Poe',
-  email: 'john@example.com',
+  name: 'Luke Diebold',
+  email: 'luke@ldiebold.com',
   password: 'asdfasdf',
   password_confirmation: 'asdfasdf'
 }
@@ -45,55 +45,94 @@ form.value = {
   <form>
     <!-- Name -->
     <label for="name">Name</label>
-    <input id="name" v-model="form.name" type="name" />
+    <input
+      id="name"
+      v-model="form.name"
+      type="name"
+    >
     <div v-if="validationErrors.name">
-      <span v-for="validationError in validationErrors.name">{{ validationError }}</span>
+      <span
+        v-for="validationError in validationErrors.name"
+        :key="validationError"
+      >{{ validationError }}</span>
     </div>
 
-    <br />
+    <br>
 
     <!-- Email -->
     <label for="email">Email</label>
-    <input id="email" v-model="form.email" type="email" />
+    <input
+      id="email"
+      v-model="form.email"
+      type="email"
+    >
     <div v-if="validationErrors.email">
-      <span v-for="validationError in validationErrors.email">{{ validationError }}</span>
+      <span
+        v-for="validationError in validationErrors.email"
+        :key="validationError"
+      >{{ validationError }}</span>
     </div>
 
-    <br />
+    <br>
 
     <!-- Password -->
     <label for="password">Password</label>
-    <input id="password" v-model="form.password" type="password" />
+    <input
+      id="password"
+      v-model="form.password"
+      type="password"
+    >
     <div v-if="validationErrors.password">
-      <span v-for="validationError in validationErrors.password">{{ validationError }}</span>
+      <span
+        v-for="validationError in validationErrors.password"
+        :key="validationError"
+      >{{ validationError }}</span>
     </div>
 
-    <br />
+    <br>
 
     <!-- Password Confirmation -->
     <label for="password_confirmation">Password Confirm</label>
-    <input id="password_confirmation" v-model="form.password_confirmation" type="password" />
+    <input
+      id="password_confirmation"
+      v-model="form.password_confirmation"
+      type="password"
+    >
     <div v-if="validationErrors.password_confirmation">
-      <span v-for="validationError in validationErrors.password_confirmation">{{ validationError }}</span>
+      <span
+        v-for="validationError in validationErrors.password_confirmation"
+        :key="validationError"
+      >{{ validationError }}</span>
     </div>
 
-    <br />
+    <br>
 
     <!-- Register Button -->
     <button
       :disabled="loggingIn || fetchingUser || authState.isAuthenticated.value"
       @click="register"
-    >Register</button>
+    >
+      Register
+    </button>
 
-    <br />
+    <br>
 
     <!-- Fetch User -->
-    <button v-if="!fetchingUser" @click="fetchUser">Fetch User</button>
-    <div v-else>Fetching User...</div>
+    <button
+      v-if="!fetchingUser"
+      @click="fetchUser"
+    >
+      Fetch User
+    </button>
+    <div v-else>
+      Fetching User...
+    </div>
 
-    <br />
+    <br>
 
-    <div style="margin-top: 20px;">Auth State</div>
+    <div style="margin-top: 20px;">
+      Auth State
+    </div>
     <pre>{{ authState }}</pre>
 
     <div>Validation Errors</div>
@@ -102,7 +141,13 @@ form.value = {
     <div>Errors</div>
     <pre>{{ errors }}</pre>
 
-    <button :disabled="!authState.isAuthenticated.value" v-if="!loggingOut" @click="logout">Logout</button>
+    <button
+      v-if="!loggingOut"
+      :disabled="!authState.isAuthenticated.value"
+      @click="logout"
+    >
+      Logout
+    </button>
     <span v-else>Logging out...</span>
   </form>
 </template>

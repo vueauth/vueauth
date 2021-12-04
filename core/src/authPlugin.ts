@@ -28,7 +28,7 @@ function provideFeature (
   }
 }
 
-const VuePlugin = {
+const AuthPlugin = {
   install: (app: App, options: PluginOptions) => {
     app.provide(DefaulAuthProviderSymbol, options.default)
     const providers = Object.keys(options.providers)
@@ -39,7 +39,7 @@ const VuePlugin = {
 }
 
 export {
-  VuePlugin,
-  VuePlugin as default,
+  AuthPlugin,
+  AuthPlugin as default,
   PluginOptions
 }

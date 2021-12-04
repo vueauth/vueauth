@@ -1,35 +1,27 @@
 // Plugin
-export { firebasePlugin } from './firebase/firebasePlugin'
-export { useApp } from './firebase/useApp'
-
 // Social Auth Providers
-import useFirebaseAuthProvider from './firebase/authProviders/useFirebaseAuthProvider'
-import useFirebaseFacebookAuth from './firebase/authProviders/useFirebaseFacebookAuth'
-import useFirebaseGithubAuth from './firebase/authProviders/useFirebaseGithubAuth'
-import useFirebaseGoogleAuth from './firebase/authProviders/useFirebaseGoogleAuth'
-import useFirebaseTwitterAuth from './firebase/authProviders/useFirebaseTwitterAuth'
+export { useFirebaseAuthProvider } from './authProviders/useFirebaseAuthProvider'
+export { useFirebaseFacebookAuth } from './authProviders/useFirebaseFacebookAuth'
+export { useFirebaseGithubAuth } from './authProviders/useFirebaseGithubAuth'
+export { useFirebaseGoogleAuth } from './authProviders/useFirebaseGoogleAuth'
+export { useFirebaseTwitterAuth } from './authProviders/useFirebaseTwitterAuth'
+
+export { FirebasePlugin } from './firebasePlugin'
+export { useApp } from './useApp'
 
 // Auth
-export { useIdentityPasswordLogout } from './firebase/useIdentityPasswordLogout'
-export { useAuthState } from './firebase/useAuthState'
-export { useIdentityPasswordRegister } from './firebase/useIdentityPasswordRegister'
-export { useIdentityPasswordLogin } from './firebase/useIdentityPasswordLogin'
-export { useFetchUser } from './firebase/useFetchUser'
+export { useIdentityPasswordLogout } from './useIdentityPasswordLogout'
+export { useAuthState } from './useAuthState'
+export { useIdentityPasswordRegister } from './useIdentityPasswordRegister'
+export { useIdentityPasswordLogin } from './useIdentityPasswordLogin'
+export { useFetchUser } from './useFetchUser'
 
 // Utilities
 export { useHandlesErrors } from './useHandlesErrors'
-export { useAuthenticatedRedirector } from './firebase/utils/useAuthenticatedRedirector'
-export { useUnauthenticatedRedirector } from './firebase/utils/useUnauthenticatedRedirector'
-export { useAuthRedirector } from './firebase/utils/useAuthRedirector'
+export { useAuthenticatedRedirector } from './utils/useAuthenticatedRedirector'
+export { useUnauthenticatedRedirector } from './utils/useUnauthenticatedRedirector'
+export { useAuthRedirector } from './utils/useAuthRedirector'
 
 // Firestore
-export { useFirestore } from './firebase/firestore/useFirestore'
-export { getFirestore } from './firebase/firestore/getFirestore'
-
-export {
-  useFirebaseAuthProvider,
-  useFirebaseFacebookAuth,
-  useFirebaseGithubAuth,
-  useFirebaseGoogleAuth,
-  useFirebaseTwitterAuth,
-}
+export { useFirestore } from './firestore/useFirestore'
+export { getFirestore } from './firestore/getFirestore'

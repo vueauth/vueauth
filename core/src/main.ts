@@ -13,7 +13,7 @@ export { useFeature } from './Injectors/useFeature'
 export { useFetchUser } from './Injectors/useFetchUser'
 export { useHandlesErrors } from './Injectors/useHandlesErrors'
 
-export { VuePlugin, PluginOptions } from './vuePlugin'
+export { AuthPlugin, PluginOptions } from './authPlugin'
 
 // Types
 export { UseIdentityPasswordRegister, UseIdentityPasswordRegisterReturn } from './Contracts/UseIdentityPasswordRegister'

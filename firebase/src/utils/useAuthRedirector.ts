@@ -23,21 +23,21 @@ export const useAuthRedirector: UseAuthRedirector = (
 
   const onChecked = ref(null as null | UserOnCheckedFunction)
 
-  function exec() {
+  function exec () {
     if (typeof onChecked.value === 'function') {
       onChecked.value(user.value)
     }
     triggerRedirect()
   }
 
-  function execOnAuthStateEnsured() {
+  function execOnAuthStateEnsured () {
     if (authIsReady.value) {
       return exec()
     }
     return execOnAuthStateChange()
   }
 
-  function execOnAuthStateChange() {
+  function execOnAuthStateChange () {
     checking.value = true
     const unsubscribe = auth.onAuthStateChanged(authUser => {
       authIsReady.value = true
@@ -58,7 +58,7 @@ export const useAuthRedirector: UseAuthRedirector = (
     })
   }
 
-  function triggerRedirect() {
+  function triggerRedirect () {
     if (isAuthenticated.value && redirectOn === 'authenticated') {
       router.push(unref(redirectTo))
     }

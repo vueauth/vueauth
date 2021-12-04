@@ -1,6 +1,6 @@
 import { getAuth } from 'firebase/auth'
 import { ref } from 'vue-demi'
-import useHandlesErrors from '../useHandlesErrors'
+import useHandlesErrors from './useHandlesErrors'
 import { UseFetchUser } from 'auth-composables'
 
 export const useFetchUser: UseFetchUser = () => {
@@ -15,13 +15,13 @@ export const useFetchUser: UseFetchUser = () => {
 
   const auth = getAuth()
 
-  function fetch() {
+  function fetch () {
     return new Promise(resolve => {
       const user = auth.currentUser
       resolve(user)
     })
   }
-  
+
   return {
     loading,
     fetch,

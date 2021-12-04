@@ -20,10 +20,12 @@ export default {
   ],
   plugins: [
     nodeResolve({
-      resolveOnly: [/^(?!vue).*/],
+      resolveOnly: [/^(?!vue).*/, /^(?!vue-demi).*/, /^(?!vue-router).*/],
       modulesOnly: true,
       dedupe: [
-        'vue'
+        'vue-demi',
+        'vue',
+        'vue-router'
       ]
     }),
     typescript({
