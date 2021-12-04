@@ -149,6 +149,7 @@ importers:
       '@rollup/plugin-typescript': ^8.3.0
       '@typescript-eslint/eslint-plugin': ^5.3.0
       '@typescript-eslint/parser': ^5.3.0
+      '@vue-composable/cookie': ^1.0.0-beta.24
       '@vueuse/core': ^7.1.2
       '@vueuse/integrations': ^7.1.2
       '@vueuse/shared': ''
@@ -160,22 +161,23 @@ importers:
       eslint-plugin-node: ^11.1.0
       eslint-plugin-promise: ^5.1.1
       install-peers-cli: ^2.2.0
+      js-cookie: ^3.0.1
       rollup: ^2.58.0
       tslib: ^2.3.1
       typescript: ^4.4.4
-      universal-cookie: ^4.0.4
       vue: ^3.0.0-0
       vue-composable: ^1.0.0-beta.24
       vue-demi: ^0.11.4
       vue-router: ^4.0.0
     dependencies:
+      '@vue-composable/cookie': 1.0.0-beta.24
       '@vueuse/core': 7.1.2_vue@3.2.23
       '@vueuse/integrations': 7.1.2_vue@3.2.23
       '@vueuse/shared': 7.1.2_vue@3.2.23
       axios: 0.24.0
+      js-cookie: 3.0.1
       tslib: 2.3.1
       typescript: 4.5.2
-      universal-cookie: 4.0.4
       vue-composable: 1.0.0-beta.24
       vue-demi: 0.11.4_vue@3.2.23
       vue-router: 4.0.12_vue@3.2.23
@@ -216,7 +218,7 @@ importers:
     dependencies:
       auth-composables: link:../../core
       axios: 0.24.0
-      sanctum-composables: 1.0.0-alpha.19_vue@3.2.23
+      sanctum-composables: link:..
       vue: 3.2.23
       vue-router: 4.0.12_vue@3.2.23
     devDependencies:
@@ -2331,6 +2333,7 @@ packages:
   /@types/cookie/0.3.3:
     resolution: {integrity: sha512-LKVP3cgXBT9RYj+t+9FDKwS5tdI+rPBXaNSkma7hvqy35lc7mAokC2zsqWJH0LaqIt3B962nuYI77hsJoT1gow==}
     dev: false
+    optional: true
 
   /@types/debug/4.1.7:
     resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
@@ -2668,6 +2671,14 @@ packages:
     dependencies:
       vite: 2.6.14
     dev: true
+
+  /@vue-composable/cookie/1.0.0-beta.24:
+    resolution: {integrity: sha512-BZOsMbTxnSwCQEUJ5nTMPf7/bKNEOmrj08lp/nYC4z7zGBmgGY0voGXsxALEYKRmEvNRrpQId8OrUzvar8K7SQ==}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      vue-composable: 1.0.0-beta.24
+    dev: false
 
   /@vue/compiler-core/3.2.23:
     resolution: {integrity: sha512-4ZhiI/orx+7EJ1B+0zjgvXMV2uRN+XBfG06UN2sJfND9rH5gtEQT3QmO4erum1o6Irl7y754W8/KSaDJh4EUQg==}
@@ -3062,6 +3073,7 @@ packages:
       '@vueuse/shared': 6.9.2_vue@3.2.23
       vue: 3.2.23
       vue-demi: 0.11.4_vue@3.2.23
+    dev: true
 
   /@vueuse/core/7.1.2:
     resolution: {integrity: sha512-SLoOPfhZdNRNUkZfx+wrHj6WycWdSw2RmNS8E4ngQ2kmBoJjRarGy51/GkGdjqHQqmhuwuFoNO2WaU0yBn3ffg==}
@@ -3100,27 +3112,6 @@ packages:
       '@vueuse/core': 6.9.2
       '@vueuse/shared': 6.9.2
       vue-demi: 0.11.4
-    optionalDependencies:
-      axios: 0.23.0
-      drauu: 0.2.1
-      focus-trap: 6.7.1
-      fuse.js: 6.4.6
-      jwt-decode: 3.1.2
-      nprogress: 0.2.0
-      qrcode: 1.5.0
-      universal-cookie: 4.0.4
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - debug
-      - vue
-    dev: false
-
-  /@vueuse/integrations/6.9.2_vue@3.2.23:
-    resolution: {integrity: sha512-YZNG8WXVV1s6eW9xwoBqwsiqLDVH8o1V+fEaM1nZyCUcaSWyBTgcjuRbFuiJ/U0T9v+mkUVkIwDuRRXWZdUblw==}
-    dependencies:
-      '@vueuse/core': 6.9.2_vue@3.2.23
-      '@vueuse/shared': 6.9.2_vue@3.2.23
-      vue-demi: 0.11.4_vue@3.2.23
     optionalDependencies:
       axios: 0.23.0
       drauu: 0.2.1
@@ -3184,6 +3175,7 @@ packages:
     dependencies:
       vue: 3.2.23
       vue-demi: 0.11.4_vue@3.2.23
+    dev: true
 
   /@vueuse/shared/7.1.2:
     resolution: {integrity: sha512-AjYh4y9S5FMOoHDsysqcXY/1mpqNTrnWUD50yaaiyf+5kGWQVIpAkkjKZlYSC/NHKxxCRn0cLR4nWMzceUWewQ==}
@@ -3867,25 +3859,6 @@ packages:
     engines: {node: '>= 4.5.0'}
     hasBin: true
     dev: true
-
-  /auth-composables/1.0.0-alpha.22_vue@3.2.23:
-    resolution: {integrity: sha512-lFXv7zqT9xR0pFmIdDY79/IrcvtYpYUFZzDFdFbRRngYwpgub5KUI/T07go1aiI725B5OisoJqn0QcLJ8nqdog==}
-    peerDependencies:
-      vue: ^3.0.0-0 || ^2.6.0
-    dependencies:
-      '@vueuse/core': 6.9.2_vue@3.2.23
-      '@vueuse/integrations': 6.9.2_vue@3.2.23
-      axios: 0.24.0
-      tslib: 2.3.1
-      typescript: 4.5.2
-      vue: 3.2.23
-      vue-composable: 1.0.0-beta.24
-      vue-demi: 0.11.4_vue@3.2.23
-      vue-router: 4.0.12_vue@3.2.23
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - debug
-    dev: false
 
   /autoprefixer/10.4.0_postcss@8.4.4:
     resolution: {integrity: sha512-7FdJ1ONtwzV1G43GDD0kpVMn/qbiNqyOPMFTX5nRffI+7vgWoFEc6DcXOxHJxrWNDXrZh18eDsZjvZGUljSRGA==}
@@ -4846,6 +4819,7 @@ packages:
     resolution: {integrity: sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==}
     engines: {node: '>= 0.6'}
     dev: false
+    optional: true
 
   /copy-concurrently/1.0.5:
     resolution: {integrity: sha512-f2domd9fsVDFtaFcbaRZuYXwtdmnzqbADSwhSWYxYB/Q8zsdUUFMXVRwXGDMWmbEzAn1kdRrtI1T/KTFOL4X2A==}
@@ -8377,6 +8351,11 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /js-cookie/3.0.1:
+    resolution: {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==}
+    engines: {node: '>=12'}
+    dev: false
+
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
     dev: true
@@ -10315,7 +10294,7 @@ packages:
       klona: 2.0.5
       postcss: 8.4.4
       semver: 7.3.5
-      webpack: 5.64.4_webpack-cli@4.9.1
+      webpack: 5.64.4
     dev: true
 
   /postcss-logical/3.0.0:
@@ -11488,28 +11467,6 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
 
-  /sanctum-composables/1.0.0-alpha.19_vue@3.2.23:
-    resolution: {integrity: sha512-F4Hmii0LT4X72W8UXjT+yXpz6qw1Ltpz/mSXH6HDKy4A1PSPFDCp8C03GW0D02uguEoA++HF1adm+wwikB1pEw==}
-    peerDependencies:
-      firebase: ^9.0.0
-      vue: ^3.0.0-0 || ^2.6.0
-    dependencies:
-      '@vueuse/core': 6.9.2_vue@3.2.23
-      '@vueuse/integrations': 6.9.2_vue@3.2.23
-      auth-composables: 1.0.0-alpha.22_vue@3.2.23
-      axios: 0.24.0
-      tslib: 2.3.1
-      typescript: 4.5.2
-      universal-cookie: 4.0.4
-      vue: 3.2.23
-      vue-composable: 1.0.0-beta.24
-      vue-demi: 0.11.4_vue@3.2.23
-      vue-router: 4.0.12_vue@3.2.23
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - debug
-    dev: false
-
   /sane/4.1.0:
     resolution: {integrity: sha512-hhbzAgTIX8O7SHfp2c8/kREfEn4qO/9q8C9beyY6+tvZ87EpoZ3i1RIEvp27YBswnNbY9mWd6paKVmKbAgLfZA==}
     engines: {node: 6.* || 8.* || >= 10.*}
@@ -12423,7 +12380,7 @@ packages:
       serialize-javascript: 6.0.0
       source-map: 0.6.1
       terser: 5.10.0_acorn@8.6.0
-      webpack: 5.64.4_webpack-cli@4.9.1
+      webpack: 5.64.4
     transitivePeerDependencies:
       - acorn
     dev: true
@@ -12775,6 +12732,7 @@ packages:
       '@types/cookie': 0.3.3
       cookie: 0.4.1
     dev: false
+    optional: true
 
   /universalify/0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
@@ -13226,7 +13184,7 @@ packages:
       mime-types: 2.1.34
       range-parser: 1.2.1
       schema-utils: 4.0.0
-      webpack: 5.64.4_webpack-cli@4.9.1
+      webpack: 5.64.4
     dev: true
 
   /webpack-dev-server/4.3.1_webpack@5.64.4:

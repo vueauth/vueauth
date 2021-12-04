@@ -1,11 +1,11 @@
 import Requester, { SanctumResponse } from '../types/Requester'
 import { createFetch, UseFetchReturn } from '@vueuse/core'
-import { useCookies } from '@vueuse/integrations/useCookies'
+import { useCookie } from '@vue-composable/cookie'
 
 export const makeFetchRequester = (
   baseUrl: string | undefined = undefined
 ): Requester => {
-  const cookies = useCookies(['XSRF-TOKEN'])
+  const xsrfCookie = useCookie('XSRF-TOKEN')
 
   function makeSanctumResponse<T> (fetch: UseFetchReturn<T>): SanctumResponse<T> {
     return {
@@ -33,7 +33,7 @@ export const makeFetchRequester = (
     },
     options: {
       beforeFetch ({ options }) {
-        const xsrfToken = cookies.get('XSRF-TOKEN')
+        const xsrfToken = xsrfCookie.cookie.value
         if (!options.headers) {
           options.headers = {}
         }
