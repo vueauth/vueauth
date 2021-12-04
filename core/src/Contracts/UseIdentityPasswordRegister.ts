@@ -11,7 +11,7 @@ export interface IdentityPasswordRegisterForm {
 
 export interface UseIdentityPasswordRegisterReturn {
   form: Ref<IdentityPasswordRegisterForm>;
-  additionalFormFields?: Ref<Record<number | string, unknown>>;
+  additionalFormFields: Ref<Record<number | string, unknown>>;
   register: () => Promise<void>;
   loading: Ref<boolean>;
   validationErrors: Ref<ValidationErrors>;

@@ -1,6 +1,6 @@
 {
   "name": "auth-composables",
-  "version": "1.0.0-alpha.26",
+  "version": "1.0.0-alpha.27",
   "description": "Abstracts for dealing with authenticating a vue app",
   "main": "dist/auth-composables.esm.js",
   "typings": "dist/src/main.d.ts",
