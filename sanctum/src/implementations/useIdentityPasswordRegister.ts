@@ -26,11 +26,11 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
     password: '',
     password_confirmation: ''
   })
-  const additionalFormFields = ref({
+  const customFields = ref({
     name: ''
   })
   const mergedForm = computed(() => {
-    return { ...form.value, ...additionalFormFields.value }
+    return { ...form.value, ...customFields.value }
   })
 
   const register = async () => {
@@ -55,7 +55,7 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
 
   return {
     form,
-    additionalFormFields,
+    customFields,
     register,
     loading,
 
