@@ -1,0 +1,50 @@
+{
+  "name": "supabase-composables",
+  "version": "1.0.0-alpha.4",
+  "description": "A collection of composables for dealing with supabase",
+  "main": "dist/supabase-composables.esm.js",
+  "typings": "dist/src/main.d.ts",
+  "repository": "git@github.com:ldiebold/supabase-composables.git",
+  "author": "Luke Diebold",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "auth-composables": "latest",
+    "eslint": "^7.0.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "@supabase/supabase-js": "^1.28.5",
+    "install-peers-cli": "^2.2.0",
+    "rollup": "^2.58.0",
+    "typescript": "^4.4.4"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@vueuse/core": "^7.0.0",
+    "@vueuse/shared": "^7.0.0",
+    "auth-composables": "^1.0.0-alpha.16",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.4",
+    "vue-demi": "^0.11.4",
+    "vue-router": "^4.0.0"
+  },
+  "peerDependencies": {
+    "@supabase/supabase-js": "^1.28.5",
+    "vue": "^3.0.0-0 || ^2.6.0"
+  },
+  "scripts": {
+    "build": "rollup --config rollup.config.js",
+    "watch": "rollup --config rollup.config.js --watch"
+  }
+}

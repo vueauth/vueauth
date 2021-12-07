@@ -1,0 +1,211 @@
+
+   RedisException 
+
+  Connection refused
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:141
+    137▕                 $parameters[] = $context;
+    138▕             }
+    139▕         }
+    140▕ 
+  ➜ 141▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    142▕     }
+    143▕ 
+    144▕     /**
+    145▕      * Create a new redis cluster instance.
+
+      [2m+25 vendor frames [22m
+  26  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle()
+
+   RedisException 
+
+  Connection refused
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:141
+    137▕                 $parameters[] = $context;
+    138▕             }
+    139▕         }
+    140▕ 
+  ➜ 141▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    142▕     }
+    143▕ 
+    144▕     /**
+    145▕      * Create a new redis cluster instance.
+
+      [2m+25 vendor frames [22m
+  26  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle()
+
+   RedisException 
+
+  Connection refused
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:141
+    137▕                 $parameters[] = $context;
+    138▕             }
+    139▕         }
+    140▕ 
+  ➜ 141▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    142▕     }
+    143▕ 
+    144▕     /**
+    145▕      * Create a new redis cluster instance.
+
+      [2m+25 vendor frames [22m
+  26  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle()
+
+   RedisException 
+
+  Connection refused
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:141
+    137▕                 $parameters[] = $context;
+    138▕             }
+    139▕         }
+    140▕ 
+  ➜ 141▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    142▕     }
+    143▕ 
+    144▕     /**
+    145▕      * Create a new redis cluster instance.
+
+      [2m+25 vendor frames [22m
+  26  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle()
+
+   RedisException 
+
+  Connection refused
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:141
+    137▕                 $parameters[] = $context;
+    138▕             }
+    139▕         }
+    140▕ 
+  ➜ 141▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    142▕     }
+    143▕ 
+    144▕     /**
+    145▕      * Create a new redis cluster instance.
+
+      [2m+25 vendor frames [22m
+  26  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle()
+
+   RedisException 
+
+  Connection refused
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:141
+    137▕                 $parameters[] = $context;
+    138▕             }
+    139▕         }
+    140▕ 
+  ➜ 141▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    142▕     }
+    143▕ 
+    144▕     /**
+    145▕      * Create a new redis cluster instance.
+
+      [2m+25 vendor frames [22m
+  26  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle()
+
+   RedisException 
+
+  Connection refused
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:141
+    137▕                 $parameters[] = $context;
+    138▕             }
+    139▕         }
+    140▕ 
+  ➜ 141▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    142▕     }
+    143▕ 
+    144▕     /**
+    145▕      * Create a new redis cluster instance.
+
+      [2m+25 vendor frames [22m
+  26  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle()
+
+   RedisException 
+
+  Connection refused
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:141
+    137▕                 $parameters[] = $context;
+    138▕             }
+    139▕         }
+    140▕ 
+  ➜ 141▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    142▕     }
+    143▕ 
+    144▕     /**
+    145▕      * Create a new redis cluster instance.
+
+      [2m+25 vendor frames [22m
+  26  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle()
+
+   RedisException 
+
+  Connection refused
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:141
+    137▕                 $parameters[] = $context;
+    138▕             }
+    139▕         }
+    140▕ 
+  ➜ 141▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    142▕     }
+    143▕ 
+    144▕     /**
+    145▕      * Create a new redis cluster instance.
+
+      [2m+25 vendor frames [22m
+  26  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle()
+
+   RedisException 
+
+  Connection refused
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:141
+    137▕                 $parameters[] = $context;
+    138▕             }
+    139▕         }
+    140▕ 
+  ➜ 141▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    142▕     }
+    143▕ 
+    144▕     /**
+    145▕      * Create a new redis cluster instance.
+
+      [2m+25 vendor frames [22m
+  26  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle()
+
+   RedisException 
+
+  Connection refused
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:141
+    137▕                 $parameters[] = $context;
+    138▕             }
+    139▕         }
+    140▕ 
+  ➜ 141▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    142▕     }
+    143▕ 
+    144▕     /**
+    145▕      * Create a new redis cluster instance.
+
+      [2m+25 vendor frames [22m
+  26  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle()
+Horizon started successfully.
+Horizon started successfully.

@@ -1,9 +1,9 @@
-import { getAuth } from 'firebase/auth'
-import useAuthState from '../useAuthState'
+import useAuthState from './useAuthState'
 import { ref, unref } from 'vue-demi'
 import { RouteLocationRaw, useRouter, Router } from 'vue-router'
 import { MaybeRef } from '@vueuse/core'
 import { RedirectTriggers, UseAuthRedirector } from 'auth-composables'
+import useClient from 'src/useClient'
 
 type UserOnCheckedFunction = (user: unknown | null) => void
 
@@ -13,7 +13,7 @@ export const useAuthRedirector: UseAuthRedirector = (
   router: Router = useRouter()
 ) => {
   const checking = ref(false)
-  const auth = getAuth()
+  const supabase = useClient()
 
   const {
     isAuthenticated,
@@ -27,44 +27,48 @@ export const useAuthRedirector: UseAuthRedirector = (
     if (typeof onChecked.value === 'function') {
       onChecked.value(user.value)
     }
+    checking.value = false
     triggerRedirect()
   }
 
   function execOnAuthStateEnsured () {
-    if (authIsReady.value) {
-      return exec()
+    // if (authIsReady.value) {
+    return exec()
+    // }
+    // return execOnAuthStateChange()
+  }
+
+  function handleUnauthenticatedRedirect () {
+    if (!isAuthenticated.value && redirectOn === 'unauthenticated') {
+      router.push(unref(redirectTo))
     }
-    return execOnAuthStateChange()
+  }
+
+  function handleAuthenticatedRedirect () {
+    if (isAuthenticated.value && redirectOn === 'authenticated') {
+      router.push(unref(redirectTo))
+    }
   }
 
   function execOnAuthStateChange () {
     checking.value = true
-    const unsubscribe = auth.onAuthStateChanged(authUser => {
+    const { data } = supabase.auth.onAuthStateChange((_, session) => {
       authIsReady.value = true
       if (typeof onChecked.value === 'function') {
-        onChecked.value(authUser)
+        onChecked.value(session?.user)
       }
 
-      if (!isAuthenticated.value && redirectOn === 'unauthenticated') {
-        router.push(unref(redirectTo))
-      }
-
-      if (isAuthenticated.value && redirectOn === 'authenticated') {
-        router.push(unref(redirectTo))
-      }
+      handleUnauthenticatedRedirect()
+      handleAuthenticatedRedirect()
 
       checking.value = false
-      unsubscribe()
+      data?.unsubscribe()
     })
   }
 
   function triggerRedirect () {
-    if (isAuthenticated.value && redirectOn === 'authenticated') {
-      router.push(unref(redirectTo))
-    }
-    if (!isAuthenticated.value && redirectOn === 'unauthenticated') {
-      router.push(unref(redirectTo))
-    }
+    handleAuthenticatedRedirect()
+    handleUnauthenticatedRedirect()
   }
 
   return {

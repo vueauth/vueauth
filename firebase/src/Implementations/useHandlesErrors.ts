@@ -1,5 +1,5 @@
 import { ref, computed } from 'vue-demi'
-import ResponseErrors from './types/ResponseErrors'
+import ResponseErrors from '../types/ResponseErrors'
 import { UseHandlesErrors, ValidationErrors } from 'auth-composables'
 import { AuthError } from 'firebase/auth'
 

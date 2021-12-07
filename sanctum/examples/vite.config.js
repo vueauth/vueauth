@@ -14,7 +14,9 @@ export default defineConfig({
       '/sanctum/csrf-cookie': 'http://localhost',
       '/login': 'http://localhost',
       '/register': 'http://localhost',
-      '/logout': 'http://localhost'
+      '/logout': 'http://localhost',
+      '/forgot-password': 'http://localhost',
+      '/reset-password': 'http://localhost'
     }
   }
 })

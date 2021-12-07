@@ -1,19 +1,17 @@
-import { getAuth } from 'firebase/auth'
-import { getApp } from 'firebase/app'
 import { computed, ref } from 'vue-demi'
 import { createGlobalState } from '@vueuse/shared'
 import { UseAuthState, AuthState } from 'auth-composables'
+import useClient from '../useClient'
 
 export const useAuthState: UseAuthState = createGlobalState<AuthState>(() => {
-  const app = getApp()
-  const auth = getAuth(app)
+  const supabase = useClient()
 
-  const user = ref(auth.currentUser)
+  const user = ref(supabase.auth.user())
   const isAuthenticated = computed(() => !!user.value)
-  const authIsReady = ref(false)
+  const authIsReady = ref(!!user.value)
 
-  auth.onIdTokenChanged(authUser => {
-    user.value = authUser
+  supabase.auth.onAuthStateChange((_, session) => {
+    user.value = session?.user ?? null
   })
 
   return {

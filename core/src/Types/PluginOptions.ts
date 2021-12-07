@@ -7,6 +7,7 @@ import { UseAuthenticatedRedirector } from '../Contracts/UseAuthenticatedRedirec
 import { UseUnauthenticatedRedirector } from '../Contracts/UseUnauthenticatedRedirector'
 import { UseHandlesErrors } from '../Contracts/UseHandlesErrors'
 import { UseAuthRedirector } from 'src/types'
+import { UsePasswordResetViaEmail } from 'src/main'
 
 export type Feature = UseIdentityPasswordRegister |
   UseIdentityPasswordLogin |
@@ -16,12 +17,14 @@ export type Feature = UseIdentityPasswordRegister |
   UseHandlesErrors |
   UseFetchUser |
   UseAuthState |
-  UseAuthRedirector
+  UseAuthRedirector |
+  UsePasswordResetViaEmail
 
 export interface FeaturesOptions {
   'identityPassword:register'?: UseIdentityPasswordRegister
   'identityPassword:login'?: UseIdentityPasswordLogin
   'identityPassword:logout'?: UseIdentityPasswordLogout
+  'passwordResetViaEmail'?: UsePasswordResetViaEmail
   'unauthenticatedRedirector'?: UseUnauthenticatedRedirector
   'authenticatedRedirector'?: UseAuthenticatedRedirector
   'errorHandler'?: UseHandlesErrors

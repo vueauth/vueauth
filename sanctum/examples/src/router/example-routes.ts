@@ -1,5 +1,6 @@
 import EmailPasswordRegisterPage from '../pages/EmailPasswordRegisterPage.vue'
 import EmailPasswordSignInPage from '../pages/EmailPasswordSignInPage.vue'
+import PasswordResetPage from '../pages/PasswordResetPage.vue'
 // import LogoutPage from '../pages/LogoutPage.vue'
 import RedirectIfAuthenticated from '../pages/RedirectIfAuthenticated.vue'
 import RedirectIfUnauthenticated from '../pages/RedirectIfUnauthenticated.vue'
@@ -30,6 +31,11 @@ export default [
     path: '/redirect-if-unauthenticated',
     label: 'Redirect if unauthenticated',
     component: RedirectIfUnauthenticated
+  },
+  {
+    path: '/password-reset',
+    label: 'Password Reset',
+    component: PasswordResetPage
   },
   // {
   //   path: '/auth-state',

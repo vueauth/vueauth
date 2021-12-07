@@ -1,27 +1,24 @@
-// Plugin
-// Social Auth Providers
-export { useFirebaseAuthProvider } from './authProviders/useFirebaseAuthProvider'
-export { useFirebaseFacebookAuth } from './authProviders/useFirebaseFacebookAuth'
-export { useFirebaseGithubAuth } from './authProviders/useFirebaseGithubAuth'
-export { useFirebaseGoogleAuth } from './authProviders/useFirebaseGoogleAuth'
-export { useFirebaseTwitterAuth } from './authProviders/useFirebaseTwitterAuth'
-
 export { FirebasePlugin } from './firebasePlugin'
 export { useApp } from './useApp'
 
-// Auth
-export { useIdentityPasswordLogout } from './useIdentityPasswordLogout'
-export { useAuthState } from './useAuthState'
-export { useIdentityPasswordRegister } from './useIdentityPasswordRegister'
-export { useIdentityPasswordLogin } from './useIdentityPasswordLogin'
-export { useFetchUser } from './useFetchUser'
+export { useIdentityPasswordLogout } from './Implementations/useIdentityPasswordLogout'
+export { usePasswordResetViaEmail } from './Implementations/usePasswordResetViaEmail'
+export { useAuthState } from './Implementations/useAuthState'
+export { useIdentityPasswordRegister } from './Implementations/useIdentityPasswordRegister'
+export { useIdentityPasswordLogin } from './Implementations/useIdentityPasswordLogin'
+export { useFetchUser } from './Implementations/useFetchUser'
 
-// Utilities
-export { useHandlesErrors } from './useHandlesErrors'
-export { useAuthenticatedRedirector } from './utils/useAuthenticatedRedirector'
-export { useUnauthenticatedRedirector } from './utils/useUnauthenticatedRedirector'
-export { useAuthRedirector } from './utils/useAuthRedirector'
+export { useFirebaseAuthProvider } from './Implementations/authProviders/useFirebaseAuthProvider'
+export { useFirebaseFacebookAuth } from './Implementations/authProviders/useFirebaseFacebookAuth'
+export { useFirebaseGithubAuth } from './Implementations/authProviders/useFirebaseGithubAuth'
+export { useFirebaseGoogleAuth } from './Implementations/authProviders/useFirebaseGoogleAuth'
+export { useFirebaseTwitterAuth } from './Implementations/authProviders/useFirebaseTwitterAuth'
 
-// Firestore
+export { useHandlesErrors } from './Implementations/useHandlesErrors'
+
+export { useAuthenticatedRedirector } from './Implementations/useAuthenticatedRedirector'
+export { useUnauthenticatedRedirector } from './Implementations/useUnauthenticatedRedirector'
+export { useAuthRedirector } from './Implementations/useAuthRedirector'
+
 export { useFirestore } from './firestore/useFirestore'
 export { getFirestore } from './firestore/getFirestore'

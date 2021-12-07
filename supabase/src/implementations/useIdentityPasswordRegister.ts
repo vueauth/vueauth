@@ -1,9 +1,15 @@
 import useHandlesErrors from './useHandlesErrors'
-import { getAuth, createUserWithEmailAndPassword, AuthError } from 'firebase/auth'
 import { ref, watch } from 'vue-demi'
-import { UseIdentityPasswordRegister } from 'auth-composables'
+import { IdentityPasswordRegisterFlags, UseIdentityPasswordRegister } from 'auth-composables'
+import useClient from '../useClient'
+
+const flags: IdentityPasswordRegisterFlags = {
+  emailConfirm: false
+}
 
 export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
+  const supabaseClient = useClient()
+
   const loading = ref(false)
 
   const {
@@ -31,30 +37,16 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
   const register = async () => {
     loading.value = true
     if (form.value.password !== form.value.password_confirmation) {
-      validationErrors.value = {
-        password: ['The password confirmation does not match.']
-      }
+      errors.value.push({
+        type: 'validation',
+        message: 'The password confirmation does not match.'
+      })
       loading.value = false
       return
     }
 
-    let response
-    try {
-      const auth = getAuth()
-      response = await createUserWithEmailAndPassword(
-        auth,
-        form.value.email,
-        form.value.password
-      )
-
-      console.log(response)
-
-      resetErrors()
-    } catch (err) {
-      if (typeof err === 'object' && err !== null && err.constructor.name === 'FirebaseError') {
-        setErrorsFromResponse(err as AuthError)
-      }
-    }
+    const { error } = await supabaseClient.auth.signUp(form.value)
+    if (error) setErrorsFromResponse(error)
     loading.value = false
   }
 
@@ -69,6 +61,7 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
     errors,
     resetStandardErrors,
     resetValidationErrors,
-    resetErrors
+    resetErrors,
+    flags
   }
 }

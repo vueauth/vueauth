@@ -2,7 +2,11 @@ import getSanctumConfig from '../getSanctumConfig'
 import { ref, computed } from 'vue-demi'
 import useAuthState from './useAuthState'
 import useHandlesErrors from './useHandlesErrors'
-import { UseIdentityPasswordRegister } from 'auth-composables'
+import { UseIdentityPasswordRegister, IdentityPasswordRegisterFlags } from 'auth-composables'
+
+const flags: IdentityPasswordRegisterFlags = {
+  emailConfirm: false
+}
 
 export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
   const loading = ref(false)
@@ -66,7 +70,8 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
     errors,
     resetStandardErrors,
     resetValidationErrors,
-    resetErrors
+    resetErrors,
+    flags
   }
 }
 

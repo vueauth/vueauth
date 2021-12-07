@@ -2,6 +2,10 @@ import { ValidationErrors } from '../Types/ValidationErrors'
 import { RequestErrors } from '../Types/RequestErrors'
 import { Ref, ComputedRef } from 'vue-demi'
 
+export interface IdentityPasswordRegisterFlags {
+  emailConfirm: boolean
+}
+
 export interface IdentityPasswordRegisterForm {
     email: string
     password: string
@@ -21,6 +25,7 @@ export interface UseIdentityPasswordRegisterReturn {
   resetStandardErrors: () => void;
   resetValidationErrors: () => void;
   resetErrors: () => void;
+  flags: IdentityPasswordRegisterFlags;
 }
 
 export type UseIdentityPasswordRegister = () => UseIdentityPasswordRegisterReturn

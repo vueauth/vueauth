@@ -1,11 +1,11 @@
-import Requester, { SanctumResponse } from '../types/Requester'
+import Requester, { ResetPasswordForm, ResetPasswordRequestForm, SanctumResponse } from '../types/Requester'
 import { createFetch, UseFetchReturn } from '@vueuse/core'
-import { useCookie } from '@vue-composable/cookie'
+import { useCookies } from '@vueuse/integrations/useCookies'
 
 export const makeFetchRequester = (
   baseUrl: string | undefined = undefined
 ): Requester => {
-  const xsrfCookie = useCookie('XSRF-TOKEN')
+  const cookies = useCookies(['XSRF-TOKEN'])
 
   function makeSanctumResponse<T> (fetch: UseFetchReturn<T>): SanctumResponse<T> {
     return {
@@ -33,7 +33,7 @@ export const makeFetchRequester = (
     },
     options: {
       beforeFetch ({ options }) {
-        const xsrfToken = xsrfCookie.cookie.value
+        const xsrfToken = cookies.get('XSRF-TOKEN')
         if (!options.headers) {
           options.headers = {}
         }
@@ -48,6 +48,8 @@ export const makeFetchRequester = (
   const logoutFetcher = useFetch('/logout')
   const userFetcher = useFetch<Record<string | number, unknown> | null>('api/user')
   const csrfTokenFetcher = useFetch('/sanctum/csrf-cookie')
+  const resetPasswordFetcher = useFetch('/reset-password')
+  const forgotPasswordFetcher = useFetch('/forgot-password')
 
   async function fetchCsrfToken () {
     await csrfTokenFetcher.get().execute()
@@ -76,12 +78,31 @@ export const makeFetchRequester = (
     return makeSanctumResponse(userFetcher)
   }
 
+  async function resetPassword (form: ResetPasswordForm) {
+    const urlParams = new URLSearchParams(window.location.search)
+    const token = urlParams.get('token')
+    if (typeof token !== 'string') {
+      throw Error('"token" missing: Unable to find the query paramater "token"')
+    }
+    form.token = token
+    await resetPasswordFetcher.post(form).json().execute()
+    return makeSanctumResponse(resetPasswordFetcher)
+  }
+
+  async function forgotPassword (form: ResetPasswordRequestForm) {
+    await fetchCsrfToken()
+    await forgotPasswordFetcher.post(form).json().execute()
+    return makeSanctumResponse(forgotPasswordFetcher)
+  }
+
   return {
     fetchCsrfToken,
     login,
     register,
     logout,
-    getUser
+    getUser,
+    resetPassword,
+    forgotPassword
   }
 }
 

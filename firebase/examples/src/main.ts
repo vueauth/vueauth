@@ -10,7 +10,8 @@ import {
   useHandlesErrors,
   useAuthState,
   useAuthenticatedRedirector,
-  useFetchUser
+  useFetchUser,
+  usePasswordResetViaEmail,
 } from 'firebase-composables'
 import router from './router/router'
 import { AuthPlugin, PluginOptions } from 'auth-composables'
@@ -44,7 +45,8 @@ app.use(AuthPlugin, {
         'errorHandler': useHandlesErrors,
         'fetchUser': useFetchUser,
         'authState': useAuthState,
-        'authRedirector': useAuthRedirector
+        'authRedirector': useAuthRedirector,
+        'passwordResetViaEmail': usePasswordResetViaEmail
       }
     }
   }

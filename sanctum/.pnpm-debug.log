@@ -1,0 +1,24 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1,
+    "workspacePrefix": "/home/luke/code/vueauth"
+  },
+  "1 info pnpm": {
+    "err": {
+      "name": "Error",
+      "message": "not found: dev",
+      "code": "ENOENT",
+      "stack": "Error: not found: dev\n    at getNotFoundError (/home/luke/.npm-global/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.6/node_modules/pnpm/dist/pnpm.cjs:41182:51)\n    at Function.whichSync [as sync] (/home/luke/.npm-global/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.6/node_modules/pnpm/dist/pnpm.cjs:41259:13)\n    at getCommandAbsolutePathSync (/home/luke/.npm-global/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.6/node_modules/pnpm/dist/pnpm.cjs:42824:44)\n    at default_1 (/home/luke/.npm-global/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.6/node_modules/pnpm/dist/pnpm.cjs:42833:32)\n    at /home/luke/.npm-global/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.6/node_modules/pnpm/dist/pnpm.cjs:178717:39"
+    }
+  },
+  "2 error pnpm": {
+    "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+    "prefix": "/home/luke/code/vueauth/sanctum",
+    "err": {
+      "name": "pnpm",
+      "message": "not found: dev",
+      "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+      "stack": "Error: not found: dev\n    at getNotFoundError (/home/luke/.npm-global/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.6/node_modules/pnpm/dist/pnpm.cjs:41182:51)\n    at Function.whichSync [as sync] (/home/luke/.npm-global/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.6/node_modules/pnpm/dist/pnpm.cjs:41259:13)\n    at getCommandAbsolutePathSync (/home/luke/.npm-global/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.6/node_modules/pnpm/dist/pnpm.cjs:42824:44)\n    at default_1 (/home/luke/.npm-global/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.6/node_modules/pnpm/dist/pnpm.cjs:42833:32)\n    at /home/luke/.npm-global/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.6/node_modules/pnpm/dist/pnpm.cjs:178717:39"
+    }
+  }
+}

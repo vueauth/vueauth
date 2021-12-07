@@ -7,6 +7,7 @@ export { makeFetchRequester } from './implementations/makeFetchRequester'
 // Auth
 export { useIdentityPasswordLogin } from './implementations/useIdentityPasswordLogin'
 export { useIdentityPasswordRegister } from './implementations/useIdentityPasswordRegister'
+export { usePasswordResetViaEmail } from './implementations/usePasswordResetViaEmail'
 export { useAuthState } from './implementations/useAuthState'
 export { useIdentityPasswordLogout } from './implementations/useIdentityPasswordLogout'
 export { useFetchUser } from './implementations/useFetchUser'

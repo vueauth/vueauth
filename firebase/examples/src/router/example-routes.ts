@@ -1,5 +1,6 @@
 import EmailPasswordRegisterPage from '../pages/EmailPasswordRegisterPage.vue'
 import EmailPasswordSignInPage from '../pages/EmailPasswordSignInPage.vue'
+import PasswordResetPage from '../pages/PasswordResetPage.vue'
 import SyncingDataWithFirestore from '../pages/SyncingDataWithFirestore.vue'
 import LogoutPage from '../pages/LogoutPage.vue'
 import RedirectIfAuthenticated from '../pages/RedirectIfAuthenticated.vue'
@@ -16,6 +17,11 @@ export default [
     path: '/email-password-sign-in',
     label: 'Email password sign in',
     component: EmailPasswordSignInPage
+  },
+  {
+    path: '/password-reset',
+    label: 'Forgotten password and reset',
+    component: PasswordResetPage
   },
   {
     path: '/logout',
