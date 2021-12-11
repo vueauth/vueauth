@@ -11,7 +11,7 @@ export const useFetchUser: UseFetchUser = () => {
 
   const { loading } = createGlobalState(() => {
     return {
-      loading: ref(false)
+      loading: ref(false),
     }
   })()
 
@@ -21,7 +21,7 @@ export const useFetchUser: UseFetchUser = () => {
     errors,
     resetStandardErrors,
     resetErrors,
-    fromResponse: setErrorsFromResponse
+    fromResponse: setErrorsFromResponse,
   } = useHandlesErrors()
 
   const fetch = async () => {
@@ -47,7 +47,7 @@ export const useFetchUser: UseFetchUser = () => {
     hasErrors,
     errors,
     resetStandardErrors,
-    resetErrors
+    resetErrors,
   }
 }
 

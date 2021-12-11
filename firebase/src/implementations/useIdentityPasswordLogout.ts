@@ -11,7 +11,7 @@ export const useIdentityPasswordLogout: UseIdentityPasswordLogout = () => {
     errors,
     resetStandardErrors,
     resetErrors,
-    fromResponse: setErrorsFromResponse
+    fromResponse: setErrorsFromResponse,
   } = useHandlesErrors()
 
   const logout = async () => {
@@ -33,6 +33,6 @@ export const useIdentityPasswordLogout: UseIdentityPasswordLogout = () => {
     hasErrors,
     errors,
     resetStandardErrors,
-    resetErrors
+    resetErrors,
   }
 }

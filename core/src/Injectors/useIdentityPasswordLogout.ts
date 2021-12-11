@@ -1,5 +1,4 @@
-import { UseIdentityPasswordLogoutReturn } from 'src/Contracts/UseIdentityPasswordLogout'
-import { UseIdentityPasswordLogout } from '../Contracts/UseIdentityPasswordLogout'
+import { UseIdentityPasswordLogoutReturn, UseIdentityPasswordLogout } from '../Contracts/UseIdentityPasswordLogout'
 import { getDefaultProvider } from './getDefaultProvider'
 import useFeature from './useFeature'
 

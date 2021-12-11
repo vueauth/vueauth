@@ -5,7 +5,6 @@ import { UseHandlesErrors, ValidationErrors } from 'auth-composables'
 
 export const useHandlesErrors: UseHandlesErrors = () => {
   const errors = ref<ResponseErrors>([])
-  const hasErrors = computed(() => !!errors.value.length)
   function resetStandardErrors () {
     errors.value = []
   }
@@ -14,6 +13,8 @@ export const useHandlesErrors: UseHandlesErrors = () => {
   const hasValidationErrors = computed(() => {
     return !!Object.keys(validationErrors.value).length
   })
+  const hasErrors = computed(() => !!errors.value.length || hasValidationErrors.value)
+
   function resetValidationErrors () {
     validationErrors.value = {}
   }
@@ -27,7 +28,7 @@ export const useHandlesErrors: UseHandlesErrors = () => {
     resetErrors()
     errors.value.push({
       type: response.statusCode?.toString() || 'unknown',
-      message: response.response?.statusText || 'unknown error'
+      message: response.response?.statusText || 'unknown error',
     })
     if (response.statusCode === 422 && response.asJson()?.errors) {
       const errorBag = response.asJson()?.errors as ValidationErrors
@@ -43,7 +44,7 @@ export const useHandlesErrors: UseHandlesErrors = () => {
     resetStandardErrors,
     resetValidationErrors,
     resetErrors,
-    fromResponse
+    fromResponse,
   }
 }
 

@@ -1,15 +1,13 @@
 import { ref } from 'vue-demi'
 import getSanctumConfig from '../getSanctumConfig'
 import useHandlesErrors from './useHandlesErrors'
-import useAuthState from './useAuthState'
-import { UseIdentityPasswordLogin } from 'auth-composables'
+import { UseUpdatePassword } from 'auth-composables'
 
-export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
+export const useUpdatePassword: UseUpdatePassword = () => {
   const loading = ref(false)
   const { requester } = getSanctumConfig()
-  const { login: loginRequest, getUser } = requester
+  const { updatePassword } = requester
 
-  const { user } = useAuthState()
   const {
     validationErrors,
     hasValidationErrors,
@@ -22,36 +20,34 @@ export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
   } = useHandlesErrors()
 
   const form = ref({
-    email: '',
+    current_password: '',
     password: '',
+    password_confirmation: '',
   })
   function resetForm () {
     Object.keys(form.value).forEach(key => { form.value[key] = '' })
   }
 
-  const login = async () => {
+  const update = async () => {
+    if (form.value.password !== form.value.password_confirmation) {
+      validationErrors.value.password = ['password and password confirmation must match']
+      return
+    }
+    if (typeof form.value.password === 'string' && form.value.password.length < 6) {
+      validationErrors.value.password = ['password must be at least 6 characters long']
+      return
+    }
     loading.value = true
-    const loginResponse = await loginRequest(form.value)
-    if (loginResponse.error) {
-      setErrorsFromResponse(loginResponse)
-      loading.value = false
-      return
+    const response = await updatePassword(form.value)
+    if (response.error) {
+      setErrorsFromResponse(response)
     }
-
-    const fetchUserResponse = await getUser()
-    if (fetchUserResponse.error) {
-      setErrorsFromResponse(fetchUserResponse)
-      loading.value = false
-      return
-    }
-
-    user.value = fetchUserResponse.data
     loading.value = false
   }
 
   return {
     form,
-    login,
+    update,
     loading,
     resetForm,
 
@@ -66,4 +62,4 @@ export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
   }
 }
 
-export default useIdentityPasswordLogin
+export default useUpdatePassword

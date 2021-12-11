@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { getOptions } from 'auth-composables'
 import exampleRoutes from '../router/example-routes'
+
+console.log(getOptions('', 'identityPassword:register'))
 </script>
 
 <template>

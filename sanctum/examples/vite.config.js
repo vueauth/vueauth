@@ -16,7 +16,8 @@ export default defineConfig({
       '/register': 'http://localhost',
       '/logout': 'http://localhost',
       '/forgot-password': 'http://localhost',
-      '/reset-password': 'http://localhost'
+      '/reset-password': 'http://localhost',
+      '/user/password': 'http://localhost'
     }
   }
 })

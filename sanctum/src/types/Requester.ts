@@ -1,6 +1,6 @@
 import User from './User'
 
-interface SanctumResponse<T> {
+export interface SanctumResponse<T> {
   isFinished: boolean
   statusCode: number | null
   response: Response | null
@@ -10,15 +10,21 @@ interface SanctumResponse<T> {
   isFetching: boolean
 }
 
-interface ResetPasswordForm {
+export interface ResetPasswordForm {
   email: string
   password: string
   password_confirmation: string
   token?: string
 }
 
-interface ResetPasswordRequestForm {
+export interface ResetPasswordRequestForm {
   email: string
+}
+
+export interface UpdatePasswordForm {
+  current_password: string
+  password: string
+  password_confirmation: string
 }
 
 export default interface Requester {
@@ -29,10 +35,5 @@ export default interface Requester {
   getUser: () => Promise<SanctumResponse<User>>,
   forgotPassword: (form: ResetPasswordRequestForm) => Promise<SanctumResponse<unknown>>,
   resetPassword: (form: ResetPasswordForm) => Promise<SanctumResponse<unknown>>,
-}
-
-export {
-  SanctumResponse,
-  ResetPasswordForm,
-  ResetPasswordRequestForm
+  updatePassword: (form: UpdatePasswordForm) => Promise<SanctumResponse<unknown>>
 }

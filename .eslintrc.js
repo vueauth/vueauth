@@ -2,14 +2,16 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   plugins: [
-    '@typescript-eslint'
+    '@typescript-eslint',
   ],
   extends: [
     'standard',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
   ],
   rules: {
     semi: ['error', 'never'],
-    '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }]
-  }
+    '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }],
+    'comma-dangle': ['warn', 'always-multiline'],
+    camelcase: 'off',
+  },
 }

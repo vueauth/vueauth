@@ -1,9 +1,9 @@
-import Requester, { ResetPasswordForm, ResetPasswordRequestForm, SanctumResponse } from '../types/Requester'
+import Requester, { ResetPasswordForm, ResetPasswordRequestForm, SanctumResponse, UpdatePasswordForm } from '../types/Requester'
 import { createFetch, UseFetchReturn } from '@vueuse/core'
 import { useCookies } from '@vueuse/integrations/useCookies'
 
 export const makeFetchRequester = (
-  baseUrl: string | undefined = undefined
+  baseUrl: string | undefined = undefined,
 ): Requester => {
   const cookies = useCookies(['XSRF-TOKEN'])
 
@@ -16,11 +16,14 @@ export const makeFetchRequester = (
         if (typeof fetch.data.value === 'string') {
           return JSON.parse(fetch.data.value)
         }
+        if (typeof fetch.data.value === 'object') {
+          return fetch.data.value
+        }
         return {}
       },
       error: fetch.error.value,
       data: fetch.data.value as T,
-      isFetching: fetch.isFetching.value
+      isFetching: fetch.isFetching.value,
     }
   }
 
@@ -28,8 +31,8 @@ export const makeFetchRequester = (
     baseUrl,
     fetchOptions: {
       headers: {
-        Accept: 'application/json'
-      }
+        Accept: 'application/json',
+      },
     },
     options: {
       beforeFetch ({ options }) {
@@ -39,8 +42,8 @@ export const makeFetchRequester = (
         }
         options.headers['X-XSRF-TOKEN'] = xsrfToken
       },
-      immediate: false
-    }
+      immediate: false,
+    },
   })
 
   const loginFetcher = useFetch('/login')
@@ -50,6 +53,7 @@ export const makeFetchRequester = (
   const csrfTokenFetcher = useFetch('/sanctum/csrf-cookie')
   const resetPasswordFetcher = useFetch('/reset-password')
   const forgotPasswordFetcher = useFetch('/forgot-password')
+  const updatePasswordFetcher = useFetch('/user/password')
 
   async function fetchCsrfToken () {
     await csrfTokenFetcher.get().execute()
@@ -78,6 +82,11 @@ export const makeFetchRequester = (
     return makeSanctumResponse(userFetcher)
   }
 
+  async function updatePassword (form: UpdatePasswordForm) {
+    await updatePasswordFetcher.put(form).json().execute()
+    return makeSanctumResponse(updatePasswordFetcher)
+  }
+
   async function resetPassword (form: ResetPasswordForm) {
     const urlParams = new URLSearchParams(window.location.search)
     const token = urlParams.get('token')
@@ -102,7 +111,8 @@ export const makeFetchRequester = (
     logout,
     getUser,
     resetPassword,
-    forgotPassword
+    forgotPassword,
+    updatePassword,
   }
 }
 

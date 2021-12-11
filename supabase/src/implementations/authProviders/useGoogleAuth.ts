@@ -4,7 +4,7 @@ export const useGoogleAuth = () => {
   const googleAuthProvider = useAuthProvider('google')
 
   return {
-    ...googleAuthProvider
+    ...googleAuthProvider,
   }
 }
 

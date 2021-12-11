@@ -13,7 +13,10 @@
     "fire:dev": "cd ./firebase/examples && pnpm dev",
     "sanc:build": "cd ./sanctum && pnpm build",
     "sanc:watch": "cd ./sanctum && pnpm watch",
-    "sanc:dev": "cd ./sanctum/examples && pnpm dev"
+    "sanc:dev": "cd ./sanctum/examples && pnpm dev",
+    "supa:build": "cd ./supabase && pnpm build",
+    "supa:watch": "cd ./supabase && pnpm watch",
+    "supa:dev": "cd ./supabase/examples && pnpm dev"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "^2.0.0-beta.27",

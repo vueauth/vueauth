@@ -10,7 +10,7 @@ type UserOnCheckedFunction = (user: unknown | null) => void
 export const useAuthRedirector: UseAuthRedirector = (
   redirectOn: RedirectTriggers,
   redirectTo: MaybeRef<RouteLocationRaw> = ref('/'),
-  router: Router = useRouter()
+  router: Router = useRouter(),
 ) => {
   const checking = ref(false)
   const supabase = useClient()
@@ -18,7 +18,7 @@ export const useAuthRedirector: UseAuthRedirector = (
   const {
     isAuthenticated,
     user,
-    authIsReady
+    authIsReady,
   } = useAuthState()
 
   const onChecked = ref(null as null | UserOnCheckedFunction)
@@ -77,7 +77,7 @@ export const useAuthRedirector: UseAuthRedirector = (
     exec,
     redirectTo,
     checking,
-    onChecked
+    onChecked,
   }
 }
 

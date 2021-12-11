@@ -15,25 +15,24 @@ export const useAuthProvider = (authProvider: AuthProvider) => {
     errors,
     resetStandardErrors,
     resetValidationErrors,
-    resetErrors
+    resetErrors,
   } = handlesErrors()
 
   const signIn = async () => {
     loading.value = true
-    let response
-    try {
-      response = await auth.signIn({ provider: authProvider })
-    } catch (error) {
-      // TODO: Handle error
-      console.log('handle the error', error)
+    const { error, user } = await auth.signIn({ provider: authProvider })
+    if (error) {
+      errors.value.push({
+        type: error.status.toString(),
+        message: error.message,
+      })
     }
 
-    if (response?.user) {
-      authState.user.value = response.user
+    if (user) {
+      authState.user.value = user
     }
 
     loading.value = false
-    return response
   }
 
   return {
@@ -43,7 +42,7 @@ export const useAuthProvider = (authProvider: AuthProvider) => {
     errors,
     resetStandardErrors,
     resetValidationErrors,
-    resetErrors
+    resetErrors,
   }
 }
 

@@ -9,7 +9,6 @@ export const useAuthState: UseAuthState = createGlobalState<AuthState>(() => {
   const auth = getAuth(app)
 
   const user = ref(auth.currentUser)
-  console.log(user.value)
   const isAuthenticated = computed(() => !!user.value)
   const authIsReady = ref(false)
 
@@ -20,7 +19,7 @@ export const useAuthState: UseAuthState = createGlobalState<AuthState>(() => {
   return {
     authIsReady,
     isAuthenticated,
-    user
+    user,
   }
 })
 

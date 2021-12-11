@@ -1,10 +1,10 @@
 import useHandlesErrors from './useHandlesErrors'
 import { getAuth, createUserWithEmailAndPassword, AuthError } from 'firebase/auth'
 import { ref, watch } from 'vue-demi'
-import { IdentityPasswordRegisterFlags, UseIdentityPasswordRegister } from 'auth-composables'
+import { IdentityPasswordRegisterOptions, UseIdentityPasswordRegister } from 'auth-composables'
 
-const flags: IdentityPasswordRegisterFlags = {
-  emailConfirm: false
+const baseOptions: IdentityPasswordRegisterOptions = {
+  emailConfirm: false,
 }
 
 export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
@@ -18,15 +18,17 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
     hasValidationErrors,
     resetStandardErrors,
     resetValidationErrors,
-    resetErrors
+    resetErrors,
   } = useHandlesErrors()
 
   const form = ref({
     email: '',
     password: '',
-    password_confirmation: ''
+    password_confirmation: '',
   })
-  const customFields = ref({})
+  function resetForm () {
+    Object.keys(form.value).forEach(key => { form.value[key] = '' })
+  }
 
   watch(form.value, () => {
     resetErrors()
@@ -36,7 +38,7 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
     loading.value = true
     if (form.value.password !== form.value.password_confirmation) {
       validationErrors.value = {
-        password: ['The password confirmation does not match.']
+        password: ['The password confirmation does not match.'],
       }
       loading.value = false
       return
@@ -47,7 +49,7 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
       await createUserWithEmailAndPassword(
         auth,
         form.value.email,
-        form.value.password
+        form.value.password,
       )
 
       resetErrors()
@@ -61,7 +63,6 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
 
   return {
     form,
-    customFields,
     register,
     loading,
     validationErrors,
@@ -71,6 +72,8 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
     resetStandardErrors,
     resetValidationErrors,
     resetErrors,
-    flags
+    resetForm,
   }
 }
+
+useIdentityPasswordRegister.baseOptions = baseOptions

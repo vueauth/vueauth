@@ -1,5 +1,4 @@
-import { UseHandlesErrorsReturn } from 'src/Contracts/UseHandlesErrors'
-import { UseHandlesErrors } from '../Contracts/UseHandlesErrors'
+import { UseHandlesErrorsReturn, UseHandlesErrors } from '../Contracts/UseHandlesErrors'
 import { getDefaultProvider } from './getDefaultProvider'
 import useFeature from './useFeature'
 

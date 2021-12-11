@@ -10,7 +10,7 @@ export const useVueUseAuthState: UseAuthState = createGlobalState<AuthState>(() 
   return {
     authIsReady,
     isAuthenticated,
-    user
+    user,
   }
 })
 

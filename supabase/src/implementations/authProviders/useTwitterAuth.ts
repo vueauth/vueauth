@@ -4,7 +4,7 @@ export const useTwitterAuth = () => {
   const twitterAuthProvider = useAuthProvider('twitter')
 
   return {
-    ...twitterAuthProvider
+    ...twitterAuthProvider,
   }
 }
 

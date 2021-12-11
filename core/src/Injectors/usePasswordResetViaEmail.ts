@@ -1,4 +1,4 @@
-import { UsePasswordResetViaEmailReturn, UsePasswordResetViaEmail } from 'src/Contracts/UsePasswordResetViaEmail'
+import { UsePasswordResetViaEmailReturn, UsePasswordResetViaEmail } from '../Contracts/UsePasswordResetViaEmail'
 import { getDefaultProvider } from './getDefaultProvider'
 import useFeature from './useFeature'
 

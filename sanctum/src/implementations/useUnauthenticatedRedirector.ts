@@ -6,10 +6,10 @@ import { ref } from 'vue-demi'
 
 export const useUnauthenticatedRedirector: UseUnauthenticatedRedirector = (
   redirectTo: MaybeRef<RouteLocationRaw> = ref('/'),
-  router: Router = useRouter()
+  router: Router = useRouter(),
 ) => {
   return {
-    ...useAuthRedirector('unauthenticated', redirectTo, router)
+    ...useAuthRedirector('unauthenticated', redirectTo, router),
   }
 }
 

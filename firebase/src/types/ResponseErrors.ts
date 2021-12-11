@@ -8,5 +8,5 @@ type ResponseErrors = ResponseError[]
 export default ResponseErrors
 
 export {
-  ResponseError
+  ResponseError,
 }

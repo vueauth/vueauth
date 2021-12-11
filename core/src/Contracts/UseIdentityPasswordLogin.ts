@@ -19,6 +19,8 @@ export interface UseIdentityPasswordLoginReturn {
   resetStandardErrors: () => void
   resetValidationErrors: () => void
   resetErrors: () => void
+  isReauthenticating?: Ref<boolean>
+  resetForm: () => void
 }
 
 export type UseIdentityPasswordLogin = () => UseIdentityPasswordLoginReturn

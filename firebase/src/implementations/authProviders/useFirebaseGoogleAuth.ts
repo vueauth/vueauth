@@ -6,7 +6,7 @@ export const useFirebaseGoogleAuth = () => {
   const googleAuthProvider = useFirebaseAuthProvider(new GoogleAuthProvider())
 
   return {
-    ...googleAuthProvider
+    ...googleAuthProvider,
   }
 }
 

@@ -16,16 +16,21 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
     resetStandardErrors,
     resetValidationErrors,
     resetErrors,
-    fromResponse: setErrorsFromResponse
+    fromResponse: setErrorsFromResponse,
   } = useHandlesErrors()
 
   const requestForm = ref({ email: '' })
-
-  const resetForm = ref({
+  function resetRequestForm () {
+    Object.keys(requestForm.value).forEach(key => { requestForm.value[key] = '' })
+  }
+  const resetPasswordForm = ref({
     email: '',
     password: '',
-    password_confirmation: ''
+    password_confirmation: '',
   })
+  function resetResetPasswordForm () {
+    Object.keys(resetPasswordForm.value).forEach(key => { resetPasswordForm.value[key] = '' })
+  }
 
   const requestReset = async () => {
     loading.value = true
@@ -41,7 +46,7 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
 
   const reset = async () => {
     loading.value = true
-    const response = await resetPassword(resetForm.value)
+    const response = await resetPassword(resetPasswordForm.value)
     if (response.error) {
       setErrorsFromResponse(response)
       loading.value = false
@@ -53,10 +58,12 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
 
   return {
     requestForm,
-    resetForm,
+    resetPasswordForm,
     requestReset,
     reset,
     loading,
+    resetResetPasswordForm,
+    resetRequestForm,
 
     // Error Handling
     validationErrors,
@@ -65,7 +72,7 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
     errors,
     resetStandardErrors,
     resetValidationErrors,
-    resetErrors
+    resetErrors,
   }
 }
 

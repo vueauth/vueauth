@@ -2,10 +2,10 @@ import getSanctumConfig from '../getSanctumConfig'
 import { ref, computed } from 'vue-demi'
 import useAuthState from './useAuthState'
 import useHandlesErrors from './useHandlesErrors'
-import { UseIdentityPasswordRegister, IdentityPasswordRegisterFlags } from 'auth-composables'
+import { UseIdentityPasswordRegister, IdentityPasswordRegisterOptions } from 'auth-composables'
 
-const flags: IdentityPasswordRegisterFlags = {
-  emailConfirm: false
+const baseOptions: IdentityPasswordRegisterOptions = {
+  emailConfirm: false,
 }
 
 export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
@@ -22,20 +22,22 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
     resetStandardErrors,
     resetValidationErrors,
     resetErrors,
-    fromResponse: setErrorsFromResponse
+    fromResponse: setErrorsFromResponse,
   } = useHandlesErrors()
 
   const form = ref({
     email: '',
     password: '',
-    password_confirmation: ''
+    password_confirmation: '',
   })
-  const customFields = ref({
-    name: ''
-  })
+  const customFields = ref({ name: '' })
   const mergedForm = computed(() => {
     return { ...form.value, ...customFields.value }
   })
+  function resetForm () {
+    Object.keys(form.value).forEach(key => { form.value[key] = '' })
+    Object.keys(mergedForm.value).forEach(key => { mergedForm.value[key] = '' })
+  }
 
   const register = async () => {
     loading.value = true
@@ -62,6 +64,7 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
     customFields,
     register,
     loading,
+    resetForm,
 
     // Error Handling
     validationErrors,
@@ -71,8 +74,9 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
     resetStandardErrors,
     resetValidationErrors,
     resetErrors,
-    flags
   }
 }
+
+useIdentityPasswordRegister.baseOptions = baseOptions
 
 export default useIdentityPasswordRegister

@@ -1,7 +1,7 @@
 import useHandlesErrors from './useHandlesErrors'
 import {
   getAuth, sendPasswordResetEmail,
-  confirmPasswordReset, AuthError
+  confirmPasswordReset, AuthError,
 } from 'firebase/auth'
 import { ref } from 'vue-demi'
 import { UsePasswordResetViaEmail } from 'auth-composables'
@@ -19,15 +19,20 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
     hasValidationErrors,
     resetStandardErrors,
     resetValidationErrors,
-    resetErrors
+    resetErrors,
   } = useHandlesErrors()
 
   const requestForm = ref({ email: '' })
-
-  const resetForm = ref({
+  function resetRequestForm () {
+    Object.keys(requestForm.value).forEach(key => { requestForm.value[key] = '' })
+  }
+  const resetPasswordForm = ref({
     password: '',
-    password_confirmation: ''
+    password_confirmation: '',
   })
+  function resetResetPasswordForm () {
+    Object.keys(resetPasswordForm.value).forEach(key => { resetPasswordForm.value[key] = '' })
+  }
 
   const requestReset = async () => {
     loading.value = true
@@ -46,7 +51,7 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
     loading.value = true
     try {
       await confirmPasswordReset(
-        auth, getOobCode(), resetForm.value.password
+        auth, getOobCode(), resetPasswordForm.value.password,
       )
     } catch (err) {
       if (typeof err === 'object' && err !== null && err.constructor.name === 'FirebaseError') {
@@ -68,10 +73,12 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
 
   return {
     requestForm,
-    resetForm,
+    resetRequestForm,
+    resetResetPasswordForm,
     requestReset,
     reset,
     loading,
+    resetPasswordForm,
 
     // Error Handling
     validationErrors,
@@ -80,6 +87,6 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
     errors,
     resetStandardErrors,
     resetValidationErrors,
-    resetErrors
+    resetErrors,
   }
 }

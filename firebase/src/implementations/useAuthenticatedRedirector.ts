@@ -6,10 +6,10 @@ import { UseAuthenticatedRedirector } from 'auth-composables'
 
 export const useAuthenticatedRedirector: UseAuthenticatedRedirector = (
   redirectTo: MaybeRef<RouteLocationRaw> = ref('/'),
-  router: Router = useRouter()
+  router: Router = useRouter(),
 ) => {
   return {
-    ...useAuthRedirector('authenticated', redirectTo, router)
+    ...useAuthRedirector('authenticated', redirectTo, router),
   }
 }
 

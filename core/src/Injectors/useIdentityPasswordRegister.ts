@@ -1,5 +1,4 @@
-import { UseIdentityPasswordRegisterReturn } from 'src/Contracts/UseIdentityPasswordRegister'
-import { UseIdentityPasswordRegister } from '../Contracts/UseIdentityPasswordRegister'
+import { UseIdentityPasswordRegisterReturn, UseIdentityPasswordRegister } from '../Contracts/UseIdentityPasswordRegister'
 import { getDefaultProvider } from './getDefaultProvider'
 import useFeature from './useFeature'
 

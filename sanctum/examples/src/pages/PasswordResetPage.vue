@@ -44,22 +44,16 @@ requestForm.value.email = 'luke@ldiebold.com'
   </div>
 
   <div>
-    <h2>Reset</h2>
+    <h1>Reset</h1>
 
-    <div>Email</div>
-    <input v-model="resetForm.email">
+    <label>Email</label><br>
+    <input v-model="resetForm.email"><br>
 
-    <br>
+    <label>New Password</label><br>
+    <input v-model="resetForm.password"><br>
 
-    <div>New Password</div>
-    <input v-model="resetForm.password">
-
-    <br>
-
-    <div>Confirm New Password</div>
-    <input v-model="resetForm.password_confirmation">
-
-    <br>
+    <label>Confirm New Password</label><br>
+    <input v-model="resetForm.password_confirmation"><br>
 
     <button
       :disabled="loading"

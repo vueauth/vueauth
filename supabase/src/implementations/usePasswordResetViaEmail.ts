@@ -17,20 +17,25 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
     hasValidationErrors,
     resetStandardErrors,
     resetValidationErrors,
-    resetErrors
+    resetErrors,
   } = useHandlesErrors()
 
   const requestForm = ref({ email: '' })
-
-  const resetForm = ref({
+  function resetRequestForm () {
+    Object.keys(requestForm.value).forEach(key => { requestForm.value[key] = '' })
+  }
+  const resetPasswordForm = ref({
     password: '',
-    password_confirmation: ''
+    password_confirmation: '',
   })
+  function resetResetPasswordForm () {
+    Object.keys(resetPasswordForm.value).forEach(key => { resetPasswordForm.value[key] = '' })
+  }
 
   const requestReset = async () => {
     loading.value = true
     const { error } = await auth.api.resetPasswordForEmail(requestForm.value.email, {
-      redirectTo: window.location.origin + '/password-reset'
+      redirectTo: window.location.origin + '/password-reset',
     })
     if (error) setErrorsFromResponse(error)
 
@@ -41,7 +46,7 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
     loading.value = true
     const { error } = await auth.api.updateUser(
       getAccessToken(),
-      { password: resetForm.value.password }
+      { password: resetPasswordForm.value.password },
     )
     if (error) setErrorsFromResponse(error)
     loading.value = false
@@ -57,10 +62,12 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
 
   return {
     requestForm,
-    resetForm,
+    resetRequestForm,
+    resetResetPasswordForm,
     requestReset,
     reset,
     loading,
+    resetPasswordForm,
 
     // Error Handling
     validationErrors,
@@ -69,6 +76,6 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
     errors,
     resetStandardErrors,
     resetValidationErrors,
-    resetErrors
+    resetErrors,
   }
 }

@@ -4,7 +4,7 @@ export const useGithubAuth = () => {
   const githubAuthProvider = useAuthProvider('github')
 
   return {
-    ...githubAuthProvider
+    ...githubAuthProvider,
   }
 }
 

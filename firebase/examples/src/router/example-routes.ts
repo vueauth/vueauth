@@ -6,6 +6,7 @@ import LogoutPage from '../pages/LogoutPage.vue'
 import RedirectIfAuthenticated from '../pages/RedirectIfAuthenticated.vue'
 import RedirectIfUnauthenticated from '../pages/RedirectIfUnauthenticated.vue'
 import AuthState from '../pages/AuthState.vue'
+import UpdatePasswordPage from '../pages/UpdatePasswordPage.vue'
 
 export default [
   {
@@ -47,5 +48,10 @@ export default [
     path: '/auth-state',
     label: 'Auth State',
     component: AuthState
+  },
+  {
+    path: '/update-password',
+    label: 'Update Password',
+    component: UpdatePasswordPage
   }
 ]

@@ -1,16 +1,12 @@
 import useHandlesErrors from './useHandlesErrors'
-import { ref, watch } from 'vue-demi'
-import { IdentityPasswordRegisterOptions, UseIdentityPasswordRegister } from 'auth-composables'
+import { ref } from 'vue-demi'
+import { UseUpdatePassword } from 'auth-composables'
 import useClient from '../useClient'
 
-const baseOptions: IdentityPasswordRegisterOptions = {
-  emailConfirm: false,
-}
-
-export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
-  const supabaseClient = useClient()
-
+export const useUpdatePassword: UseUpdatePassword = () => {
   const loading = ref(false)
+
+  const supabase = useClient()
 
   const {
     errors,
@@ -24,7 +20,6 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
   } = useHandlesErrors()
 
   const form = ref({
-    email: '',
     password: '',
     password_confirmation: '',
   })
@@ -32,30 +27,28 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
     Object.keys(form.value).forEach(key => { form.value[key] = '' })
   }
 
-  watch(form.value, () => {
-    resetErrors()
-  })
-
-  const register = async () => {
-    loading.value = true
+  const update = async () => {
     if (form.value.password !== form.value.password_confirmation) {
-      errors.value.push({
-        type: 'validation',
-        message: 'The password confirmation does not match.',
-      })
-      loading.value = false
+      validationErrors.value.password = ['password and password confirmation must match']
       return
     }
-
-    const { error } = await supabaseClient.auth.signUp(form.value)
+    if (typeof form.value.password === 'string' && form.value.password.length < 6) {
+      validationErrors.value.password = ['password must be at least 6 characters long']
+      return
+    }
+    loading.value = true
+    const { error } = await supabase.auth.update({ password: form.value.password })
     if (error) setErrorsFromResponse(error)
     loading.value = false
   }
 
   return {
     form,
-    register,
+    update,
     loading,
+    resetForm,
+
+    // error Handling
     validationErrors,
     hasValidationErrors,
     hasErrors,
@@ -63,8 +56,5 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
     resetStandardErrors,
     resetValidationErrors,
     resetErrors,
-    resetForm,
   }
 }
-
-useIdentityPasswordRegister.baseOptions = baseOptions

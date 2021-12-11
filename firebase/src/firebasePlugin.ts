@@ -10,7 +10,7 @@ export const FirebasePlugin = {
   install: (vueApp: App, options: VuePluginOptions) => {
     const app = initializeApp(options.credentials)
     vueApp.provide(FirebaseAppKey, app)
-  }
+  },
 }
 
 export default FirebasePlugin

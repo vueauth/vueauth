@@ -5,7 +5,7 @@ export const useFirebaseGithubAuth = () => {
   const githubAuthProvider = useFirebaseAuthProvider(new GithubAuthProvider())
 
   return {
-    ...githubAuthProvider
+    ...githubAuthProvider,
   }
 }
 

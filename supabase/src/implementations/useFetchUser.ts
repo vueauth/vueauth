@@ -8,7 +8,7 @@ export const useFetchUser: UseFetchUser = () => {
     hasErrors,
     errors,
     resetStandardErrors,
-    resetErrors
+    resetErrors,
   } = useHandlesErrors()
 
   const loading = ref(false)
@@ -28,7 +28,7 @@ export const useFetchUser: UseFetchUser = () => {
     hasErrors,
     errors,
     resetStandardErrors,
-    resetErrors
+    resetErrors,
   }
 }
 

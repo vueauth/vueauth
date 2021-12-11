@@ -1,5 +1,4 @@
-import { UseIdentityPasswordLoginReturn } from 'src/Contracts/UseIdentityPasswordLogin'
-import { UseIdentityPasswordLogin } from '../Contracts/UseIdentityPasswordLogin'
+import { UseIdentityPasswordLoginReturn, UseIdentityPasswordLogin } from '../Contracts/UseIdentityPasswordLogin'
 import { getDefaultProvider } from './getDefaultProvider'
 import useFeature from './useFeature'
 
@@ -10,6 +9,6 @@ export const useIdentityPasswordLogin = (authProvider = '') => {
     authProvider = getDefaultProvider()
   }
   return useFeature<UseIdentityPasswordLogin, UseIdentityPasswordLoginReturn>(
-    authProvider, featureId
+    authProvider, featureId,
   )
 }

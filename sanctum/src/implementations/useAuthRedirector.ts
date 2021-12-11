@@ -10,7 +10,7 @@ type UserOnCheckedFunction = (user: unknown | null) => void
 export const useAuthRedirector: UseAuthRedirector = (
   redirectOn: RedirectTriggers,
   redirectTo: MaybeRef<RouteLocationRaw> = ref(''),
-  router: Router = useRouter()
+  router: Router = useRouter(),
 ) => {
   const checking = ref(false)
   const { loading: fetchingUser, fetch: fetchUser } = useFetchUser()
@@ -18,7 +18,7 @@ export const useAuthRedirector: UseAuthRedirector = (
   const {
     isAuthenticated,
     user,
-    authIsReady
+    authIsReady,
   } = useAuthState()
 
   watchEffect(() => {
@@ -90,7 +90,7 @@ export const useAuthRedirector: UseAuthRedirector = (
     exec,
     redirectTo,
     checking,
-    onChecked
+    onChecked,
   }
 }
 

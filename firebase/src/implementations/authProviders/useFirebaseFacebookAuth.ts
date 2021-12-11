@@ -5,7 +5,7 @@ export const useFirebaseFacebookAuth = () => {
   const facebookAuthProvider = useFirebaseAuthProvider(new FacebookAuthProvider())
 
   return {
-    ...facebookAuthProvider
+    ...facebookAuthProvider,
   }
 }
 

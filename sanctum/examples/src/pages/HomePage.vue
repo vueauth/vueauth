@@ -5,8 +5,14 @@ import exampleRoutes from '../router/example-routes'
 <template>
   <div>
     <ul>
-      <li v-for="route in exampleRoutes" :key="route.label" style="list-style-type: none;">
-        <router-link :to="route.path">{{ route.label }}</router-link>
+      <li
+        v-for="route in exampleRoutes"
+        :key="route.label"
+        style="list-style-type: none;"
+      >
+        <router-link :to="route.path">
+          {{ route.label }}
+        </router-link>
       </li>
     </ul>
   </div>

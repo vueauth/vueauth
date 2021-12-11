@@ -9,6 +9,7 @@ export { useIdentityPasswordRegister } from './implementations/useIdentityPasswo
 export { useIdentityPasswordLogin } from './implementations/useIdentityPasswordLogin'
 export { useFetchUser } from './implementations/useFetchUser'
 export { usePasswordResetViaEmail } from './implementations/usePasswordResetViaEmail'
+export { useUpdatePassword } from './implementations/useUpdatePassword'
 
 // Utilities
 export { useHandlesErrors } from './implementations/useHandlesErrors'

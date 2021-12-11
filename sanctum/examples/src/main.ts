@@ -6,7 +6,7 @@ import {
   SanctumPlugin,
   useAuthenticatedRedirector, useUnauthenticatedRedirector, useAuthRedirector,
   useIdentityPasswordLogout, useIdentityPasswordLogin, useIdentityPasswordRegister,
-  useHandlesErrors, useFetchUser, useAuthState, usePasswordResetViaEmail
+  useHandlesErrors, useFetchUser, useAuthState, usePasswordResetViaEmail, useUpdatePassword
 } from 'sanctum-composables'
 import router from './router/router'
 
@@ -29,6 +29,7 @@ app.use(AuthPlugin, {
         'authState': useAuthState,
         'authRedirector': useAuthRedirector,
         'passwordResetViaEmail': usePasswordResetViaEmail,
+        'updatePassword': useUpdatePassword
       }
     }
   }

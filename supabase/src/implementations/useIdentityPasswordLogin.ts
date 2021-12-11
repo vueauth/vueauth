@@ -16,13 +16,16 @@ export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
     resetErrors,
     fromResponse: setErrorsFromResponse,
     resetStandardErrors,
-    resetValidationErrors
+    resetValidationErrors,
   } = useHandlesErrors()
 
   const form = ref({
     email: '',
-    password: ''
+    password: '',
   })
+  function resetForm () {
+    Object.keys(form.value).forEach(key => { form.value[key] = '' })
+  }
 
   watch(form.value, () => {
     resetErrors()
@@ -45,7 +48,8 @@ export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
     errors,
     resetErrors,
     resetStandardErrors,
-    resetValidationErrors
+    resetValidationErrors,
+    resetForm,
   }
 }
 

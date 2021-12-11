@@ -1,10 +1,12 @@
 import useHandlesErrors from './useHandlesErrors'
-import { getAuth, signInWithEmailAndPassword, AuthError } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword, AuthError, reauthenticateWithCredential, EmailAuthProvider } from 'firebase/auth'
 import { ref, watch } from 'vue-demi'
 import { UseIdentityPasswordLogin } from 'auth-composables'
 
 export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
   const loading = ref(false)
+
+  const isReauthenticating = ref(false)
 
   const {
     validationErrors,
@@ -14,13 +16,16 @@ export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
     resetErrors,
     fromResponse: setErrorsFromResponse,
     resetStandardErrors,
-    resetValidationErrors
+    resetValidationErrors,
   } = useHandlesErrors()
 
   const form = ref({
     email: '',
-    password: ''
+    password: '',
   })
+  function resetForm () {
+    Object.keys(form.value).forEach(key => { form.value[key] = '' })
+  }
 
   watch(form.value, () => {
     resetErrors()
@@ -30,12 +35,19 @@ export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
     loading.value = true
     try {
       const auth = getAuth()
+      const user = auth.currentUser
 
-      await signInWithEmailAndPassword(
-        auth,
-        form.value.email,
-        form.value.password
-      )
+      if (user && isReauthenticating.value) {
+        const { email, password } = form.value
+        const credentials = EmailAuthProvider.credential(email, password)
+        await reauthenticateWithCredential(auth.currentUser, credentials)
+      } else {
+        await signInWithEmailAndPassword(
+          auth,
+          form.value.email,
+          form.value.password,
+        )
+      }
     } catch (err) {
       if (typeof err === 'object' && err !== null && err.constructor.name === 'FirebaseError') {
         setErrorsFromResponse(err as AuthError)
@@ -54,7 +66,9 @@ export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
     errors,
     resetErrors,
     resetStandardErrors,
-    resetValidationErrors
+    resetValidationErrors,
+    isReauthenticating,
+    resetForm,
   }
 }
 

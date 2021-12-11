@@ -12,5 +12,5 @@ type UseAuthState = () => AuthState
 export default UseAuthState
 
 export {
-  AuthState
+  AuthState,
 }

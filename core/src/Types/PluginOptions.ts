@@ -1,4 +1,4 @@
-import { UseIdentityPasswordRegister } from '../Contracts/UseIdentityPasswordRegister'
+import { IdentityPasswordRegisterOptions, UseIdentityPasswordRegister } from '../Contracts/UseIdentityPasswordRegister'
 import { UseIdentityPasswordLogin } from '../Contracts/UseIdentityPasswordLogin'
 import { UseIdentityPasswordLogout } from '../Contracts/UseIdentityPasswordLogout'
 import { UseFetchUser } from '../Contracts/UseFetchUser'
@@ -6,8 +6,8 @@ import { UseAuthState } from '../Contracts/UseAuthState'
 import { UseAuthenticatedRedirector } from '../Contracts/UseAuthenticatedRedirector'
 import { UseUnauthenticatedRedirector } from '../Contracts/UseUnauthenticatedRedirector'
 import { UseHandlesErrors } from '../Contracts/UseHandlesErrors'
-import { UseAuthRedirector } from 'src/types'
-import { UsePasswordResetViaEmail } from 'src/main'
+import { UseAuthRedirector } from '../types'
+import { UsePasswordResetViaEmail, UseUpdatePassword } from '../main'
 
 export type Feature = UseIdentityPasswordRegister |
   UseIdentityPasswordLogin |
@@ -18,10 +18,16 @@ export type Feature = UseIdentityPasswordRegister |
   UseFetchUser |
   UseAuthState |
   UseAuthRedirector |
-  UsePasswordResetViaEmail
+  UsePasswordResetViaEmail |
+  UseUpdatePassword
+
+interface UseIdentityPasswordRegisterConfig {
+  provider: UseIdentityPasswordRegister
+  options: IdentityPasswordRegisterOptions
+}
 
 export interface FeaturesOptions {
-  'identityPassword:register'?: UseIdentityPasswordRegister
+  'identityPassword:register'?: UseIdentityPasswordRegister | UseIdentityPasswordRegisterConfig
   'identityPassword:login'?: UseIdentityPasswordLogin
   'identityPassword:logout'?: UseIdentityPasswordLogout
   'passwordResetViaEmail'?: UsePasswordResetViaEmail
@@ -31,6 +37,7 @@ export interface FeaturesOptions {
   'fetchUser'?: UseFetchUser
   'authState'?: UseAuthState
   'authRedirector'?: UseAuthRedirector
+  'updatePassword'?: UseUpdatePassword
 }
 
 export interface Provider {

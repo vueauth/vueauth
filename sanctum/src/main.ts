@@ -1,16 +1,17 @@
 // Plugin
 export { SanctumPlugin } from './SanctumPlugin'
 
-// implementations
+// Sanctum Implementations
 export { makeFetchRequester } from './implementations/makeFetchRequester'
 
-// Auth
+// Implementations
 export { useIdentityPasswordLogin } from './implementations/useIdentityPasswordLogin'
 export { useIdentityPasswordRegister } from './implementations/useIdentityPasswordRegister'
 export { usePasswordResetViaEmail } from './implementations/usePasswordResetViaEmail'
 export { useAuthState } from './implementations/useAuthState'
 export { useIdentityPasswordLogout } from './implementations/useIdentityPasswordLogout'
 export { useFetchUser } from './implementations/useFetchUser'
+export { useUpdatePassword } from './implementations/useUpdatePassword'
 
 export { getSanctumConfig } from './getSanctumConfig'
 

@@ -5,7 +5,6 @@ import { ApiError } from '@supabase/supabase-js'
 
 export const useHandlesErrors: UseHandlesErrors = () => {
   const errors = ref<ResponseErrors>([])
-  const hasErrors = computed(() => !!errors.value.length || !!validationErrors.value.length)
   function resetStandardErrors () {
     errors.value = []
   }
@@ -14,6 +13,8 @@ export const useHandlesErrors: UseHandlesErrors = () => {
   const hasValidationErrors = computed(() => {
     return !!Object.keys(validationErrors.value).length
   })
+  const hasErrors = computed(() => !!errors.value.length || hasValidationErrors.value)
+
   function resetValidationErrors () {
     validationErrors.value = {}
   }
@@ -27,7 +28,7 @@ export const useHandlesErrors: UseHandlesErrors = () => {
     resetErrors()
     errors.value.push({
       type: `CODE: ${error.status}`,
-      message: error.message
+      message: error.message,
     })
   }
 
@@ -39,7 +40,7 @@ export const useHandlesErrors: UseHandlesErrors = () => {
     resetStandardErrors,
     resetValidationErrors,
     resetErrors,
-    fromResponse
+    fromResponse,
   }
 }
 

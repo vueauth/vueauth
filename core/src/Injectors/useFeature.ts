@@ -7,9 +7,9 @@ export const useFeature = <ComposableFunction, ComposableReturn>(
 ): ComposableReturn => {
   let ProvideKey: InjectionKey<ComposableFunction>
   if (authProvider) {
-    ProvideKey = Symbol.for(`${authProvider}:${featureId}`)
+    ProvideKey = Symbol.for(`auth:${authProvider}:${featureId}`)
   } else {
-    ProvideKey = Symbol.for(featureId)
+    ProvideKey = Symbol.for(`auth:${featureId}`)
   }
 
   const composable = inject(ProvideKey)

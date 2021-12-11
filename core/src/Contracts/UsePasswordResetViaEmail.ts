@@ -14,7 +14,7 @@ export interface PasswordResetform {
 
 export interface UsePasswordResetViaEmailReturn {
   requestForm: Ref<PasswordResetRequestform>
-  resetForm: Ref<PasswordResetform>
+  resetPasswordForm: Ref<PasswordResetform>
   requestReset: () => Promise<void>
   reset: () => Promise<void>
   loading: Ref<boolean>
@@ -25,6 +25,8 @@ export interface UsePasswordResetViaEmailReturn {
   resetStandardErrors: () => void
   resetValidationErrors: () => void
   resetErrors: () => void
+  resetResetPasswordForm: () => void
+  resetRequestForm: () => void
 }
 
 export type UsePasswordResetViaEmail = () => UsePasswordResetViaEmailReturn

@@ -4,7 +4,7 @@ export const useFacebookAuth = () => {
   const facebookAuthProvider = useAuthProvider('facebook')
 
   return {
-    ...facebookAuthProvider
+    ...facebookAuthProvider,
   }
 }
 

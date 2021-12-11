@@ -17,7 +17,7 @@ export const useAuthState: UseAuthState = createGlobalState<AuthState>(() => {
   return {
     authIsReady,
     isAuthenticated,
-    user
+    user,
   }
 })
 

@@ -11,7 +11,7 @@ export const useFirebaseAuthProvider = (authProvider: AuthProvider) => {
     resetStandardErrors,
     resetValidationErrors,
     resetErrors,
-    fromResponse: setErrorsFromResponse
+    fromResponse: setErrorsFromResponse,
   } = handlesErrors()
 
   const signIn = async () => {
@@ -35,7 +35,7 @@ export const useFirebaseAuthProvider = (authProvider: AuthProvider) => {
     errors,
     resetStandardErrors,
     resetValidationErrors,
-    resetErrors
+    resetErrors,
   }
 }
 

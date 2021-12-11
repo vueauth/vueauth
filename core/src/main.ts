@@ -26,11 +26,13 @@ export { useAuthState } from './Injectors/useAuthState'
 export { useFeature } from './Injectors/useFeature'
 export { useFetchUser } from './Injectors/useFetchUser'
 export { useHandlesErrors } from './Injectors/useHandlesErrors'
+export { getOptions } from './Injectors/getOptions'
+export { useUpdatePassword } from './Injectors/useUpdatePassword'
 
 /**
- * Constracts
+ * Contracts
  */
-export { UseIdentityPasswordRegister, UseIdentityPasswordRegisterReturn, IdentityPasswordRegisterFlags } from './Contracts/UseIdentityPasswordRegister'
+export { UseIdentityPasswordRegister, UseIdentityPasswordRegisterReturn, IdentityPasswordRegisterOptions } from './Contracts/UseIdentityPasswordRegister'
 export { UseIdentityPasswordLogin, UseIdentityPasswordLoginReturn } from './Contracts/UseIdentityPasswordLogin'
 export { UseIdentityPasswordLogout, UseIdentityPasswordLogoutReturn } from './Contracts/UseIdentityPasswordLogout'
 export { UsePasswordResetViaEmail, UsePasswordResetViaEmailReturn } from './Contracts/UsePasswordResetViaEmail'

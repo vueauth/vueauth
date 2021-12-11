@@ -5,7 +5,7 @@ export const useFirebaseTwitterAuth = () => {
   const twitterAuthProvider = useFirebaseAuthProvider(new TwitterAuthProvider())
 
   return {
-    ...twitterAuthProvider
+    ...twitterAuthProvider,
   }
 }
 
