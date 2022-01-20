@@ -1,13 +1,13 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import { AuthPlugin } from 'auth-composables'
-import { PluginOptions } from 'auth-composables/src/Types/PluginOptions'
+import { AuthPlugin } from '@vueauth/core'
+import { PluginOptions } from '@vueauth/core'
 import {
   SanctumPlugin,
   useAuthenticatedRedirector, useUnauthenticatedRedirector, useAuthRedirector,
   useIdentityPasswordLogout, useIdentityPasswordLogin, useIdentityPasswordRegister,
   useHandlesErrors, useFetchUser, useAuthState, usePasswordResetViaEmail, useUpdatePassword
-} from 'sanctum-composables'
+} from '@vueauth/sanctum'
 import router from './router/router'
 
 const app = createApp(App)

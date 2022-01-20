@@ -1,4 +1,5 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 
 const production = !process.env.ROLLUP_WATCH
@@ -8,25 +9,26 @@ export default {
   external: [
     'vue',
     'vue-demi',
-    'vue-router'
+    'vue-router',
   ],
   output: [
     {
-      file: './dist/sanctum-composables.esm.js',
-      format: 'esm'
-    }
+      file: './dist/sanctum.esm.js',
+      format: 'esm',
+    },
   ],
   plugins: [
     nodeResolve({
-      resolveOnly: [/^(?!vue-demi).*/],
-      modulesOnly: true,
-      dedupe: [
-        'vue-demi'
-      ]
+      // resolveOnly: [/^(?!vue-demi).*/],
+      // modulesOnly: true,
+      // dedupe: [
+      //   'vue-demi',
+      // ],
     }),
+    commonjs(),
     typescript({
       sourceMap: !production,
-      tsconfig: './tsconfig.json'
-    })
-  ]
+      tsconfig: './tsconfig.json',
+    }),
+  ],
 }

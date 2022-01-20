@@ -1,5 +1,5 @@
 {
-  "repository": "https://github.com/ldiebold/auth-composables",
+  "repository": "https://github.com/vueauth/vueauth",
   "author": "Luke Diebold <luke@ldiebold.com>",
   "license": "MIT",
   "private": true,
@@ -16,10 +16,17 @@
     "sanc:dev": "cd ./sanctum/examples && pnpm dev",
     "supa:build": "cd ./supabase && pnpm build",
     "supa:watch": "cd ./supabase && pnpm watch",
-    "supa:dev": "cd ./supabase/examples && pnpm dev"
+    "supa:dev": "cd ./supabase/examples && pnpm dev",
+    "publish:all": "pnpm -r publish",
+    "build:all": "npm-run-all core:build fire:build sanc:build supa:build"
   },
   "devDependencies": {
-    "@vuepress/bundler-vite": "^2.0.0-beta.27",
-    "vuepress": "^2.0.0-beta.27"
+    "@vuepress/bundler-vite": "^2.0.0-beta.32",
+    "css-loader": "*",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.5",
+    "vue": "^3.2.26",
+    "vuepress": "^2.0.0-beta.32",
+    "webpack": "^5.65.0"
   }
 }

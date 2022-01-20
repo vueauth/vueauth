@@ -13,9 +13,9 @@ import {
   useFetchUser,
   usePasswordResetViaEmail,
   useUpdatePassword,
-} from 'firebase-composables'
+} from '@vueauth/firebase'
 import router from './router/router'
-import { AuthPlugin, PluginOptions } from 'auth-composables'
+import { AuthPlugin, PluginOptions } from '@vueauth/core'
 
 const app = createApp(App)
 

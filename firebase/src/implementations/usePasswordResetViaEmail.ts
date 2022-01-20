@@ -4,9 +4,9 @@ import {
   confirmPasswordReset, AuthError,
 } from 'firebase/auth'
 import { ref } from 'vue-demi'
-import { UsePasswordResetViaEmail } from 'auth-composables'
+import { UsePasswordResetViaEmail } from '@vueauth/core'
 
-export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
+const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
   const loading = ref(false)
 
   const auth = getAuth()
@@ -89,4 +89,9 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
     resetValidationErrors,
     resetErrors,
   }
+}
+
+export {
+  usePasswordResetViaEmail as default,
+  usePasswordResetViaEmail,
 }

@@ -1,9 +1,9 @@
 import useHandlesErrors from './useHandlesErrors'
 import { getAuth, updatePassword, AuthError } from 'firebase/auth'
 import { ref } from 'vue-demi'
-import { UseUpdatePassword } from 'auth-composables'
+import { UseUpdatePassword } from '@vueauth/core'
 
-export const useUpdatePassword: UseUpdatePassword = () => {
+const useUpdatePassword: UseUpdatePassword = () => {
   const loading = ref(false)
 
   const auth = getAuth()
@@ -78,4 +78,9 @@ export const useUpdatePassword: UseUpdatePassword = () => {
     resetErrors,
     requiresReauthentication,
   }
+}
+
+export {
+  useUpdatePassword as default,
+  useUpdatePassword,
 }

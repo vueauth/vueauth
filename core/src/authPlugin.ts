@@ -1,11 +1,11 @@
-import { Feature, PluginOptions, Provider } from './Types/PluginOptions'
-import { App } from 'vue-demi'
-import { DefaulAuthProviderSymbol } from './Symbols/defaultProviderSymbol'
+import { Feature, PluginOptions, Provider } from './types/PluginOptions'
+import { App, ref } from 'vue-demi'
+import { DefaultAuthProviderSymbol } from './symbols/defaultProviderSymbol'
 
 function provideFeatures (
   provider: Provider,
   providerName = '',
-  app: App
+  app: App,
 ) {
   const features = provider.features
   const featureKeys = Object.keys(features)
@@ -19,60 +19,61 @@ function provideFeature (
   featureKey: string,
   feature: Feature,
   providerName: string,
-  app: App
+  app: App,
 ) {
   app.provide(Symbol.for(`auth:${providerName}:${featureKey}`), feature)
 }
 
-function provideFeaturesOptions (
+function provideFeaturesConfig (
   featureKey: string,
-  featureOptions: Record<string, unknown>,
+  featureConfig: Record<string, unknown>,
   providerName: string,
-  app: App
+  app: App,
 ) {
   app.provide(
-    Symbol.for(`auth:${providerName}.${featureKey}.options`),
-    featureOptions
+    Symbol.for(`auth:${providerName}.${featureKey}.config`),
+    featureConfig,
   )
 }
 
-function provideOptions (
+function provideConfig (
   provider: Provider,
   providerName: string,
-  app: App
+  app: App,
 ) {
   const features = provider.features
   const featureKeys = Object.keys(features)
-  const allOptions = {}
+  const allConfigs = {}
 
   featureKeys.forEach(featureKey => {
     const feature = features[featureKey]
-    if (feature.baseOptions) {
-      const options = { ...feature.baseOptions }
-      if (typeof feature === 'object' && feature.options) {
-        Object.assign(options, feature.options)
-      }
-      provideFeaturesOptions(featureKey, options, providerName, app)
-      allOptions[featureKey] = options
+    let config = {}
+    if (feature.baseConfig) {
+      config = Object.assign({}, feature.baseConfig)
     }
+    if (typeof feature === 'object' && feature.config) {
+      Object.assign(config, feature.config)
+    }
+    provideFeaturesConfig(featureKey, config, providerName, app)
+    allConfigs[featureKey] = config
   })
 
-  app.provide(Symbol.for(`auth:${providerName}.options`), allOptions)
+  app.provide(Symbol.for(`auth:${providerName}.config`), allConfigs)
 }
 
 const AuthPlugin = {
-  install: (app: App, options: PluginOptions) => {
-    app.provide(DefaulAuthProviderSymbol, options.default)
-    const providers = Object.keys(options.providers)
+  install: (app: App, configs: PluginOptions) => {
+    app.provide(DefaultAuthProviderSymbol, ref(configs.default))
+    const providers = Object.keys(configs.providers)
     providers.forEach(providerKey => {
-      provideFeatures(options.providers[providerKey], providerKey, app)
-      provideOptions(options.providers[providerKey], providerKey, app)
+      provideFeatures(configs.providers[providerKey], providerKey, app)
+      provideConfig(configs.providers[providerKey], providerKey, app)
     })
-  }
+  },
 }
 
 export {
   AuthPlugin,
   AuthPlugin as default,
-  PluginOptions
+  PluginOptions,
 }

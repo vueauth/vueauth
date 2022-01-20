@@ -1,8 +1,8 @@
 import { computed, ref } from 'vue-demi'
 import { createGlobalState } from '@vueuse/shared'
-import { UseAuthState, AuthState } from 'auth-composables'
+import { UseAuthState, AuthState } from '@vueauth/core'
 
-export const useVueUseAuthState: UseAuthState = createGlobalState<AuthState>(() => {
+const useVueUseAuthState: UseAuthState = createGlobalState<AuthState>(() => {
   const user = ref(null)
   const isAuthenticated = computed(() => !!user.value)
   const authIsReady = ref(false)
@@ -14,4 +14,7 @@ export const useVueUseAuthState: UseAuthState = createGlobalState<AuthState>(() 
   }
 })
 
-export default useVueUseAuthState
+export {
+  useVueUseAuthState as default,
+  useVueUseAuthState,
+}

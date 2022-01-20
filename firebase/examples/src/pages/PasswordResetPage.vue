@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePasswordResetViaEmail } from 'auth-composables'
+import { usePasswordResetViaEmail } from '@vueauth/core'
 
 const {
   requestForm,

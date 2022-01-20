@@ -2,6 +2,7 @@
 version: '3'
 services:
     laravel.test:
+        container_name: laravel_vue_auth_test_api
         build:
             context: ./docker/8.0
             dockerfile: Dockerfile

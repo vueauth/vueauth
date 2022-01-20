@@ -1,17 +1,17 @@
 import getSanctumConfig from '../getSanctumConfig'
-import { ref, computed } from 'vue-demi'
+import { ref } from 'vue-demi'
 import useAuthState from './useAuthState'
 import useHandlesErrors from './useHandlesErrors'
-import { UseIdentityPasswordRegister, IdentityPasswordRegisterOptions } from 'auth-composables'
+import { UseIdentityPasswordRegister, UseIdentityPasswordRegisterConfig } from '@vueauth/core'
 
-const baseOptions: IdentityPasswordRegisterOptions = {
+const baseConfig: UseIdentityPasswordRegisterConfig = {
   emailConfirm: false,
 }
 
-export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
+const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
   const loading = ref(false)
-  const { requester } = getSanctumConfig()
-  const { register: registerRequest, getUser } = requester
+  const { makeRequester } = getSanctumConfig()
+  const { register: registerRequest, getUser } = makeRequester()
 
   const { user } = useAuthState()
   const {
@@ -26,22 +26,19 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
   } = useHandlesErrors()
 
   const form = ref({
+    name: '',
     email: '',
     password: '',
     password_confirmation: '',
   })
-  const customFields = ref({ name: '' })
-  const mergedForm = computed(() => {
-    return { ...form.value, ...customFields.value }
-  })
   function resetForm () {
     Object.keys(form.value).forEach(key => { form.value[key] = '' })
-    Object.keys(mergedForm.value).forEach(key => { mergedForm.value[key] = '' })
+    Object.keys(form.value).forEach(key => { form.value[key] = '' })
   }
 
   const register = async () => {
     loading.value = true
-    const registerResponse = await registerRequest(mergedForm.value)
+    const registerResponse = await registerRequest(form.value)
     if (registerResponse.error) {
       setErrorsFromResponse(registerResponse)
       loading.value = false
@@ -61,7 +58,6 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
 
   return {
     form,
-    customFields,
     register,
     loading,
     resetForm,
@@ -77,6 +73,9 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
   }
 }
 
-useIdentityPasswordRegister.baseOptions = baseOptions
+useIdentityPasswordRegister.baseConfig = baseConfig
 
-export default useIdentityPasswordRegister
+export {
+  useIdentityPasswordRegister as default,
+  useIdentityPasswordRegister,
+}

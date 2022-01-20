@@ -2,12 +2,12 @@ import { ref } from 'vue-demi'
 import getSanctumConfig from '../getSanctumConfig'
 import useHandlesErrors from './useHandlesErrors'
 import useAuthState from './useAuthState'
-import { UseIdentityPasswordLogin } from 'auth-composables'
+import { UseIdentityPasswordLogin } from '@vueauth/core'
 
-export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
+const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
   const loading = ref(false)
-  const { requester } = getSanctumConfig()
-  const { login: loginRequest, getUser } = requester
+  const { makeRequester } = getSanctumConfig()
+  const { login: loginRequest, getUser } = makeRequester()
 
   const { user } = useAuthState()
   const {
@@ -66,4 +66,7 @@ export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
   }
 }
 
-export default useIdentityPasswordLogin
+export {
+  useIdentityPasswordLogin as default,
+  useIdentityPasswordLogin,
+}

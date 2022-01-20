@@ -1,13 +1,9 @@
 import useHandlesErrors from './useHandlesErrors'
 import { ref, watch } from 'vue-demi'
-import { IdentityPasswordRegisterOptions, UseIdentityPasswordRegister } from 'auth-composables'
+import { UseIdentityPasswordRegister } from '@vueauth/core'
 import useClient from '../useClient'
 
-const baseOptions: IdentityPasswordRegisterOptions = {
-  emailConfirm: false,
-}
-
-export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
+const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
   const supabaseClient = useClient()
 
   const loading = ref(false)
@@ -67,4 +63,11 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
   }
 }
 
-useIdentityPasswordRegister.baseOptions = baseOptions
+useIdentityPasswordRegister.baseConfig = {
+  emailConfirm: false,
+}
+
+export {
+  useIdentityPasswordRegister as default,
+  useIdentityPasswordRegister,
+}

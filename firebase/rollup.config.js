@@ -17,7 +17,7 @@ export default {
 
   output: [
     {
-      file: './dist/firebase-composables.esm.js',
+      file: './dist/firebase.esm.js',
       format: 'esm'
     }
   ],

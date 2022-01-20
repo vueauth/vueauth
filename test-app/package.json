@@ -1,0 +1,38 @@
+{
+  "name": "@vueauth/agnostic-tests",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --force",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^1.28.5",
+    "@vueauth/core": "^1.0.0-alpha.1",
+    "@vueauth/firebase": "^1.0.0-alpha.1",
+    "@vueauth/sanctum": "^1.0.0-alpha.1",
+    "@vueauth/supabase": "^1.0.0-alpha.1",
+    "@vueuse/core": "^7.4.1",
+    "firebase": "^9.3.0",
+    "firebase-admin": "^10.0.1",
+    "pg": "^8.7.1",
+    "vue": "^3.2.16",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "cypress": "^9.2.0",
+    "eslint": "^7.0.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-vue": "^8.0.3",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4",
+    "vite": "^2.6.4"
+  }
+}

@@ -1,12 +1,12 @@
 import { ref } from 'vue-demi'
 import getSanctumConfig from '../getSanctumConfig'
 import useHandlesErrors from './useHandlesErrors'
-import { UseUpdatePassword } from 'auth-composables'
+import { UseUpdatePassword } from '@vueauth/core'
 
-export const useUpdatePassword: UseUpdatePassword = () => {
+const useUpdatePassword: UseUpdatePassword = () => {
   const loading = ref(false)
-  const { requester } = getSanctumConfig()
-  const { updatePassword } = requester
+  const { makeRequester } = getSanctumConfig()
+  const { updatePassword } = makeRequester()
 
   const {
     validationErrors,
@@ -62,4 +62,7 @@ export const useUpdatePassword: UseUpdatePassword = () => {
   }
 }
 
-export default useUpdatePassword
+export {
+  useUpdatePassword as default,
+  useUpdatePassword,
+}

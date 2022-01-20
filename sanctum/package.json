@@ -1,10 +1,10 @@
 {
-  "name": "sanctum-composables",
-  "version": "1.0.0-alpha.33",
+  "name": "@vueauth/sanctum",
+  "version": "1.0.0-alpha.40",
   "description": "A collection of composables for authenticating with Laravel Sanctum",
-  "main": "dist/sanctum-composables.esm.js",
+  "main": "dist/sanctum.esm.js",
   "typings": "dist/src/main.d.ts",
-  "repository": "git@github.com:ldiebold/sanctum-composables.git",
+  "repository": "https://github.com/vueauth/vueauth",
   "author": "Luke Diebold",
   "license": "MIT",
   "devDependencies": {
@@ -16,7 +16,7 @@
     "@rollup/plugin-typescript": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
-    "auth-composables": "workspace:latest",
+    "@vueauth/core": "latest",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.3",
@@ -42,7 +42,8 @@
     "universal-cookie": "^4.0.4",
     "vue-composable": "^1.0.0-beta.24",
     "vue-demi": "^0.11.4",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "deepmerge": "^4.2.2"
   },
   "peerDependencies": {
     "vue": "^3.0.0-0 || ^2.6.0"

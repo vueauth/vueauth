@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useUnauthenticatedRedirector } from 'auth-composables'
+import { useUnauthenticatedRedirector } from '@vueauth/core'
 
 const {
   onChecked,

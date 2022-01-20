@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { getOptions } from 'auth-composables'
+import { getConfig } from '@vueauth/core'
 import exampleRoutes from '../router/example-routes'
 
-console.log(getOptions('', 'identityPassword:register'))
+const config = getConfig()
 </script>
 
 <template>
@@ -18,5 +18,10 @@ console.log(getOptions('', 'identityPassword:register'))
         </router-link>
       </li>
     </ul>
+  </div>
+
+  <div>
+    <h3>Config</h3>
+    <pre>{{ config }}</pre>
   </div>
 </template>

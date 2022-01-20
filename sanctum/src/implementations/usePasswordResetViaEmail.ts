@@ -1,12 +1,12 @@
 import { ref } from 'vue-demi'
 import getSanctumConfig from '../getSanctumConfig'
 import useHandlesErrors from './useHandlesErrors'
-import { UsePasswordResetViaEmail } from 'auth-composables'
+import { UsePasswordResetViaEmail } from '@vueauth/core'
 
-export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
+const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
   const loading = ref(false)
-  const { requester } = getSanctumConfig()
-  const { forgotPassword, resetPassword } = requester
+  const { makeRequester } = getSanctumConfig()
+  const { forgotPassword, resetPassword } = makeRequester()
 
   const {
     validationErrors,
@@ -76,4 +76,7 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
   }
 }
 
-export default usePasswordResetViaEmail
+export {
+  usePasswordResetViaEmail as default,
+  usePasswordResetViaEmail,
+}

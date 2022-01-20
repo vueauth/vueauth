@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getFirestore, useFirestore } from 'firebase-composables'
+import { getFirestore, useFirestore } from '@vueauth/firebase'
 import { collection, addDoc } from 'firebase/firestore'
 import { ref } from 'vue-demi'
 

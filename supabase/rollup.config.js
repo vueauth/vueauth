@@ -14,7 +14,7 @@ export default {
 
   output: [
     {
-      file: './dist/supabase-composables.esm.js',
+      file: './dist/supabase.esm.js',
       format: 'esm'
     }
   ],

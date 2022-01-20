@@ -9,9 +9,9 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "auth-composables": "^1.0.0-alpha.17",
+    "@vueauth/core": "^1.0.0-alpha.17",
     "axios": "^0.24.0",
-    "sanctum-composables": "^1.0.0-alpha.8",
+    "@vueauth/sanctum": "^1.0.0-alpha.36",
     "vue": "^3.2.16",
     "vue-router": "4"
   },

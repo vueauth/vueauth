@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useIdentityPasswordRegister, useAuthState } from 'auth-composables'
+import { useIdentityPasswordRegister, useAuthState } from '@vueauth/core'
 
 const {
   form,

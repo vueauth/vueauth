@@ -1,13 +1,9 @@
 import useHandlesErrors from './useHandlesErrors'
 import { getAuth, createUserWithEmailAndPassword, AuthError } from 'firebase/auth'
 import { ref, watch } from 'vue-demi'
-import { IdentityPasswordRegisterOptions, UseIdentityPasswordRegister } from 'auth-composables'
+import { UseIdentityPasswordRegister } from '@vueauth/core'
 
-const baseOptions: IdentityPasswordRegisterOptions = {
-  emailConfirm: false,
-}
-
-export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
+const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
   const loading = ref(false)
 
   const {
@@ -76,4 +72,11 @@ export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
   }
 }
 
-useIdentityPasswordRegister.baseOptions = baseOptions
+useIdentityPasswordRegister.baseConfig = {
+  emailConfirm: false,
+}
+
+export {
+  useIdentityPasswordRegister as default,
+  useIdentityPasswordRegister,
+}

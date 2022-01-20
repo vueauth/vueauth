@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAuthState } from 'auth-composables'
+import { useAuthState } from '@vueauth/core'
 
 const authState = useAuthState()
 </script>

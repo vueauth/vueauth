@@ -1,11 +1,10 @@
 <script setup>
-import { useAuthState, useFetchUser, useUpdatePassword } from 'auth-composables'
+import { useAuthState, useFetchUser, useUpdatePassword } from '@vueauth/core'
 
 const {
   form,
   update,
   loading,
-  customFields,
   validationErrors
 } = useUpdatePassword()
 
@@ -41,7 +40,7 @@ const { isAuthenticated } = useAuthState()
 
     <label>New Password Confirm</label><br>
     <input
-      v-model="customFields.password_confirmation"
+      v-model="form.password_confirmation"
       type="password"
     ><br>
 

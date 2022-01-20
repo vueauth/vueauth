@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.28.5",
-    "supabase-composables": "^1.0.0-alpha.1",
+    "@vueauth/supabase": "^1.0.0-alpha.1",
     "vue": "^3.2.16",
     "vue-router": "4"
   },

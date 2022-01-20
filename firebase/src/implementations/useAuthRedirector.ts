@@ -1,19 +1,22 @@
 import { getAuth } from 'firebase/auth'
 import useAuthState from './useAuthState'
 import { ref, unref } from 'vue-demi'
-import { RouteLocationRaw, useRouter, Router } from 'vue-router'
-import { MaybeRef } from '@vueuse/core'
-import { RedirectTriggers, UseAuthRedirector } from 'auth-composables'
+import { useRouter } from 'vue-router'
+import { UseAuthRedirector, UseAuthRedirectorReturn } from '@vueauth/core'
 
 type UserOnCheckedFunction = (user: unknown | null) => void
 
-export const useAuthRedirector: UseAuthRedirector = (
-  redirectOn: RedirectTriggers,
-  redirectTo: MaybeRef<RouteLocationRaw> = ref('/'),
-  router: Router = useRouter(),
-) => {
+const useAuthRedirector: UseAuthRedirector = (
+  config = {
+    redirectOn: 'authenticated',
+    redirectTo: ref('/'),
+  },
+): UseAuthRedirectorReturn => {
   const checking = ref(false)
   const auth = getAuth()
+
+  config.redirectTo = config.redirectTo ?? ref('/')
+  config.router = config.router ?? useRouter()
 
   const {
     isAuthenticated,
@@ -27,6 +30,7 @@ export const useAuthRedirector: UseAuthRedirector = (
     if (typeof onChecked.value === 'function') {
       onChecked.value(user.value)
     }
+    checking.value = false
     triggerRedirect()
   }
 
@@ -37,6 +41,30 @@ export const useAuthRedirector: UseAuthRedirector = (
     return execOnAuthStateChange()
   }
 
+  function handleUnauthenticatedRedirect () {
+    if (!isAuthenticated.value && config.redirectOn === 'unauthenticated') {
+      if (!config.router) {
+        throw new Error('config.router not defined: cannot redirect')
+      }
+      if (!config.redirectTo) {
+        throw new Error('config.redirectTo not defined: cannot redirect')
+      }
+      config.router.push(unref(config.redirectTo))
+    }
+  }
+
+  function handleAuthenticatedRedirect () {
+    if (isAuthenticated.value && config.redirectOn === 'authenticated') {
+      if (!config.router) {
+        throw new Error('config.router not defined: cannot redirect')
+      }
+      if (!config.redirectTo) {
+        throw new Error('config.redirectTo not defined: cannot redirect')
+      }
+      config.router.push(unref(config.redirectTo))
+    }
+  }
+
   function execOnAuthStateChange () {
     checking.value = true
     const unsubscribe = auth.onAuthStateChanged(authUser => {
@@ -45,13 +73,8 @@ export const useAuthRedirector: UseAuthRedirector = (
         onChecked.value(authUser)
       }
 
-      if (!isAuthenticated.value && redirectOn === 'unauthenticated') {
-        router.push(unref(redirectTo))
-      }
-
-      if (isAuthenticated.value && redirectOn === 'authenticated') {
-        router.push(unref(redirectTo))
-      }
+      handleUnauthenticatedRedirect()
+      handleAuthenticatedRedirect()
 
       checking.value = false
       unsubscribe()
@@ -59,22 +82,23 @@ export const useAuthRedirector: UseAuthRedirector = (
   }
 
   function triggerRedirect () {
-    if (isAuthenticated.value && redirectOn === 'authenticated') {
-      router.push(unref(redirectTo))
-    }
-    if (!isAuthenticated.value && redirectOn === 'unauthenticated') {
-      router.push(unref(redirectTo))
-    }
+    handleAuthenticatedRedirect()
+    handleUnauthenticatedRedirect()
   }
 
   return {
     execOnAuthStateChange,
     execOnAuthStateEnsured,
     exec,
-    redirectTo,
+    redirectTo: config.redirectTo,
     checking,
     onChecked,
   }
 }
 
-export default useAuthRedirector
+useAuthRedirector.baseConfig = {}
+
+export {
+  useAuthRedirector as default,
+  useAuthRedirector,
+}

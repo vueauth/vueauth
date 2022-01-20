@@ -1,9 +1,9 @@
 import useHandlesErrors from './useHandlesErrors'
 import { ref, watch } from 'vue-demi'
-import { UseIdentityPasswordLogin } from 'auth-composables'
+import { UseIdentityPasswordLogin } from '@vueauth/core'
 import useClient from '../useClient'
 
-export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
+const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
   const loading = ref(false)
 
   const supabase = useClient()
@@ -53,4 +53,7 @@ export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
   }
 }
 
-export default useIdentityPasswordLogin
+export {
+  useIdentityPasswordLogin as default,
+  useIdentityPasswordLogin,
+}

@@ -3,10 +3,9 @@
 import {
   useIdentityPasswordLogin,
   useAuthState,
-  useIdentityPasswordLogout
-} from 'auth-composables'
-
-import { useFetchUser } from 'sanctum-composables'
+  useIdentityPasswordLogout,
+  useFetchUser
+} from '@vueauth/core'
 
 // Email
 const {

@@ -4,7 +4,7 @@ import { SanctumAppKey } from './types/symbols'
 export const getSanctumConfig = () => {
   const config = inject(SanctumAppKey)
   if (!config) {
-    throw new Error(`Could not resolve ${SanctumAppKey}. Have you installed the plugin?`)
+    throw new Error(`Could not resolve ${SanctumAppKey.toString()}. Have you installed the plugin?`)
   }
   return config
 }

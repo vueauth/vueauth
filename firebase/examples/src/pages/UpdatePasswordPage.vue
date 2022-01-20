@@ -1,5 +1,5 @@
 <script setup>
-import { useAuthState, useFetchUser, useUpdatePassword } from 'auth-composables'
+import { useAuthState, useFetchUser, useUpdatePassword } from '@vueauth/core'
 
 const {
   form,

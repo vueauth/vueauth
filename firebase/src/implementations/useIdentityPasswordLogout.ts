@@ -1,9 +1,9 @@
 import useHandlesErrors from './useHandlesErrors'
 import { getAuth, signOut as firebaseSignOut, AuthError } from 'firebase/auth'
 import { ref } from 'vue-demi'
-import { UseIdentityPasswordLogout } from 'auth-composables'
+import { UseIdentityPasswordLogout } from '@vueauth/core'
 
-export const useIdentityPasswordLogout: UseIdentityPasswordLogout = () => {
+const useIdentityPasswordLogout: UseIdentityPasswordLogout = () => {
   const loading = ref(false)
 
   const {
@@ -35,4 +35,9 @@ export const useIdentityPasswordLogout: UseIdentityPasswordLogout = () => {
     resetStandardErrors,
     resetErrors,
   }
+}
+
+export {
+  useIdentityPasswordLogout as default,
+  useIdentityPasswordLogout,
 }

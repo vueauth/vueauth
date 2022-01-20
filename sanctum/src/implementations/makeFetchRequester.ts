@@ -1,11 +1,18 @@
-import Requester, { ResetPasswordForm, ResetPasswordRequestForm, SanctumResponse, UpdatePasswordForm } from '../types/Requester'
+import Requester, { ResetPasswordForm, ResetPasswordRequestForm, SanctumResponse, UpdatePasswordForm } from '../types/MakeRequester'
 import { createFetch, UseFetchReturn } from '@vueuse/core'
 import { useCookies } from '@vueuse/integrations/useCookies'
+import { SanctumEndpoints } from '../types/PluginOptions'
+import getSanctumConfig from '../getSanctumConfig'
 
-export const makeFetchRequester = (
+const makeFetchRequester = (
   baseUrl: string | undefined = undefined,
 ): Requester => {
+  const { endpoints: configuredEndpoints, baseUrl: configuredBaseUrl } = getSanctumConfig()
+  baseUrl = baseUrl ?? configuredBaseUrl
+
   const cookies = useCookies(['XSRF-TOKEN'])
+
+  const endpoints: SanctumEndpoints = configuredEndpoints
 
   function makeSanctumResponse<T> (fetch: UseFetchReturn<T>): SanctumResponse<T> {
     return {
@@ -46,14 +53,14 @@ export const makeFetchRequester = (
     },
   })
 
-  const loginFetcher = useFetch('/login')
-  const registerFetcher = useFetch('/register')
-  const logoutFetcher = useFetch('/logout')
-  const userFetcher = useFetch<Record<string | number, unknown> | null>('api/user')
-  const csrfTokenFetcher = useFetch('/sanctum/csrf-cookie')
-  const resetPasswordFetcher = useFetch('/reset-password')
-  const forgotPasswordFetcher = useFetch('/forgot-password')
-  const updatePasswordFetcher = useFetch('/user/password')
+  const loginFetcher = useFetch(endpoints.login)
+  const registerFetcher = useFetch(endpoints.register)
+  const logoutFetcher = useFetch(endpoints.logout)
+  const userFetcher = useFetch<Record<string | number, unknown> | null>(endpoints.getUser)
+  const csrfTokenFetcher = useFetch(endpoints.csrfCookie)
+  const resetPasswordFetcher = useFetch(endpoints.resetPassword)
+  const forgotPasswordFetcher = useFetch(endpoints.forgotPassword)
+  const updatePasswordFetcher = useFetch(endpoints.password)
 
   async function fetchCsrfToken () {
     await csrfTokenFetcher.get().execute()
@@ -116,4 +123,7 @@ export const makeFetchRequester = (
   }
 }
 
-export default makeFetchRequester
+export {
+  makeFetchRequester as default,
+  makeFetchRequester,
+}

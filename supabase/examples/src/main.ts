@@ -11,8 +11,8 @@ import {
   useAuthenticatedRedirector,
   useFetchUser,
   usePasswordResetViaEmail
-} from 'supabase-composables'
-import { AuthPlugin, PluginOptions } from 'auth-composables'
+} from '@vueauth/supabase'
+import { AuthPlugin, PluginOptions } from '@vueauth/core'
 import App from './App.vue'
 import router from './router/router'
 

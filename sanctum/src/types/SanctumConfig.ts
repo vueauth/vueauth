@@ -1,7 +1,7 @@
-import Requester from './Requester'
+import Requester from './MakeRequester'
 import UseAuthState from './UseAuthState'
 
 export default interface SanctumConfig {
-  requester: Requester
+  makeRequester: Requester
   useAuthState: UseAuthState
 }

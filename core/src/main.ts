@@ -2,51 +2,61 @@
  * Plugin
  */
 export { AuthPlugin, PluginOptions } from './authPlugin'
+export { useFeature, UseFeatureConfig } from './injectors/useFeature'
 
 /**
  * Email/Password Injectors
  */
-export { useIdentityPasswordLogin } from './Injectors/useIdentityPasswordLogin'
-export { useIdentityPasswordLogout } from './Injectors/useIdentityPasswordLogout'
-export { useIdentityPasswordRegister } from './Injectors/useIdentityPasswordRegister'
-export { usePasswordResetViaEmail } from './Injectors/usePasswordResetViaEmail'
+export { useIdentityPasswordLogin } from './injectors/useIdentityPasswordLogin'
+export { useIdentityPasswordLogout } from './injectors/useIdentityPasswordLogout'
+export { useIdentityPasswordRegister } from './injectors/useIdentityPasswordRegister'
+export { usePasswordResetViaEmail } from './injectors/usePasswordResetViaEmail'
 
 /**
  * Redirect Injectors
  */
-export { useAuthRedirector } from './Injectors/useAuthRedirector'
-export { useAuthenticatedRedirector } from './Injectors/useAuthenticatedRedirector'
-export { useUnauthenticatedRedirector } from './Injectors/useUnauthenticatedRedirector'
+export { useAuthRedirector } from './injectors/useAuthRedirector'
+export { useAuthenticatedRedirector } from './injectors/useAuthenticatedRedirector'
+export { useUnauthenticatedRedirector } from './injectors/useUnauthenticatedRedirector'
 
 /**
  * Additional Injectors
  */
-export { getDefaultProvider } from './Injectors/getDefaultProvider'
-export { useAuthState } from './Injectors/useAuthState'
-export { useFeature } from './Injectors/useFeature'
-export { useFetchUser } from './Injectors/useFetchUser'
-export { useHandlesErrors } from './Injectors/useHandlesErrors'
-export { getOptions } from './Injectors/getOptions'
-export { useUpdatePassword } from './Injectors/useUpdatePassword'
+export { getDefaultProvider } from './injectors/getDefaultProvider'
+export { useAuthState } from './injectors/useAuthState'
+export { useFetchUser } from './injectors/useFetchUser'
+export { useHandlesErrors } from './injectors/useHandlesErrors'
+export { getConfig } from './injectors/getConfig'
+export { useUpdatePassword } from './injectors/useUpdatePassword'
 
 /**
  * Contracts
  */
-export { UseIdentityPasswordRegister, UseIdentityPasswordRegisterReturn, IdentityPasswordRegisterOptions } from './Contracts/UseIdentityPasswordRegister'
-export { UseIdentityPasswordLogin, UseIdentityPasswordLoginReturn } from './Contracts/UseIdentityPasswordLogin'
-export { UseIdentityPasswordLogout, UseIdentityPasswordLogoutReturn } from './Contracts/UseIdentityPasswordLogout'
-export { UsePasswordResetViaEmail, UsePasswordResetViaEmailReturn } from './Contracts/UsePasswordResetViaEmail'
-export { UseUpdatePassword, UseUpdatePasswordReturn } from './Contracts/UseUpdatePassword'
-export { UseUnauthenticatedRedirector, UseUnauthenticatedRedirectorReturn } from './Contracts/UseUnauthenticatedRedirector'
-export { UseAuthenticatedRedirector, UseAuthenticatedRedirectorReturn } from './Contracts/UseAuthenticatedRedirector'
-export { UseHandlesErrors, UseHandlesErrorsReturn } from './Contracts/UseHandlesErrors'
-export { UseFetchUser, UseFetchUserReturn } from './Contracts/UseFetchUser'
-export { UseAuthState } from './Contracts/UseAuthState'
-export { UseAuthRedirector, UseAuthRedirectorReturn, RedirectTriggers } from './Contracts/UseAuthRedirector'
+export { UseIdentityPasswordRegister, UseIdentityPasswordRegisterReturn, UseIdentityPasswordRegisterConfig } from './contracts/UseIdentityPasswordRegister'
+export { UseIdentityPasswordLogin, UseIdentityPasswordLoginReturn } from './contracts/UseIdentityPasswordLogin'
+export { UseIdentityPasswordLogout, UseIdentityPasswordLogoutReturn } from './contracts/UseIdentityPasswordLogout'
+export { UsePasswordResetViaEmail, UsePasswordResetViaEmailReturn } from './contracts/UsePasswordResetViaEmail'
+export { UseUpdatePassword, UseUpdatePasswordReturn } from './contracts/UseUpdatePassword'
+export { UseUnauthenticatedRedirector, UseUnauthenticatedRedirectorReturn } from './contracts/UseUnauthenticatedRedirector'
+export { UseAuthenticatedRedirector, UseAuthenticatedRedirectorReturn } from './contracts/UseAuthenticatedRedirector'
+export { UseHandlesErrors, UseHandlesErrorsReturn } from './contracts/UseHandlesErrors'
+export { UseFetchUser, UseFetchUserReturn } from './contracts/UseFetchUser'
+export { UseAuthState } from './contracts/UseAuthState'
+export { UseAuthRedirector, UseAuthRedirectorConfig, UseAuthRedirectorReturn, RedirectTriggers } from './contracts/UseAuthRedirector'
+
+/**
+ * Utils
+ */
+export { useHandlesErrors as useHandlesErrorsBase } from './utils/useHandlesErrors'
 
 /**
  * Supporting Types
  */
-export { AuthState } from './Types/AuthState'
-export { User } from './Types/User'
-export { ValidationErrors } from './Types/ValidationErrors'
+export { AuthState } from './types/AuthState'
+export { User } from './types/User'
+export { ValidationErrors } from './types/ValidationErrors'
+
+/**
+ * Symbols
+ */
+export { DefaultAuthProviderSymbol } from './symbols/defaultProviderSymbol'

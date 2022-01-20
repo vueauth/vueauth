@@ -1,9 +1,9 @@
 import useHandlesErrors from './useHandlesErrors'
 import { ref } from 'vue-demi'
-import { UsePasswordResetViaEmail } from 'auth-composables'
+import { UsePasswordResetViaEmail } from '@vueauth/core'
 import useClient from '../useClient'
 
-export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
+const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
   const loading = ref(false)
 
   const client = useClient()
@@ -78,4 +78,9 @@ export const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
     resetValidationErrors,
     resetErrors,
   }
+}
+
+export {
+  usePasswordResetViaEmail as default,
+  usePasswordResetViaEmail,
 }

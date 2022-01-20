@@ -9,14 +9,14 @@ export default {
   external: [
     'vue-demi',
     'vue',
-    'vue-router'
+    'vue-router',
   ],
 
   output: [
     {
-      file: './dist/auth-composables.esm.js',
-      format: 'esm'
-    }
+      file: './dist/core.esm.js',
+      format: 'esm',
+    },
   ],
   plugins: [
     nodeResolve({
@@ -25,12 +25,12 @@ export default {
       dedupe: [
         'vue-demi',
         'vue',
-        'vue-router'
-      ]
+        'vue-router',
+      ],
     }),
     typescript({
       sourceMap: !production,
-      tsconfig: './tsconfig.json'
-    })
-  ]
+      tsconfig: './tsconfig.json',
+    }),
+  ],
 }

@@ -8,8 +8,8 @@ module.exports = {
     navbar: [
       {
         text: 'GitHub',
-        link: 'https://github.com/ldiebold/sanctum-composables'
-      }
+        link: 'https://github.com/ldiebold/sanctum',
+      },
     ],
     sidebar:
     [
@@ -21,13 +21,13 @@ module.exports = {
       '/social-auth-providers',
       '/auth-state',
       '/guarding-routes',
-      '/firestore'
-    ]
+      '/firestore',
+    ],
   },
   markdown: {
     code: {
-      lineNumbers: false
-    }
-  }
+      lineNumbers: false,
+    },
+  },
 
 }

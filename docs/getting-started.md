@@ -4,10 +4,10 @@
 
 ```sh
 # yarn (the cool kids)
-yarn add sanctum-composables firebase
+yarn add sanctum firebase
 
 # or npm (the oldschoolers)
-npm install sanctum-composables firebase --save
+npm install sanctum firebase --save
 ```
 
 ## Add Credentials
@@ -18,13 +18,13 @@ Here's how you can find your credentials:
 3. At the top right of the page, next to **Project Overview**, click on the ⚙️ icon, then **Project settings**
 4. scroll to the bottom of the page. Your credentials are inside `const firebaseConfig = `
 5. have a cookie 🍪
-> In the code snippet from step 4, firebase shows you how to initialize the app. You don't need any of this code, as **sanctum-composables** handles it for you!
+> In the code snippet from step 4, firebase shows you how to initialize the app. You don't need any of this code, as **sanctum** handles it for you!
 
-before we can use sanctum-composables, we need to install the plugin. The file below will usually be `main.js`
+before we can use sanctum, we need to install the plugin. The file below will usually be `main.js`
 ```js
 import { createApp } from 'vue'
 import App from './App.vue'
-import { firebasePlugin } from 'sanctum-composables'
+import { firebasePlugin } from 'sanctum'
 
 const app = createApp(App)
 
@@ -63,7 +63,7 @@ Hang on, grabbing my snorkel 🤿
 
 ```vue
 <script setup>
-import { useEmailSignIn, useAuthState } from 'sanctum-composables'
+import { useEmailSignIn, useAuthState } from 'sanctum'
 
 // 🤿 first we yank out the form, and sign in function
 // from the composable.

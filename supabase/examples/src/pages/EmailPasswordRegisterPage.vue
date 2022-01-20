@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useIdentityPasswordRegister, useAuthState } from 'auth-composables'
+import { useIdentityPasswordRegister, useAuthState } from '@vueauth/core'
 
 const {
   form,
@@ -9,23 +9,18 @@ const {
   errors
 } = useIdentityPasswordRegister()
 
-form.value = {
-  email: 'crazybuzz100@gmail.com',
-  password: 'asdfasdf',
-  password_confirmation: 'asdfasdf'
-}
-
 const authState = useAuthState()
 </script>
 
 <template>
-  <form>
+  <form @submit.prevent>
     <!-- Email -->
     <label for="email">Email</label>
     <input
       id="email"
       v-model="form.email"
       type="email"
+      data-cy="email-input"
     >
 
     <br>
@@ -36,6 +31,7 @@ const authState = useAuthState()
       id="password"
       v-model="form.password"
       type="password"
+      data-cy="password-input"
     >
 
     <br>
@@ -46,6 +42,7 @@ const authState = useAuthState()
       id="password_confirmation"
       v-model="form.password_confirmation"
       type="password"
+      data-cy="password-confirmation-input"
     >
 
     <br>
@@ -53,6 +50,8 @@ const authState = useAuthState()
     <!-- Register Button -->
     <button
       v-if="!loading"
+      data-cy="register-button"
+      name="register-button"
       @click="register"
     >
       Register
@@ -63,9 +62,8 @@ const authState = useAuthState()
 
     <br>
 
-    <!-- <div v-if="hasError" style="color: red;">{{ error.message }}</div> -->
-
-    <pre>{{ authState }}</pre>
+    <!-- Auth State -->
+    <pre data-cy="auth-state">{{ authState }}</pre>
   </form>
 
   <div v-if="hasErrors">

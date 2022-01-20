@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useIdentityPasswordLogout, useAuthState } from 'auth-composables'
+import { useIdentityPasswordLogout, useAuthState } from '@vueauth/core'
 
 const { logout, loading } = useIdentityPasswordLogout()
 const { isAuthenticated } = useAuthState()

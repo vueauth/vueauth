@@ -1,9 +1,9 @@
 import { ref } from 'vue-demi'
 import useHandlesErrors from './useHandlesErrors'
-import { UseFetchUser } from 'auth-composables'
+import { UseFetchUser } from '@vueauth/core'
 import useClient from '../useClient'
 
-export const useFetchUser: UseFetchUser = () => {
+const useFetchUser: UseFetchUser = () => {
   const {
     hasErrors,
     errors,
@@ -32,4 +32,7 @@ export const useFetchUser: UseFetchUser = () => {
   }
 }
 
-export default useFetchUser
+export {
+  useFetchUser as default,
+  useFetchUser,
+}

@@ -1,9 +1,9 @@
 import useHandlesErrors from './useHandlesErrors'
 import { ref } from 'vue-demi'
-import { UseIdentityPasswordLogout } from 'auth-composables'
+import { UseIdentityPasswordLogout } from '@vueauth/core'
 import useClient from '../useClient'
 
-export const useIdentityPasswordLogout: UseIdentityPasswordLogout = () => {
+const useIdentityPasswordLogout: UseIdentityPasswordLogout = () => {
   const loading = ref(false)
 
   const supabase = useClient()
@@ -31,4 +31,9 @@ export const useIdentityPasswordLogout: UseIdentityPasswordLogout = () => {
     resetStandardErrors,
     resetErrors,
   }
+}
+
+export {
+  useIdentityPasswordLogout as default,
+  useIdentityPasswordLogout,
 }

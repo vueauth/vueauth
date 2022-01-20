@@ -74,7 +74,7 @@ return [
     |
     */
 
-    'prefix' => '',
+    'prefix' => 'sanctum',
 
     'domain' => null,
 

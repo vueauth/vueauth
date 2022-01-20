@@ -1,9 +1,12 @@
 import getSanctumConfig from '../getSanctumConfig'
-import { UseAuthState } from 'auth-composables'
+import { UseAuthState } from '@vueauth/core'
 
-export const useAuthState: UseAuthState = () => {
+const useAuthState: UseAuthState = () => {
   const config = getSanctumConfig()
   return config.useAuthState()
 }
 
-export default useAuthState
+export {
+  useAuthState as default,
+  useAuthState,
+}

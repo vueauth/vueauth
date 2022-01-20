@@ -1,26 +1,19 @@
 <script setup>
-import { usePasswordResetViaEmail } from 'auth-composables'
+import { usePasswordResetViaEmail } from '@vueauth/core'
 
 const {
   requestForm,
-  resetForm,
+  resetPasswordForm,
   requestReset,
   reset,
-  loading,
-  validationErrors,
-  hasValidationErrors,
-  hasErrors,
-  errors,
-  resetStandardErrors,
-  resetValidationErrors,
-  resetErrors
+  loading
 } = usePasswordResetViaEmail()
 
 const urlSearchParams = new URLSearchParams(window.location.search)
 const params = Object.fromEntries(urlSearchParams.entries())
 
 if (params.email) {
-  resetForm.value.email = params.email
+  resetPasswordForm.value.email = params.email
 }
 
 requestForm.value.email = 'luke@ldiebold.com'
@@ -47,19 +40,19 @@ requestForm.value.email = 'luke@ldiebold.com'
     <h1>Reset</h1>
 
     <label>Email</label><br>
-    <input v-model="resetForm.email"><br>
+    <input v-model="resetPasswordForm.email"><br>
 
     <label>New Password</label><br>
-    <input v-model="resetForm.password"><br>
+    <input v-model="resetPasswordForm.password"><br>
 
     <label>Confirm New Password</label><br>
-    <input v-model="resetForm.password_confirmation"><br>
+    <input v-model="resetPasswordForm.password_confirmation"><br>
 
     <button
       :disabled="loading"
       @click="reset"
     >
-      Request Reset Password Link
+      Reset Password
     </button>
   </div>
 </template>

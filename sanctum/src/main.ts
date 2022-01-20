@@ -19,3 +19,12 @@ export { useAuthRedirector } from './implementations/useAuthRedirector'
 export { useAuthenticatedRedirector } from './implementations/useAuthenticatedRedirector'
 export { useUnauthenticatedRedirector } from './implementations/useUnauthenticatedRedirector'
 export { useHandlesErrors } from './implementations/useHandlesErrors'
+
+export { useVueUseAuthState } from './implementations/useVueUseAuthState'
+
+export {
+  SanctumEndpoints,
+  SanctumOptionsEndpoints,
+  SanctumConfig,
+  PluginOptions,
+} from './types/PluginOptions'

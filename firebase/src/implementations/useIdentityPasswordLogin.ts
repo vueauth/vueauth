@@ -1,9 +1,9 @@
 import useHandlesErrors from './useHandlesErrors'
 import { getAuth, signInWithEmailAndPassword, AuthError, reauthenticateWithCredential, EmailAuthProvider } from 'firebase/auth'
 import { ref, watch } from 'vue-demi'
-import { UseIdentityPasswordLogin } from 'auth-composables'
+import { UseIdentityPasswordLogin } from '@vueauth/core'
 
-export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
+const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
   const loading = ref(false)
 
   const isReauthenticating = ref(false)
@@ -72,4 +72,7 @@ export const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
   }
 }
 
-export default useIdentityPasswordLogin
+export {
+  useIdentityPasswordLogin as default,
+  useIdentityPasswordLogin,
+}

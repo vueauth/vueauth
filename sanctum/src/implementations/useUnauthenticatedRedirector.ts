@@ -1,16 +1,21 @@
 import useAuthRedirector from './useAuthRedirector'
-import { RouteLocationRaw, Router, useRouter } from 'vue-router'
-import { MaybeRef } from '@vueuse/core'
-import { UseUnauthenticatedRedirector } from 'auth-composables'
+import { useRouter } from 'vue-router'
+import { UseUnauthenticatedRedirector } from '@vueauth/core'
 import { ref } from 'vue-demi'
 
-export const useUnauthenticatedRedirector: UseUnauthenticatedRedirector = (
-  redirectTo: MaybeRef<RouteLocationRaw> = ref('/'),
-  router: Router = useRouter(),
+const useUnauthenticatedRedirector: UseUnauthenticatedRedirector = (
+  config = {
+    redirectTo: ref('/'),
+    router: useRouter(),
+  },
 ) => {
+  config.redirectOn = 'unauthenticated'
   return {
-    ...useAuthRedirector('unauthenticated', redirectTo, router),
+    ...useAuthRedirector(config),
   }
 }
 
-export default useUnauthenticatedRedirector
+export {
+  useUnauthenticatedRedirector as default,
+  useUnauthenticatedRedirector,
+}

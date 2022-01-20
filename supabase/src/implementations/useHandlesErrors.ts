@@ -1,28 +1,10 @@
-import { ref, computed } from 'vue-demi'
-import ResponseErrors from '../types/ResponseErrors'
-import { UseHandlesErrors, ValidationErrors } from 'auth-composables'
+import { UseHandlesErrors, useHandlesErrorsBase } from '@vueauth/core'
 import { ApiError } from '@supabase/supabase-js'
 
-export const useHandlesErrors: UseHandlesErrors = () => {
-  const errors = ref<ResponseErrors>([])
-  function resetStandardErrors () {
-    errors.value = []
-  }
+const useHandlesErrors: UseHandlesErrors = () => {
+  const errorService = useHandlesErrorsBase()
 
-  const validationErrors = ref<ValidationErrors>({})
-  const hasValidationErrors = computed(() => {
-    return !!Object.keys(validationErrors.value).length
-  })
-  const hasErrors = computed(() => !!errors.value.length || hasValidationErrors.value)
-
-  function resetValidationErrors () {
-    validationErrors.value = {}
-  }
-
-  function resetErrors () {
-    resetStandardErrors()
-    resetValidationErrors()
-  }
+  const { resetErrors, errors } = errorService
 
   function fromResponse (error: ApiError) {
     resetErrors()
@@ -33,15 +15,12 @@ export const useHandlesErrors: UseHandlesErrors = () => {
   }
 
   return {
-    validationErrors,
-    hasValidationErrors,
-    hasErrors,
-    errors,
-    resetStandardErrors,
-    resetValidationErrors,
-    resetErrors,
+    ...errorService,
     fromResponse,
   }
 }
 
-export default useHandlesErrors
+export {
+  useHandlesErrors as default,
+  useHandlesErrors,
+}

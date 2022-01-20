@@ -4,5 +4,5 @@ import { InjectionKey } from 'vue-demi'
 const SupabaseClientKey: InjectionKey<SupabaseClient> = Symbol('SupabaseDefaultClient')
 
 export {
-  SupabaseClientKey
+  SupabaseClientKey,
 }

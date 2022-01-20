@@ -1,0 +1,57 @@
+Arguments: 
+  /home/luke/.npm-global/lib/node_modules/node/bin/node /home/luke/.yarn/bin/yarn.js
+
+PATH: 
+  /home/luke/.local/share/pnpm:/home/luke/.yarn/bin:/home/luke/.config/yarn/global/node_modules/.bin:/home/luke/.local/bin:/home/luke/.npm-global/bin:/home/luke/.local/share/pnpm:/home/luke/.yarn/bin:/home/luke/.config/yarn/global/node_modules/.bin:/home/luke/.local/bin:/home/luke/.npm-global/bin:/home/luke/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/luke/.config/composer/vendor/bin:/home/luke/.config/composer/vendor/bin
+
+Yarn version: 
+  1.22.15
+
+Node version: 
+  16.13.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile '/home/luke/.cache/yarn/v6/npm-supports-color-5.5.0-e2e69a44ac8772f78a1ec0b35b689df6530efc8f-integrity/node_modules/supports-color/browser.js' -> '/home/luke/code/vueauth/node_modules/npm-run-all/node_modules/supports-color/browser.js'
+
+npm manifest: 
+  {
+    "repository": "https://github.com/vueauth/vueauth",
+    "author": "Luke Diebold <luke@ldiebold.com>",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+      "docs:build": "vuepress build docs",
+      "docs:dev": "vuepress dev docs",
+      "core:build": "cd ./core && pnpm build",
+      "core:watch": "cd ./core && pnpm watch",
+      "fire:build": "cd ./firebase && pnpm build",
+      "fire:watch": "cd ./firebase && pnpm watch",
+      "fire:dev": "cd ./firebase/examples && pnpm dev",
+      "sanc:build": "cd ./sanctum && pnpm build",
+      "sanc:watch": "cd ./sanctum && pnpm watch",
+      "sanc:dev": "cd ./sanctum/examples && pnpm dev",
+      "supa:build": "cd ./supabase && pnpm build",
+      "supa:watch": "cd ./supabase && pnpm watch",
+      "supa:dev": "cd ./supabase/examples && pnpm dev",
+      "publish:all": "pnpm -r publish",
+      "build:all": "npm-run-all core:build fire:build sanc:build supa:build"
+    },
+    "devDependencies": {
+      "@vuepress/bundler-vite": "^2.0.0-beta.27",
+      "npm-run-all": "^4.1.5",
+      "vuepress": "^2.0.0-beta.27",
+      "vue": "^3.0.0",
+      "webpack": "^5.0.0",
+      "postcss": "^8.2.15",
+      "css-loader": "*"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

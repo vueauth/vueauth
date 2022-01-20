@@ -3,11 +3,11 @@ import { ref } from 'vue-demi'
 import getSanctumConfig from '../getSanctumConfig'
 import useHandlesErrors from './useHandlesErrors'
 import useAuthState from './useAuthState'
-import { UseFetchUser } from 'auth-composables'
+import { UseFetchUser } from '@vueauth/core'
 
-export const useFetchUser: UseFetchUser = () => {
-  const { requester } = getSanctumConfig()
-  const { getUser } = requester
+const useFetchUser: UseFetchUser = () => {
+  const { makeRequester } = getSanctumConfig()
+  const { getUser } = makeRequester()
 
   const { loading } = createGlobalState(() => {
     return {
@@ -51,4 +51,7 @@ export const useFetchUser: UseFetchUser = () => {
   }
 }
 
-export default useFetchUser
+export {
+  useFetchUser as default,
+  useFetchUser,
+}

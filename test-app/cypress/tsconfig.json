@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "target": "es5",
+    "lib": [
+      "es5",
+      "dom"
+    ],
+    "types": [
+      "cypress"
+    ]
+  },
+  "include": [
+    "**/*.ts",
+    "../availableProviders.ts",
+    "../src/types/Providers.ts",
+    "support/dataCy.js",
+    "support/supabase/deleteJohnSmith.js"
+  ]
+}

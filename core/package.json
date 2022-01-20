@@ -1,8 +1,8 @@
 {
-  "name": "auth-composables",
-  "version": "1.0.0-alpha.36",
+  "name": "@vueauth/core",
+  "version": "1.0.0-alpha.45",
   "description": "Abstracts for dealing with authenticating a vue app",
-  "main": "dist/auth-composables.esm.js",
+  "main": "dist/core.esm.js",
   "typings": "dist/src/main.d.ts",
   "author": "Luke Diebold",
   "license": "MIT",
@@ -36,7 +36,8 @@
     "typescript": "^4.4.4",
     "vue-composable": "^1.0.0-beta.24",
     "vue-demi": "^0.11.4",
-    "vue-router": "^4.0.0"
+    "vue-router": "^4.0.0",
+    "deepmerge": "^4.2.2"
   },
   "peerDependencies": {
     "vue": "^3.0.0-0 || ^2.6.0"

@@ -1,0 +1,53 @@
+Arguments: 
+  /home/luke/.npm-global/lib/node_modules/node/bin/node /home/luke/.yarn/bin/yarn.js add -D @testing-library/cypress
+
+PATH: 
+  /home/luke/.local/share/pnpm:/home/luke/.yarn/bin:/home/luke/.config/yarn/global/node_modules/.bin:/home/luke/.local/bin:/home/luke/.npm-global/bin:/home/luke/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/luke/.config/composer/vendor/bin
+
+Yarn version: 
+  1.22.15
+
+Node version: 
+  16.13.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile '/home/luke/.cache/yarn/v6/npm-supports-color-8.1.1-cd6fc17e28500cff56c1b86c0a7fd4a54a73005c-integrity/node_modules/supports-color/browser.js' -> '/home/luke/code/vueauth/supabase/examples/node_modules/cypress/node_modules/supports-color/browser.js'
+
+npm manifest: 
+  {
+    "name": "vue-supabase-examples",
+    "version": "0.0.0",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+      "dev": "vite --force",
+      "build": "vite build",
+      "serve": "vite preview"
+    },
+    "dependencies": {
+      "@supabase/supabase-js": "^1.28.5",
+      "@vueauth/supabase": "^1.0.0-alpha.1",
+      "vue": "^3.2.16",
+      "vue-router": "4"
+    },
+    "devDependencies": {
+      "@vitejs/plugin-vue": "^1.9.3",
+      "eslint": "^7.0.0",
+      "eslint-config-standard": "^16.0.3",
+      "eslint-plugin-import": "^2.25.2",
+      "cypress": "^9.2.0",
+      "eslint-plugin-node": "^11.1.0",
+      "eslint-plugin-promise": "^5.1.1",
+      "eslint-plugin-vue": "^8.0.3",
+      "vite": "^2.6.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useUnauthenticatedRedirector } from 'auth-composables'
+import { useUnauthenticatedRedirector } from '@vueauth/core'
 
 const {
   onChecked,
@@ -15,7 +15,12 @@ onChecked.value = () => {
 </script>
 
 <template>
-  <button v-if="!checking" @click="exec">check</button>
+  <button
+    v-if="!checking"
+    @click="exec"
+  >
+    check
+  </button>
   <span v-else>Checking...</span>
   <div>If unauthenticated, this page will redirect to home...</div>
 </template>
