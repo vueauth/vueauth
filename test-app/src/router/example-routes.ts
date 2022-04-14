@@ -5,48 +5,55 @@ import RedirectIfAuthenticated from '../pages/RedirectIfAuthenticated.vue'
 import RedirectIfUnauthenticated from '../pages/RedirectIfUnauthenticated.vue'
 import AuthState from '../pages/AuthState.vue'
 import PasswordResetPage from '../pages/PasswordResetPage.vue'
+import PasswordUpdatePage from '../pages/PasswordUpdatePage.vue'
 
 export default [
   {
     path: '/email-password-register',
     name: 'emailPasswordRegister',
     label: 'Email password register',
-    component: EmailPasswordRegisterPage
+    component: EmailPasswordRegisterPage,
   },
   {
     path: '/email-password-login',
     name: 'emailPasswordLogin',
     label: 'Email password login',
-    component: EmailPasswordLoginPage
+    component: EmailPasswordLoginPage,
   },
   {
     path: '/logout',
     label: 'Logout',
     name: 'logout',
-    component: LogoutPage
+    component: LogoutPage,
   },
   {
     path: '/redirect-if-authenticated',
     label: 'Redirect if authenticated',
     name: 'redirectIfAuthenticated',
-    component: RedirectIfAuthenticated
+    component: RedirectIfAuthenticated,
   },
   {
     path: '/redirect-if-unauthenticated',
     label: 'Redirect if unauthenticated',
     name: 'redirectIfUnauthenticated',
-    component: RedirectIfUnauthenticated
+    component: RedirectIfUnauthenticated,
   },
   {
     path: '/auth-state',
     label: 'Auth State',
     name: 'authState',
-    component: AuthState
+    component: AuthState,
   },
   {
     path: '/password-reset',
     label: 'Password Reset',
     name: 'passwordReset',
-    component: PasswordResetPage
-  }
+    component: PasswordResetPage,
+  },
+  {
+    path: '/update-password',
+    label: 'Update Password',
+    name: 'updatePassword',
+    component: PasswordUpdatePage,
+  },
 ]

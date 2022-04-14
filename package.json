@@ -4,8 +4,6 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "docs:build": "vuepress build docs",
-    "docs:dev": "vuepress dev docs",
     "core:build": "cd ./core && pnpm build",
     "core:watch": "cd ./core && pnpm watch",
     "fire:build": "cd ./firebase && pnpm build",
@@ -17,16 +15,13 @@
     "supa:build": "cd ./supabase && pnpm build",
     "supa:watch": "cd ./supabase && pnpm watch",
     "supa:dev": "cd ./supabase/examples && pnpm dev",
+    "strapi:build": "cd ./strapi && pnpm build",
+    "strapi:watch": "cd ./strapi && pnpm watch",
+    "strapi:dev": "cd ./strapi/examples && pnpm dev",
     "publish:all": "pnpm -r publish",
     "build:all": "npm-run-all core:build fire:build sanc:build supa:build"
   },
   "devDependencies": {
-    "@vuepress/bundler-vite": "^2.0.0-beta.32",
-    "css-loader": "*",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.5",
-    "vue": "^3.2.26",
-    "vuepress": "^2.0.0-beta.32",
-    "webpack": "^5.65.0"
+    "npm-run-all": "^4.1.5"
   }
 }

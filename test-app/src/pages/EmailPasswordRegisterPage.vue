@@ -7,12 +7,15 @@ const {
   loading,
   register,
   hasErrors,
-  errors
+  errors,
+  hasValidationErrors,
+  validationErrors,
 } = useIdentityPasswordRegister()
 
 const authState = useAuthState()
 
 const hasName = computed(() => typeof form.value.name === 'string')
+const hasUsername = computed(() => typeof form.value.username === 'string')
 </script>
 
 <template>
@@ -28,6 +31,21 @@ const hasName = computed(() => typeof form.value.name === 'string')
       v-model="form.name"
       type="name"
       data-cy="name-input"
+    >
+
+    <br>
+
+    <!-- Username -->
+    <label
+      v-if="hasUsername"
+      for="username"
+    >Username</label>
+    <input
+      v-if="hasUsername"
+      id="username"
+      v-model="form.username"
+      type="username"
+      data-cy="username-input"
     >
 
     <br>
@@ -87,5 +105,13 @@ const hasName = computed(() => typeof form.value.name === 'string')
   <div v-if="hasErrors">
     <h2>Errors</h2>
     <pre>{{ errors }}</pre>
+  </div>
+
+  <br>
+
+  <!-- Validation Errors -->
+  <div v-if="hasValidationErrors">
+    <h2>Validation Errors</h2>
+    <pre>{{ validationErrors }}</pre>
   </div>
 </template>

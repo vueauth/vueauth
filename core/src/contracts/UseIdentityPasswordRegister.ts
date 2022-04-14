@@ -26,6 +26,8 @@ export interface UseIdentityPasswordRegisterReturn {
 export interface UseIdentityPasswordRegisterConfig {
   authProvider?: string
   emailConfirm?: boolean
+  withUsername?: boolean
+  withName?: boolean
 }
 
 export interface UseIdentityPasswordRegister {

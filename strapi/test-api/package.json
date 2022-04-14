@@ -1,0 +1,43 @@
+{
+  "name": "test-api",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "docker:compose": "WWWGROUP=${WWWGROUP:-$UID} && docker-compose",
+    "docker:build": "yarn docker:compose build",
+    "docker:run": "yarn docker:compose up",
+    "docker:bash:strapi": "yarn docker:compose run strapi bash",
+    "docker:strapi": "yarn docker:compose run strapi strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-i18n": "4.1.7",
+    "@strapi/plugin-users-permissions": "4.1.7",
+    "@strapi/strapi": "4.1.7",
+    "better-sqlite3": "7.4.6",
+    "knex": "^1.0.4",
+    "pg": "^8.7.1",
+    "strapi-connector-bookshelf": "^3.6.8",
+    "strapi-plugin-update-password": "^0.0.6"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "3d7da8b5-4edc-43b6-82ab-f1b58f94a5ba"
+  },
+  "engines": {
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/eslint-parser": "^7.17.0",
+    "eslint": "^8.12.0"
+  }
+}

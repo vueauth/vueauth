@@ -11,7 +11,14 @@ function provideFeatures (
   const featureKeys = Object.keys(features)
 
   featureKeys.forEach(featureKey => {
-    provideFeature(featureKey, features[featureKey], providerName, app)
+    let feature
+    if (typeof features[featureKey] === 'object' && features[featureKey].composable) {
+      feature = features[featureKey].composable
+    } else {
+      feature = features[featureKey]
+    }
+
+    provideFeature(featureKey, feature, providerName, app)
   })
 }
 
@@ -51,7 +58,14 @@ function provideConfig (
     if (feature.baseConfig) {
       config = Object.assign({}, feature.baseConfig)
     }
+
     if (typeof feature === 'object' && feature.config) {
+      if (typeof feature.composable !== 'function') {
+        throw new Error(`The feature ${featureKey} is missing an implementation`)
+      }
+      if (feature.composable.baseConfig) {
+        config = Object.assign({}, feature.composable.baseConfig)
+      }
       Object.assign(config, feature.config)
     }
     provideFeaturesConfig(featureKey, config, providerName, app)

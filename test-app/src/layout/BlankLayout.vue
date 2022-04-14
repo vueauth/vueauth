@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import providers from '../../availableProviders'
+import providers from '../../providers'
 import { defaultProviderState } from '../main'
 import { watch } from 'vue'
 import { useRoute } from 'vue-router'

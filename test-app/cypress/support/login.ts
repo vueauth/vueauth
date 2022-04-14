@@ -1,4 +1,4 @@
-import availableProviders from "../../availableProviders";
+import availableProviders from '../../providers'
 
 Cypress.Commands.add('login', (providerString: string) => {
   const responseConfig = availableProviders[providerString].login.response
@@ -21,4 +21,4 @@ Cypress.Commands.add('login', (providerString: string) => {
     .then(() => {
       cy.home()
     })
-});
+})

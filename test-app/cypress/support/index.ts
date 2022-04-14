@@ -1,6 +1,10 @@
 // load type definitions that come with Cypress module
 /// <reference types="cypress" />
 
+import './dataCy'
+import './login'
+import './home'
+
 declare global {
   namespace Cypress {
     interface Chainable {
@@ -24,7 +28,3 @@ declare global {
     }
   }
 }
-
-import './dataCy'
-import './login'
-import './home'

@@ -25,6 +25,7 @@ export interface UseIdentityPasswordLoginReturn {
 
 export interface UseIdentityPasswordLoginConfig {
   authProvider?: string
+  withUsername?: boolean
 }
 
 export interface UseIdentityPasswordLogin {

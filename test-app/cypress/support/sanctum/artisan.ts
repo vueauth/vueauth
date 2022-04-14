@@ -7,11 +7,11 @@ const laravelTestApiDir = '../sanctum/test-api'
 export default function artisan (commands: string[] | string) {
   let returnCommand = `cd ${laravelTestApiDir} && `
 
-  if(Array.isArray(commands)) {
+  if (Array.isArray(commands)) {
     returnCommand += commands.map(command => {
       return `docker exec laravel_vue_auth_test_api php artisan ${command}`
     })
-    .join(' && ')
+      .join(' && ')
   } else {
     returnCommand += `docker exec laravel_vue_auth_test_api php artisan ${commands}`
   }

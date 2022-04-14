@@ -8,6 +8,7 @@ export interface Provider {
   register: {
   beforeCommand?: string
     hasNameField: boolean
+    hasUsernameField?: boolean
     response: ResponseAssertion
   }
   login: {

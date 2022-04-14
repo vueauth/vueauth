@@ -6,17 +6,19 @@ const {
   login,
   loading,
   hasErrors,
-  errors
+  errors,
+  hasValidationErrors,
+  validationErrors,
 } = useIdentityPasswordLogin()
 
 const {
-  logout
+  logout,
 } = useIdentityPasswordLogout()
 
 const authState = useAuthState()
 
 const {
-  isAuthenticated
+  isAuthenticated,
 } = authState
 </script>
 
@@ -81,5 +83,10 @@ const {
   <div v-if="hasErrors">
     <h2>Errors</h2>
     <pre>{{ errors }}</pre>
+  </div>
+
+  <div v-if="hasValidationErrors">
+    <h2>Validation Errors</h2>
+    <pre>{{ validationErrors }}</pre>
   </div>
 </template>

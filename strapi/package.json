@@ -1,6 +1,6 @@
 {
   "name": "@vueauth/strapi",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.7",
   "description": "A collection of composables for authenticating with Strapi",
   "main": "dist/strapi.esm.js",
   "typings": "dist/src/main.d.ts",

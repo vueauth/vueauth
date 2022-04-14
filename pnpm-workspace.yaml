@@ -1,0 +1,6 @@
+packages:
+  - 'firebase'
+  - 'sanctum'
+  - 'supabase'
+  - 'strapi'
+  - 'test-app'
