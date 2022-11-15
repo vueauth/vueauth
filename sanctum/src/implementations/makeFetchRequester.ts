@@ -40,6 +40,7 @@ const makeFetchRequester = (
       headers: {
         Accept: 'application/json',
       },
+      credentials: 'include',
     },
     options: {
       beforeFetch ({ options }) {
