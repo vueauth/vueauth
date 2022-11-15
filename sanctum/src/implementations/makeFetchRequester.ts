@@ -43,11 +43,13 @@ const makeFetchRequester = (
     },
     options: {
       beforeFetch ({ options }) {
-        const xsrfToken = cookies.get('XSRF-TOKEN')
+        const xsrfToken = decodeURIComponent(cookies.get('XSRF-TOKEN'))
         if (!options.headers) {
           options.headers = {}
         }
-        options.headers['X-XSRF-TOKEN'] = xsrfToken
+        if (xsrfToken) {
+          options.headers['X-XSRF-TOKEN'] = xsrfToken
+        }
       },
       immediate: false,
     },
