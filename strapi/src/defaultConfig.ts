@@ -15,7 +15,7 @@ export default (): PluginOptions => {
       getUser: 'api/users/me',
       resetPassword: 'api/auth/reset-password',
       forgotPassword: 'api/auth/forgot-password',
-      changePassword: 'api/update-password',
+      changePassword: 'api/auth/change-password',
     },
-  }
+  };
 }
