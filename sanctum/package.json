@@ -1,6 +1,6 @@
 {
   "name": "@vueauth/sanctum",
-  "version": "1.0.0-alpha.46",
+  "version": "1.0.0-alpha.49",
   "description": "A collection of composables for authenticating with Laravel Sanctum",
   "main": "dist/sanctum.esm.js",
   "typings": "dist/src/main.d.ts",

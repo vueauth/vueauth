@@ -1,14 +1,27 @@
 import Requester, { ResetPasswordForm, ResetPasswordRequestForm, SanctumResponse, UpdatePasswordForm } from '../types/MakeRequester'
-import { createFetch, UseFetchReturn } from '@vueuse/core'
+import { BeforeFetchContext, createFetch, UseFetchReturn } from '@vueuse/core'
 import { useCookies } from '@vueuse/integrations/useCookies'
 import { SanctumEndpoints } from '../types/PluginOptions'
 import getSanctumConfig from '../getSanctumConfig'
 
+export interface MakeFetchRequesterOptions {
+  fetchOptions?: RequestInit
+  beforeFetch?: ((ctx: BeforeFetchContext) => void | Partial<BeforeFetchContext> | Promise<void | Partial<BeforeFetchContext>>)
+  csrf?: boolean
+}
+
+const defaultOptions: MakeFetchRequesterOptions = {
+  csrf: true,
+}
+
 const makeFetchRequester = (
   baseUrl: string | undefined = undefined,
+  options?: MakeFetchRequesterOptions,
 ): Requester => {
   const { endpoints: configuredEndpoints, baseUrl: configuredBaseUrl } = getSanctumConfig()
   baseUrl = baseUrl ?? configuredBaseUrl
+
+  options = Object.assign({}, options, defaultOptions)
 
   const cookies = useCookies(['XSRF-TOKEN'])
 
@@ -36,20 +49,25 @@ const makeFetchRequester = (
 
   const useFetch = createFetch({
     baseUrl,
-    fetchOptions: {
+    fetchOptions: options.fetchOptions || {
       headers: {
         Accept: 'application/json',
       },
       credentials: 'include',
     },
     options: {
-      beforeFetch ({ options }) {
+      beforeFetch (context) {
+        if (options?.beforeFetch) {
+          options.beforeFetch(context)
+          return
+        }
+
         const xsrfToken = decodeURIComponent(cookies.get('XSRF-TOKEN'))
-        if (!options.headers) {
-          options.headers = {}
+        if (!context.options.headers) {
+          context.options.headers = {}
         }
         if (xsrfToken) {
-          options.headers['X-XSRF-TOKEN'] = xsrfToken
+          context.options.headers['X-XSRF-TOKEN'] = xsrfToken
         }
       },
       immediate: false,
@@ -71,13 +89,17 @@ const makeFetchRequester = (
   }
 
   async function login (credentials: Record<string, string | number>) {
-    await fetchCsrfToken()
+    if (options?.csrf) {
+      await fetchCsrfToken()
+    }
     await loginFetcher.post(credentials).execute()
     return makeSanctumResponse(loginFetcher)
   }
 
   async function register (credentials: Record<string, string | number>) {
-    await fetchCsrfToken()
+    if (options?.csrf) {
+      await fetchCsrfToken()
+    }
     await registerFetcher.post(credentials).execute()
     return makeSanctumResponse(registerFetcher)
   }
@@ -109,7 +131,9 @@ const makeFetchRequester = (
   }
 
   async function forgotPassword (form: ResetPasswordRequestForm) {
-    await fetchCsrfToken()
+    if (options?.csrf) {
+      await fetchCsrfToken()
+    }
     await forgotPasswordFetcher.post(form).json().execute()
     return makeSanctumResponse(forgotPasswordFetcher)
   }
