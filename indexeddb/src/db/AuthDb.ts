@@ -1,14 +1,18 @@
 type User = {
-  [x: string]: any,
-  name: string;
-  email: string;
-  password: string;
-};
+  // The user must have "email", "password", etc.
+  // It also needs an "id" (or whatever keyPath you specify below) when storing.
+  name: string
+  email: string
+  password: string
+  [x: string]: any
+}
 
 export interface AuthDbOptions {
   mockLatencyMs?: number
   dbName?: string
   storeName?: string
+  // New! Allows customizing the key path
+  keyPath?: string
 }
 
 export class AuthDb {
@@ -18,13 +22,19 @@ export class AuthDb {
   private version = 1
   private mockLatencyMs = 0
 
+  // Key path defaults to "id"
+  private keyPath = 'id'
+
   constructor (options: AuthDbOptions = {}) {
     if (typeof options.mockLatencyMs === 'number') {
       this.mockLatencyMs = options.mockLatencyMs
     }
     if (options.dbName) this.dbName = options.dbName
     if (options.storeName) this.storeName = options.storeName
+    // Allow overriding the key path (defaults to 'id')
+    if (options.keyPath) this.keyPath = options.keyPath
 
+    // Initialize database
     this.init()
   }
 
@@ -40,9 +50,11 @@ export class AuthDb {
     request.onupgradeneeded = () => {
       const db = request.result
       if (!db.objectStoreNames.contains(this.storeName)) {
-        db.createObjectStore(this.storeName, { keyPath: 'email' })
+        // Use the chosen key path instead of "email"
+        db.createObjectStore(this.storeName, { keyPath: this.keyPath })
       }
     }
+    // No need to block on init here; we just set it up.
   }
 
   private async getDB (): Promise<IDBDatabase> {
@@ -53,14 +65,28 @@ export class AuthDb {
     })
   }
 
+  // ---------------------------------------------------------------
+  //  Create user
+  // ---------------------------------------------------------------
   async register (user: User): Promise<void> {
     await this.sleep()
 
+    // Make sure user doesn’t already exist by email
     const existing = await this.getUser(user.email)
     if (existing) {
       throw new Error('User already exists')
     }
 
+    // If user has no ID set (and your keyPath is something other than 'email'),
+    // you should set one here. For example:
+    //
+    //   if (!user[this.keyPath]) {
+    //     user[this.keyPath] = crypto.randomUUID()
+    //   }
+    //
+    // But if you always supply an ID from outside, skip this.
+
+    // Now store user
     const db = await this.getDB()
     const tx = db.transaction(this.storeName, 'readwrite')
     const store = tx.objectStore(this.storeName)
@@ -71,22 +97,30 @@ export class AuthDb {
       tx.onerror = () => reject(tx.error)
     })
 
+    // Save in localStorage that we’re authenticated as this user’s email
     localStorage.setItem(this.authKey, user.email)
   }
 
-  async deleteUser (email: string): Promise<void> {
+  // ---------------------------------------------------------------
+  //  Delete user
+  // ---------------------------------------------------------------
+  async deleteUser (id: string): Promise<void> {
     await this.sleep()
     const db = await this.getDB()
     const tx = db.transaction(this.storeName, 'readwrite')
-    tx.objectStore(this.storeName).delete(email)
+    tx.objectStore(this.storeName).delete(id)
     await new Promise<void>((resolve, reject) => {
       tx.oncomplete = () => resolve()
       tx.onerror = () => reject(tx.error)
     })
   }
 
+  // ---------------------------------------------------------------
+  //  Login (by email, then check password)
+  // ---------------------------------------------------------------
   async login ({ email, password }: { email: string; password: string }): Promise<boolean> {
     await this.sleep()
+    // We have to scan for this user by email
     const user = await this.getUser(email)
     const isValid = !!user && user.password === password
     if (isValid) {
@@ -95,17 +129,21 @@ export class AuthDb {
     return isValid
   }
 
+  // ---------------------------------------------------------------
+  //  Change password (still looks up by email, then saves by id)
+  // ---------------------------------------------------------------
   async changePassword ({
     email,
     oldPassword,
     newPassword,
   }: {
     email: string
-    oldPassword?: string | undefined
+    oldPassword?: string
     newPassword: string
   }): Promise<void> {
     await this.sleep()
 
+    // Step 1: fetch user by email
     const user = await this.getUser(email)
     if (!user) throw new Error('User not found')
 
@@ -113,6 +151,7 @@ export class AuthDb {
       throw new Error('Old password is incorrect')
     }
 
+    // Step 2: open a transaction and update the record by its primary key
     const db = await this.getDB()
     const tx = db.transaction(this.storeName, 'readwrite')
     const store = tx.objectStore(this.storeName)
@@ -126,16 +165,41 @@ export class AuthDb {
     })
   }
 
+  // ---------------------------------------------------------------
+  //  Get user by email (no index, so we scan the store)
+  // ---------------------------------------------------------------
   private async getUser (email: string): Promise<User | undefined> {
     const db = await this.getDB()
     return new Promise((resolve, reject) => {
       const tx = db.transaction(this.storeName, 'readonly')
-      const request = tx.objectStore(this.storeName).get(email)
-      request.onsuccess = () => resolve(request.result)
+      const store = tx.objectStore(this.storeName)
+
+      // Because we're not using an index on 'email', we open a cursor
+      // and scan until we find a matching email or run out of entries
+      const request = store.openCursor()
+      request.onsuccess = () => {
+        const cursor = request.result
+        if (!cursor) {
+          // Not found
+          resolve(undefined)
+          return
+        }
+        const record = cursor.value as User
+        if (record.email === email) {
+          // Found our user
+          resolve(record)
+        } else {
+          // Keep looking
+          cursor.continue()
+        }
+      }
       request.onerror = () => reject(request.error)
     })
   }
 
+  // ---------------------------------------------------------------
+  //  Get the currently authenticated user (by email in localStorage)
+  // ---------------------------------------------------------------
   async getAuthenticatedUser (): Promise<User | null> {
     await this.sleep()
     const email = localStorage.getItem(this.authKey)
@@ -143,11 +207,17 @@ export class AuthDb {
     return (await this.getUser(email)) ?? null
   }
 
+  // ---------------------------------------------------------------
+  //  Logout
+  // ---------------------------------------------------------------
   async logout (): Promise<void> {
     await this.sleep()
     localStorage.removeItem(this.authKey)
   }
 
+  // ---------------------------------------------------------------
+  //  For testing (fake latency)
+  // ---------------------------------------------------------------
   setFakeTimeout (timeout: number) {
     this.mockLatencyMs = timeout
   }

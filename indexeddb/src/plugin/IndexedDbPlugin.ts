@@ -7,12 +7,9 @@ import { AuthDb } from 'src/db/AuthDb'
 export const IndexedDbPlugin = {
   install: (vueApp: App, options: PluginOptions) => {
     vueApp.provide(IndexedDbAppKey, options)
-    state.db = new AuthDb()
+    state.db = new AuthDb(options.dbOptions ?? {})
     if (options.makeUserId) {
       state.makeUserId = options.makeUserId
-    }
-    if (options.key) {
-      state.key = options.key
     }
   },
 }

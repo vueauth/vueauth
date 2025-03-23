@@ -1,3 +1,4 @@
+import { AuthDbOptions } from 'src/db/AuthDb'
 import UseAuthState from './UseAuthState'
 
 export interface IndexedDbConfig {
@@ -6,9 +7,9 @@ export interface IndexedDbConfig {
 }
 
 export interface PluginOptions {
-  key?: string
   useAuthState: UseAuthState
   makeUserId?: () => string
+  dbOptions?: AuthDbOptions
 }
 
 export default PluginOptions
