@@ -1,4 +1,4 @@
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 import getSanctumConfig from '../getSanctumConfig'
 import useHandlesErrors from './useHandlesErrors'
 import { UsePasswordResetViaEmail } from '@vueauth/core'

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAuthenticatedRedirector, useAuthState } from '@vueauth/core'
+import { useAuthenticatedRedirector, useAuthState, useFetchUser } from '@vueauth/core'
 
 const {
   onChecked,
@@ -7,6 +7,8 @@ const {
   exec,
   execOnAuthStateEnsured
 } = useAuthenticatedRedirector()
+
+const { fetch: fetchUser } = useFetchUser()
 
 const authState = useAuthState()
 
@@ -25,6 +27,13 @@ onChecked.value = () => {
     check
   </button>
   <span v-else>Checking...</span>
+
+  <button
+    v-if="!checking"
+    @click="fetchUser()"
+  >
+    Fetch User
+  </button>
 
   <div>If authenticated, this page will redirect to home...</div>
 

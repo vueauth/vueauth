@@ -1,5 +1,5 @@
 import useHandlesErrors from './useHandlesErrors'
-import { ref, watch } from 'vue-demi'
+import { ref, watch } from 'vue'
 import { UseIdentityPasswordRegister } from '@vueauth/core'
 import useClient from '../useClient'
 

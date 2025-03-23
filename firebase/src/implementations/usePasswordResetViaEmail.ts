@@ -3,7 +3,7 @@ import {
   getAuth, sendPasswordResetEmail,
   confirmPasswordReset, AuthError,
 } from 'firebase/auth'
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 import { UsePasswordResetViaEmail } from '@vueauth/core'
 
 const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {

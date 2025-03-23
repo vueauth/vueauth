@@ -1,5 +1,5 @@
 import { useLocalStorage, createGlobalState } from '@vueuse/core'
-import { UseTokenRepoReturn } from 'src/types/UseTokenRepo'
+import { UseTokenRepoReturn } from '../types/UseTokenRepo'
 
 const useLocalStorageTokenRepo = createGlobalState<UseTokenRepoReturn>(() => {
   const localStorageToken = useLocalStorage<string>('strapi-authorization-token', '', {})

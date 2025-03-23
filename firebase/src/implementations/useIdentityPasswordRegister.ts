@@ -1,6 +1,6 @@
 import useHandlesErrors from './useHandlesErrors'
 import { getAuth, createUserWithEmailAndPassword, AuthError } from 'firebase/auth'
-import { ref, watch } from 'vue-demi'
+import { ref, watch } from 'vue'
 import { UseIdentityPasswordRegister } from '@vueauth/core'
 
 const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {

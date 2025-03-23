@@ -1,5 +1,5 @@
 import { useRouter } from 'vue-router'
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 import { useAuthRedirector, UseUnauthenticatedRedirector } from '@vueauth/core'
 
 const useUnauthenticatedRedirector: UseUnauthenticatedRedirector = (

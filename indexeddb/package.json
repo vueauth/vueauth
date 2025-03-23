@@ -1,0 +1,35 @@
+{
+  "name": "@vueauth/indexeddb",
+  "version": "1.1.0-alpha.1",
+  "scripts": {
+    "release": "pnpm build && bumpp --tag '@vueauth/indexeddb@v%s' && pnpm publish",
+    "build": "unbuild"
+  },
+  "description": "VueAuth implementation for IndexedDB",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "repository": "https://github.com/vueauth/vueauth",
+  "author": "Luke Diebold",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "unbuild": "^3.5.0",
+    "bumpp": "^10.1.0"
+  },
+  "dependencies": {
+    "@vueauth/core": "^1.1.0-alpha.1"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0"
+  }
+}

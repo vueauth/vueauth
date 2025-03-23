@@ -16,9 +16,3 @@ export { useHandlesErrors } from './implementations/useHandlesErrors'
 export { useAuthenticatedRedirector } from './implementations/useAuthenticatedRedirector'
 export { useUnauthenticatedRedirector } from './implementations/useUnauthenticatedRedirector'
 export { useAuthRedirector } from './implementations/useAuthRedirector'
-
-// Auth Providers
-// export { useFacebookAuth } from './implementations/authProviders/useFacebookAuth'
-// export { useGithubAuth } from './implementations/authProviders/useGithubAuth'
-// export { useGoogleAuth } from './implementations/authProviders/useGoogleAuth'
-// export { useTwitterAuth } from './implementations/authProviders/useTwitterAuth'

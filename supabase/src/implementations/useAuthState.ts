@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue-demi'
+import { computed, ref } from 'vue'
 import { createGlobalState } from '@vueuse/shared'
 import { UseAuthState, AuthState } from '@vueauth/core'
 

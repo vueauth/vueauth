@@ -23,8 +23,8 @@ export { useHandlesErrors } from './implementations/useHandlesErrors'
 export { useVueUseAuthState } from './implementations/useVueUseAuthState'
 
 export {
-  SanctumEndpoints,
-  SanctumOptionsEndpoints,
-  SanctumConfig,
-  PluginOptions,
+  type SanctumEndpoints,
+  type SanctumOptionsEndpoints,
+  type SanctumConfig,
+  type PluginOptions,
 } from './types/PluginOptions'

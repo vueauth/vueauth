@@ -1,6 +1,6 @@
 import { getAuth, signInWithPopup, AuthProvider, AuthError } from 'firebase/auth'
 import handlesErrors from '../useHandlesErrors'
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 
 export const useFirebaseAuthProvider = (authProvider: AuthProvider) => {
   const loading = ref(false)

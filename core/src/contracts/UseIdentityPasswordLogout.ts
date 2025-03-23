@@ -1,4 +1,4 @@
-import { Ref, ComputedRef } from 'vue-demi'
+import { Ref, ComputedRef } from 'vue'
 
 export interface UseIdentityPasswordLogoutReturn {
   logout: () => Promise<void>;

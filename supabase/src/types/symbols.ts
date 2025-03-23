@@ -1,5 +1,5 @@
 import { SupabaseClient } from '@supabase/supabase-js'
-import { InjectionKey } from 'vue-demi'
+import { InjectionKey } from 'vue'
 
 const SupabaseClientKey: InjectionKey<SupabaseClient> = Symbol('SupabaseDefaultClient')
 

@@ -1,5 +1,5 @@
 import { DefaultAuthProviderSymbol } from '../symbols/defaultProviderSymbol'
-import { inject, unref } from 'vue-demi'
+import { inject, unref } from 'vue'
 
 export const getDefaultProvider = (): string => {
   const defaultAuthProvider = inject(DefaultAuthProviderSymbol)

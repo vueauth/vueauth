@@ -24,8 +24,8 @@ export { useHandlesErrors } from './implementations/useHandlesErrors'
 export { useVueUseAuthState } from './implementations/useVueUseAuthState'
 
 export {
-  StrapiEndpoints,
-  StrapiOptionsEndpoints,
-  StrapiConfig,
-  PluginOptions,
+  type StrapiEndpoints,
+  type StrapiOptionsEndpoints,
+  type StrapiConfig,
+  type PluginOptions,
 } from './types/PluginOptions'

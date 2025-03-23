@@ -1,5 +1,5 @@
-import { Feature, PluginOptions, Provider } from './types/PluginOptions'
-import { App, ref } from 'vue-demi'
+import { Feature, FeaturesConfigs, type PluginOptions, Provider } from './types/PluginOptions'
+import { App, ref } from 'vue'
 import { DefaultAuthProviderSymbol } from './symbols/defaultProviderSymbol'
 
 function provideFeatures (
@@ -8,15 +8,17 @@ function provideFeatures (
   app: App,
 ) {
   const features = provider.features
-  const featureKeys = Object.keys(features)
+  const featureKeys = Object.keys(features) as (keyof FeaturesConfigs)[]
 
   featureKeys.forEach(featureKey => {
     let feature
-    if (typeof features[featureKey] === 'object' && features[featureKey].composable) {
+    if (typeof features[featureKey] === 'object') {
       feature = features[featureKey].composable
     } else {
       feature = features[featureKey]
     }
+
+    if(!feature) return
 
     provideFeature(featureKey, feature, providerName, app)
   })
@@ -49,21 +51,22 @@ function provideConfig (
   app: App,
 ) {
   const features = provider.features
-  const featureKeys = Object.keys(features)
-  const allConfigs = {}
+  const featureKeys = Object.keys(features) as (keyof FeaturesConfigs)[]
+  const allConfigs: any = {}
 
   featureKeys.forEach(featureKey => {
     const feature = features[featureKey]
+    if(!feature) return
     let config = {}
-    if (feature.baseConfig) {
+    if ('baseConfig' in feature) {
       config = Object.assign({}, feature.baseConfig)
     }
 
-    if (typeof feature === 'object' && feature.config) {
+    if (typeof feature === 'object' && 'config' in feature) {
       if (typeof feature.composable !== 'function') {
         throw new Error(`The feature ${featureKey} is missing an implementation`)
       }
-      if (feature.composable.baseConfig) {
+      if ('baseConfig' in feature.composable) {
         config = Object.assign({}, feature.composable.baseConfig)
       }
       Object.assign(config, feature.config)

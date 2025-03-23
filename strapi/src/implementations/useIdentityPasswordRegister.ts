@@ -1,9 +1,9 @@
 import getStrapiConfig from '../getStrapiConfig'
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 import useAuthState from './useAuthState'
 import useHandlesErrors from './useHandlesErrors'
 import { UseIdentityPasswordRegister, UseIdentityPasswordRegisterConfig, getConfig } from '@vueauth/core'
-import { getTokenRepo } from 'src/helpers/getTokenRepo'
+import { getTokenRepo } from '../helpers/getTokenRepo'
 
 const baseConfig: UseIdentityPasswordRegisterConfig = {
   emailConfirm: false,

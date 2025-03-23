@@ -1,4 +1,4 @@
-import { App } from 'vue-demi'
+import { App } from 'vue'
 import PluginOptions from './types/PluginOptions'
 import { StrapiAppKey } from './types/symbols'
 import deepmerge from 'deepmerge'

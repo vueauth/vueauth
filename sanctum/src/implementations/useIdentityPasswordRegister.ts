@@ -1,5 +1,5 @@
 import getSanctumConfig from '../getSanctumConfig'
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 import useAuthState from './useAuthState'
 import useHandlesErrors from './useHandlesErrors'
 import { UseIdentityPasswordRegister, UseIdentityPasswordRegisterConfig } from '@vueauth/core'

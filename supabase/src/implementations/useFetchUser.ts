@@ -1,4 +1,4 @@
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 import useHandlesErrors from './useHandlesErrors'
 import { UseFetchUser } from '@vueauth/core'
 import useClient from '../useClient'

@@ -1,4 +1,4 @@
-import { Ref, ComputedRef } from 'vue-demi'
+import { Ref, ComputedRef } from 'vue'
 import { User } from './User'
 
 export interface AuthState {

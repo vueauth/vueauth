@@ -1,5 +1,5 @@
 import { createGlobalState } from '@vueuse/shared'
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 import getStrapiConfig from '../getStrapiConfig'
 import useHandlesErrors from './useHandlesErrors'
 import useAuthState from './useAuthState'

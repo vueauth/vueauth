@@ -4,6 +4,7 @@ import * as supabasePlugin from './supabase'
 import * as firebasePlugin from './firebase'
 import * as sanctumPlugin from './sanctum'
 import * as strapiPlugin from './strapi'
+import * as indexedDbPlugin from './indexeddb'
 
 const plugins = [
   {
@@ -25,6 +26,11 @@ const plugins = [
     key: 'strapi',
     registerFunction: strapiPlugin.registerFunction,
     vueAuthConfig: strapiPlugin.vueAuthConfig,
+  },
+  {
+    key: 'indexeddb',
+    registerFunction: indexedDbPlugin.registerFunction,
+    vueAuthConfig: indexedDbPlugin.vueAuthConfig,
   },
 ]
 

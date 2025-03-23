@@ -1,13 +1,13 @@
 import { RouteLocationRaw, Router } from 'vue-router'
-import { MaybeRef } from '@vueuse/core'
-import { Ref } from 'vue-demi'
+import { MaybeRefOrGetter } from 'vue'
+import { Ref } from 'vue'
 import { RedirectTriggers } from './UseAuthRedirector'
 
 export interface UseUnauthenticatedRedirectorReturn {
   execOnAuthStateChange: () => void;
   execOnAuthStateEnsured: () => void;
   exec: () => void;
-  redirectTo: MaybeRef<RouteLocationRaw>;
+  redirectTo: MaybeRefOrGetter<RouteLocationRaw>;
   checking: Ref<boolean>;
   onChecked: Ref<((user: unknown) => void) | null>;
 }
@@ -15,7 +15,7 @@ export interface UseUnauthenticatedRedirectorReturn {
 export interface UseUnauthenticatedRedirectorConfig {
   redirectOn?: RedirectTriggers
   authProvider?: string
-  redirectTo?: MaybeRef<RouteLocationRaw>
+  redirectTo?: MaybeRefOrGetter<RouteLocationRaw>
   router?: Router
 }
 
@@ -26,5 +26,5 @@ export interface UseUnauthenticatedRedirector {
 
 export interface UseUnauthenticatedRedirectorBaseConfig {
   composable: UseUnauthenticatedRedirector
-  redirectTo?: MaybeRef<RouteLocationRaw>
+  redirectTo?: MaybeRefOrGetter<RouteLocationRaw>
 }

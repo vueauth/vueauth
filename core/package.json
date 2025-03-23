@@ -1,50 +1,33 @@
 {
   "name": "@vueauth/core",
-  "version": "1.0.0-alpha.47",
+  "version": "1.1.0-alpha.1",
+  "scripts": {
+    "build": "unbuild",
+    "release": "pnpm build && bumpp --tag '@vueauth/core@v%s' && pnpm publish"
+  },
+  "type": "module",
   "description": "Abstracts for dealing with authenticating a vue app",
-  "main": "dist/core.esm.js",
-  "typings": "dist/src/main.d.ts",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "author": "Luke Diebold",
   "license": "MIT",
   "git-checks": false,
-  "devDependencies": {
-    "@babel/core": "^7.15.8",
-    "@babel/preset-env": "^7.15.8",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.0.6",
-    "@rollup/plugin-typescript": "^8.3.0",
-    "@typescript-eslint/eslint-plugin": "^5.3.0",
-    "@typescript-eslint/parser": "^5.3.0",
-    "eslint": "^7.0.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "rollup": "^2.58.0",
-    "typescript": "^4.4.4"
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
   },
-  "files": [
-    "dist",
-    "src"
-  ],
-  "dependencies": {
-    "@vueuse/core": "^8.2.3",
-    "@vueuse/integrations": "^8.2.3",
-    "axios": "^0.24.0",
-    "deepmerge": "^4.2.2",
-    "tslib": "^2.3.1",
-    "typescript": "^4.4.4",
-    "vue-composable": "^1.0.0-beta.24",
-    "vue-demi": "^0.11.4",
-    "vue-router": "^4.0.0"
+  "devDependencies": {
+    "bumpp": "^10.1.0",
+    "typescript": "^5.8.2",
+    "unbuild": "^3.5.0"
   },
   "peerDependencies": {
-    "vue": "^3.0.0-0 || ^2.6.0"
-  },
-  "scripts": {
-    "build": "rollup --config rollup.config.js",
-    "lint": "eslint ./src",
-    "watch": "rollup --config rollup.config.js --watch"
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0"
   }
 }

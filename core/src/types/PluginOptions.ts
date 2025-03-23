@@ -9,7 +9,7 @@ import { UseHandlesErrors, UseHandlesErrorsBaseConfig } from '../contracts/UseHa
 import { UseAuthRedirector, UseAuthRedirectorBaseConfig } from '../contracts/UseAuthRedirector'
 import { UsePasswordResetViaEmail, UsePasswordResetViaEmailBaseConfig } from '../contracts/UsePasswordResetViaEmail'
 import { UseUpdatePassword, UseUpdatePasswordBaseConfig } from '../contracts/UseUpdatePassword'
-import { MaybeRef } from '@vueuse/core'
+import { MaybeRefOrGetter } from 'vue'
 
 export type Feature = (UseIdentityPasswordRegister | UseIdentityPasswordRegisterBaseConfig) |
   (UseIdentityPasswordLogin | UseIdentityPasswordLoginBaseConfig) |
@@ -46,6 +46,6 @@ export interface Providers {
 }
 
 export interface PluginOptions {
-  default: MaybeRef<string>
+  default: MaybeRefOrGetter<string>
   providers: Providers
 }

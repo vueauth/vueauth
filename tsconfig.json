@@ -16,7 +16,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
     "lib": [
       "esnext",
       "dom"

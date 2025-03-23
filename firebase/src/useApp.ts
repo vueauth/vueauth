@@ -1,4 +1,4 @@
-import { inject } from 'vue-demi'
+import { inject } from 'vue'
 import { FirebaseAppKey } from './types/symbols'
 
 export const useApp = () => {

@@ -1,4 +1,4 @@
-import { App } from 'vue-demi'
+import { App } from 'vue'
 import { initializeApp, FirebaseOptions } from 'firebase/app'
 import { FirebaseAppKey } from './types/symbols'
 

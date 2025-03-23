@@ -1,5 +1,5 @@
 import useAuthState from '../implementations/useAuthState'
-import { ref, unref, watch, WatchStopHandle, watchEffect } from 'vue-demi'
+import { ref, unref, watch, WatchStopHandle, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 import useFetchUser from '../implementations/useFetchUser'
 import { UseAuthRedirector, UseAuthRedirectorReturn } from '@vueauth/core'

@@ -10,7 +10,7 @@ module.exports = {
   ],
   rules: {
     semi: ['error', 'never'],
-    '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }],
+    '@typescript-eslint/no-explicit-any': 'off',
     'comma-dangle': ['warn', 'always-multiline'],
     camelcase: 'off',
   },

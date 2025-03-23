@@ -1,8 +1,8 @@
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 import useHandlesErrors from './useHandlesErrors'
 import useAuthState from './useAuthState'
 import { UseIdentityPasswordLogout } from '@vueauth/core'
-import { getTokenRepo } from 'src/helpers/getTokenRepo'
+import { getTokenRepo } from '../helpers/getTokenRepo'
 
 const useIdentityPasswordLogout: UseIdentityPasswordLogout = () => {
   const loading = ref(false)

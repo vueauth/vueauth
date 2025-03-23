@@ -1,6 +1,8 @@
 packages:
-  - 'firebase'
-  - 'sanctum'
-  - 'supabase'
-  - 'strapi'
-  - 'test-app'
+  - "core"
+  - "firebase"
+  - "sanctum"
+  - "supabase"
+  - "strapi"
+  - "test-app"
+  - "indexeddb"

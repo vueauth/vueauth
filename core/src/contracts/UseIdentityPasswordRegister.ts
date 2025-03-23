@@ -1,6 +1,6 @@
 import { ValidationErrors } from '../types/ValidationErrors'
 import { RequestErrors } from '../types/RequestErrors'
-import { Ref, ComputedRef } from 'vue-demi'
+import { Ref, ComputedRef } from 'vue'
 
 export interface IdentityPasswordRegisterForm {
     email: string

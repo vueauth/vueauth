@@ -1,5 +1,5 @@
 import useHandlesErrors from './useHandlesErrors'
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 import { UseUpdatePassword } from '@vueauth/core'
 import useClient from '../useClient'
 

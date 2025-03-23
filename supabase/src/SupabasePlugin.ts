@@ -1,4 +1,4 @@
-import { App } from 'vue-demi'
+import { App } from 'vue'
 import { createClient } from '@supabase/supabase-js'
 import { SupabaseClientKey } from './types/symbols'
 import { useAuthState } from './implementations/useAuthState'

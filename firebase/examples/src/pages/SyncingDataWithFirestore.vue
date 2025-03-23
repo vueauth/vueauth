@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { getFirestore, useFirestore } from '@vueauth/firebase'
 import { collection, addDoc } from 'firebase/firestore'
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 
 const db = getFirestore()
 const postsCollection = collection(db, 'public-posts')

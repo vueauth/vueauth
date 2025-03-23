@@ -1,5 +1,5 @@
-import getStrapiConfig from 'src/getStrapiConfig'
-import { UseTokenRepoReturn } from 'src/types/UseTokenRepo'
+import getStrapiConfig from '../getStrapiConfig'
+import { UseTokenRepoReturn } from '../types/UseTokenRepo'
 
 function getTokenRepo (): UseTokenRepoReturn {
   return getStrapiConfig().useTokenRepo()

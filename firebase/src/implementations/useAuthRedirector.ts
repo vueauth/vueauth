@@ -1,6 +1,6 @@
 import { getAuth } from 'firebase/auth'
 import useAuthState from './useAuthState'
-import { ref, unref } from 'vue-demi'
+import { ref, unref } from 'vue'
 import { useRouter } from 'vue-router'
 import { UseAuthRedirector, UseAuthRedirectorReturn } from '@vueauth/core'
 

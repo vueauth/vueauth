@@ -1,4 +1,4 @@
-import { inject } from 'vue-demi'
+import { inject } from 'vue'
 import { getConfig } from './getConfig'
 import { getDefaultProvider } from './getDefaultProvider'
 

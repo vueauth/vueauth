@@ -1,5 +1,5 @@
 import { getDefaultProvider } from './getDefaultProvider'
-import { inject } from 'vue-demi'
+import { inject } from 'vue'
 
 type UseFeatureConfigsReturn = Record<string, unknown>
 

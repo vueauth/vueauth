@@ -9,11 +9,11 @@ export interface Provider {
   beforeCommand?: string
     hasNameField: boolean
     hasUsernameField?: boolean
-    response: ResponseAssertion
+    response?: ResponseAssertion
   }
   login: {
     beforeCommand?: string
-    response: ResponseAssertion
+    response?: ResponseAssertion
   }
   logout: {
     beforeCommand?: string

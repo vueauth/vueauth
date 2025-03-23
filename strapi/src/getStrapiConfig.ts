@@ -1,4 +1,4 @@
-import { inject } from 'vue-demi'
+import { inject } from 'vue'
 import { StrapiAppKey } from './types/symbols'
 
 export const getStrapiConfig = () => {

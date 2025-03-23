@@ -6,7 +6,7 @@ import {
   DocumentSnapshot,
   QueryDocumentSnapshot
 } from 'firebase/firestore'
-import { ref, Ref } from 'vue-demi'
+import { ref, Ref } from 'vue'
 import { isDef, tryOnScopeDispose } from '@vueuse/shared'
 
 export interface FirestoreOptions {

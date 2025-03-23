@@ -1,5 +1,5 @@
 import { ValidationErrors } from '../types/ValidationErrors'
-import { ComputedRef, Ref } from 'vue-demi'
+import { ComputedRef, Ref } from 'vue'
 
 export interface UseHandlesErrorsReturn {
   validationErrors: Ref<ValidationErrors>

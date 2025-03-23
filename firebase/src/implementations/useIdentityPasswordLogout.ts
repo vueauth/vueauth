@@ -1,6 +1,6 @@
 import useHandlesErrors from './useHandlesErrors'
 import { getAuth, signOut as firebaseSignOut, AuthError } from 'firebase/auth'
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 import { UseIdentityPasswordLogout } from '@vueauth/core'
 
 const useIdentityPasswordLogout: UseIdentityPasswordLogout = () => {

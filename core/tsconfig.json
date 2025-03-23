@@ -1,17 +1,29 @@
 {
   "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "rootDir": ".",
-    "outDir": "dist",
-    "declaration": true,
-    "declarationDir": "./"
+    "target": "ESNext",
+    "experimentalDecorators": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "strict": true,
+    "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
+    "strictNullChecks": true /* Enable strict null checks. */,
+    "strictFunctionTypes": true /* Enable strict checking of function types. */,
+    "noUnusedParameters": true /* Report errors on unused parameters. */,
+    "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
+    "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */,
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "lib": [
+      "esnext",
+      "dom"
+    ]
   },
-  "extends": "../tsconfig.json",
   "include": [
-    "src"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules"
+    "./src/**/*.ts",
   ]
 }
