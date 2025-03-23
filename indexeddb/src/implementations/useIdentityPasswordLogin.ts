@@ -42,6 +42,7 @@ const useIdentityPasswordLogin: UseIdentityPasswordLogin = () => {
       const result = await db?.login(form.value)
       if (!result) {
         errors.value.push({ message: 'Email password combination is incorrect', type: 'email-password' })
+        return
       }
 
       const authenticatedUser = await db?.getAuthenticatedUser()
