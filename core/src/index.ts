@@ -55,6 +55,7 @@ export { useHandlesErrors as useHandlesErrorsBase } from './utils/useHandlesErro
 export { type AuthState } from './types/AuthState'
 export { type User } from './types/User'
 export { type ValidationErrors } from './types/ValidationErrors'
+export { type StandardError } from './types/StandardError'
 
 /**
  * Symbols

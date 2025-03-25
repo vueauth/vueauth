@@ -1,0 +1,8 @@
+{
+  "@vueauth/auth": {
+    "authProvider": {
+      "identifier": "indexeddb",
+      "packageName": "@vueauth/indexeddb"
+    }
+  }
+}

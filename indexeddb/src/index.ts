@@ -18,4 +18,5 @@ export { useAuthRedirector } from './implementations/useAuthRedirector'
 export { useAuthenticatedRedirector } from './implementations/useAuthenticatedRedirector'
 export { useUnauthenticatedRedirector } from './implementations/useUnauthenticatedRedirector'
 
+export { type PluginOptions } from './types/PluginOptions'
 // export { useVueUseAuthState } from './implementations/useVueUseAuthState'

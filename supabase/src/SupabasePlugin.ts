@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import { App, Plugin } from 'vue'
 import { createClient } from '@supabase/supabase-js'
 import { SupabaseClientKey } from './types/symbols'
 import { useAuthState } from './implementations/useAuthState'
@@ -10,8 +10,8 @@ export interface VuePluginOptions {
   }
 }
 
-export const SupabasePlugin = {
-  install: (vueApp: App, options: VuePluginOptions) => {
+export const SupabasePlugin: Plugin<VuePluginOptions> = {
+  install: (vueApp: App, options) => {
     if (!options || !options.credentials || !options.credentials.supabaseKey || !options.credentials.supabaseUrl) {
       throw Error('Credentials must be provided when installing supabase')
     }

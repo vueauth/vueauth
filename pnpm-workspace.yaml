@@ -6,3 +6,5 @@ packages:
   - "strapi"
   - "test-app"
   - "indexeddb"
+  - "quasar-app-extension-auth/app-extension"
+  - "quasar-app-extension-auth/test-app"

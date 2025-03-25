@@ -1,3 +1,5 @@
+import { setLocalStorage } from 'src/utils/watchLocalStorage'
+
 type User = {
   // The user must have "email", "password", etc.
   // It also needs an "id" (or whatever keyPath you specify below) when storing.
@@ -11,7 +13,6 @@ export interface AuthDbOptions {
   mockLatencyMs?: number
   dbName?: string
   storeName?: string
-  // New! Allows customizing the key path
   keyPath?: string
 }
 
@@ -98,7 +99,7 @@ export class AuthDb {
     })
 
     // Save in localStorage that we’re authenticated as this user’s email
-    localStorage.setItem(this.authKey, user.email)
+    setLocalStorage(this.authKey, user.email)
   }
 
   // ---------------------------------------------------------------

@@ -22,7 +22,7 @@ const useUpdatePassword: UseUpdatePassword = () => {
     password_confirmation: '',
   })
   function resetForm () {
-    Object.keys(form.value).forEach(key => { form.value[key] = '' })
+    Object.keys(form.value).forEach((key) => { form.value[key] = '' })
   }
 
   const update = async () => {
@@ -35,17 +35,22 @@ const useUpdatePassword: UseUpdatePassword = () => {
         message: 'could not discover authenticated user',
         type: 'auth-user',
       })
+      loading.value = false
       return
     }
 
     if (form.value.password !== form.value.password_confirmation) {
       validationErrors.value.password = ['password and password confirmation must match']
+      loading.value = false
       return
     }
     if (typeof form.value.password === 'string' && form.value.password.length < 6) {
       validationErrors.value.password = ['password must be at least 6 characters long']
+      loading.value = false
       return
     }
+
+    loading.value = true
 
     try {
       await db?.changePassword({

@@ -6,6 +6,8 @@ export interface IdentityPasswordRegisterForm {
     email: string
     password: string
     password_confirmation: string
+    name?: string
+    username?: string
     [key: string | number]: unknown
 }
 

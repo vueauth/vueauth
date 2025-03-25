@@ -1,0 +1,44 @@
+{
+  "name": "test-app",
+  "version": "0.0.1",
+  "description": "VueAuth Test App",
+  "productName": "VueAuth Test App",
+  "author": "Luke Diebold <luke@ldiebold.com>",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "lint": "eslint -c ./eslint.config.js \"./src*/**/*.{ts,js,cjs,mjs,vue}\"",
+    "test": "echo \"No test specified\" && exit 0",
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "postinstall": "quasar prepare"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.4",
+    "pinia": "^3.0.1",
+    "quasar": "^2.16.0",
+    "vue": "^3.4.18",
+    "vue-router": "^4.0.12",
+    "@vueauth/indexeddb": "workspace:latest"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.23.0",
+    "@quasar/app-vite": "^2.1.0",
+    "@stylistic/eslint-plugin": "^4.2.0",
+    "@types/node": "^20.5.9",
+    "@vue/eslint-config-typescript": "^14.5.0",
+    "@vueauth/quasar-app-extension-auth": "workspace:latest",
+    "autoprefixer": "^10.4.2",
+    "eslint": "^9.23.0",
+    "eslint-plugin-vue": "^10.0.0",
+    "globals": "^15.12.0",
+    "typescript": "~5.5.3",
+    "vite-plugin-checker": "^0.9.0",
+    "vue-tsc": "^2.0.29"
+  },
+  "engines": {
+    "node": "^28 || ^26 || ^24 || ^22 || ^20 || ^18",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

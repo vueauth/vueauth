@@ -9,6 +9,8 @@ export interface PasswordResetRequestform {
 
 export interface PasswordResetform {
     password: string
+    password_confirmation?: string
+    email?: string
     [key: string | number]: unknown
 }
 

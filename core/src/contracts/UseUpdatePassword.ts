@@ -3,6 +3,7 @@ import { RequestErrors } from '../types/RequestErrors'
 import { Ref, ComputedRef } from 'vue'
 
 export interface UpdatePasswordform {
+    email?: string
     current_password?: string
     password: string
     password_confirmation: string

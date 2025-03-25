@@ -57,6 +57,7 @@ const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
     }
 
     if (hasValidationErrors.value) {
+      loading.value = false
       return
     }
 

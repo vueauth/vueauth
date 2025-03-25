@@ -2,9 +2,13 @@ import { ref } from 'vue'
 import { useHandlesErrors, UsePasswordResetViaEmail } from '@vueauth/core'
 import { generateRandomString } from 'src/utils/generateRandomString'
 import { state } from 'src/plugin/state'
+import { useRoute } from 'vue-router'
+import { setLocalStorage } from 'src/utils/watchLocalStorage'
 
 const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
   const loading = ref(false)
+
+  const route = useRoute()
 
   const db = state.db
 
@@ -19,14 +23,21 @@ const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
   } = useHandlesErrors()
 
   const requestForm = ref({ email: '' })
+
   function resetRequestForm () {
     Object.keys(requestForm.value).forEach(key => { requestForm.value[key] = '' })
   }
+
+  const routeQueryEmail: string = typeof route.query.email === 'string'
+    ? route.query.email
+    : ''
+
   const resetPasswordForm = ref({
-    email: '',
+    email: routeQueryEmail,
     password: '',
     password_confirmation: '',
   })
+
   function resetResetPasswordForm () {
     Object.keys(resetPasswordForm.value).forEach(key => { resetPasswordForm.value[key] = '' })
   }
@@ -37,7 +48,7 @@ const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
     await db?.sleep()
 
     const resetToken = generateRandomString()
-    localStorage.setItem(`passwordResetToken:${requestForm.value.email}`, resetToken)
+    setLocalStorage(`passwordResetToken:${requestForm.value.email}`, resetToken)
 
     loading.value = false
   }
@@ -55,32 +66,32 @@ const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
     }
 
     if (hasValidationErrors.value) {
+      loading.value = false
       return
     }
 
     loading.value = true
 
-    const urlParams = new URLSearchParams(window.location.search)
-    const resetToken = urlParams.get('password-reset-token')
-    const email = urlParams.get('email')
+    const resetToken = route.query['password-reset-token']
 
-    const backendPasswordResetToken = localStorage.getItem(`passwordResetToken:${email}`)
+    const backendPasswordResetToken = localStorage.getItem(`passwordResetToken:${resetPasswordForm.value.email}`)
 
     if (backendPasswordResetToken !== resetToken) {
       errors.value.push({ type: 'invalid token', message: 'invalid password reset token' })
     }
 
-    if (!email) {
+    if (!resetPasswordForm.value.email) {
       errors.value.push({ type: 'missing-email', message: 'missing email for password reset' })
     }
 
     if (hasErrors.value) {
+      loading.value = false
       return
     }
 
     try {
       await db?.changePassword({
-        email: email as string,
+        email: resetPasswordForm.value.email,
         newPassword: resetPasswordForm.value.password,
       })
     } catch (e: any) {
@@ -88,7 +99,7 @@ const usePasswordResetViaEmail: UsePasswordResetViaEmail = () => {
       else errors.value.push({ message: 'unknown error while registering', type: 'unknown' })
     } finally {
       loading.value = false
-      localStorage.removeItem(`passwordResetToken:${email}`)
+      localStorage.removeItem(`passwordResetToken:${resetPasswordForm.value.email}`)
     }
   }
 
