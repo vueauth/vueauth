@@ -11,6 +11,7 @@ export { UseIdentityPasswordRegister } from './contracts/UseIdentityPasswordRegi
 
 // Types
 export { ValidationErrors } from './types/ValidationErrors'
+export { StandardError } from './types/StandardError'
 export { PluginOptions } from './types/PluginOptions'
 export { RequestErrors } from './types/RequestErrors'
 export { UserOnCheckedFunction } from './types/UserOnCheckedFunction'

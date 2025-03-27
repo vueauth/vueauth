@@ -26,7 +26,7 @@
     "bumpp": "^10.1.0"
   },
   "dependencies": {
-    "@vueauth/core": "^1.1.0-alpha.1"
+    "@vueauth/core": "^1.1.0-alpha.x"
   },
   "peerDependencies": {
     "vue": "^3.0.0",

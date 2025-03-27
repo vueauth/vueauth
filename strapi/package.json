@@ -27,7 +27,7 @@
     "unbuild": "^3.5.0"
   },
   "dependencies": {
-    "@vueauth/core": "^1.1.0-alpha.1",
+    "@vueauth/core": "^1.1.0-alpha.x",
     "@vueuse/core": "^13.0.0",
     "deepmerge-ts": "^7.1.5"
   },
