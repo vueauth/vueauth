@@ -3,11 +3,7 @@ import { useAuthenticatedRedirector, useUnauthenticatedRedirector } from '@vueau
 import { Loading } from 'quasar'
 import { unref } from 'vue'
 
-/**
- * Sets up route guards and redirectors for authenticated/unauthenticated routes.
- * 
- * @returns {void}
- */
+
 export const authenticateRoutes = () => {
   const router = useRouter()
 
