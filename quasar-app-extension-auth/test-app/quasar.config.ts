@@ -1,16 +1,17 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file
 
-import { defineConfig } from '#q-app/wrappers';
+import { defineConfig } from '#q-app/wrappers'
 
 export default defineConfig((/* ctx */) => {
   return {
     boot: [
-      'vueauth'
+      'vueauth',
+      'vuemodel',
     ],
 
     css: [
-      'app.scss'
+      'app.scss',
     ],
 
     extras: [
@@ -20,46 +21,49 @@ export default defineConfig((/* ctx */) => {
 
     build: {
       target: {
-        browser: [ 'es2022', 'firefox115', 'chrome115', 'safari14' ],
-        node: 'node20'
+        browser: ['es2022', 'firefox115', 'chrome115', 'safari14'],
+        node: 'node20',
       },
 
       typescript: {
         strict: true,
-        vueShim: true
+        vueShim: true,
       },
 
       vueRouterMode: 'hash',
 
       vitePlugins: [
         ['vite-plugin-checker', {
+          overlay: {
+            initialIsOpen: false,
+          },
           vueTsc: true,
           eslint: {
             lintCommand: 'eslint -c ./eslint.config.js "./src*/**/*.{ts,js,mjs,cjs,vue}"',
-            useFlatConfig: true
-          }
-        }, { server: false }]
-      ]
+            useFlatConfig: true,
+          },
+        }, { server: false }],
+      ],
     },
 
     devServer: {
-      open: false
+      open: false,
     },
 
     framework: {
       config: {},
 
-      plugins: ['Loading']
+      plugins: ['Loading'],
     },
 
     ssr: {
       prodPort: 3000,
 
       middlewares: [
-        'render'
+        'render',
       ],
 
-      pwa: false
-    }
+      pwa: false,
+    },
   }
-});
+})

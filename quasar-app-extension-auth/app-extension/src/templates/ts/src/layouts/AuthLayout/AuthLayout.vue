@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useAuthState } from '@vueauth/core'
 import AccountMenu from './AccountMenu.vue'
 
-import { ref } from 'vue'
+const authState = useAuthState()
 
 const leftDrawerOpen = ref(false)
-
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
@@ -29,7 +30,8 @@ function toggleLeftDrawer() {
 
         <q-btn
           icon="person"
-          round
+          :label="authState.user.value?.name ?? ''"
+          rounded
           flat
         >
           <AccountMenu />

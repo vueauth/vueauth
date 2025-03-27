@@ -10,6 +10,9 @@
     "type": "https://github.com/vueauth/vueauth",
     "url": "https://github.com/vueauth/vueauth"
   },
+  "script": {
+    "release": "bumpp --tag '@vueauth/quasar-app-extension-auth@v%s' && pnpm publish"
+  },
   "bugs": "https://github.com/vueauth/vueauth/issues",
   "homepage": "https://vueauth.com/",
   "devDependencies": {
