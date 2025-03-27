@@ -100,7 +100,7 @@ export class AuthDb {
     const isValid = !!user && user.password === password
     if (isValid) {
       localStorage.setItem(this.authEmailKey, email)
-      localStorage.setItem(this.authIdKey, email)
+      localStorage.setItem(this.authIdKey, user.id)
     }
     return isValid
   }
