@@ -13,7 +13,7 @@ export default {
   },
   indexeddb: {
     dependencies: {
-      '@vueauth/indexeddb': '^1.1.0-alpha.1'
+      '@vueauth/indexeddb': '^1.1.0-alpha.4'
     }
   },
   sanctum: {
