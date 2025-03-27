@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.28.5",
-    "@vueauth/core": "^1.1.0-alpha.x",
+    "@vueauth/core": "^1.1.0-alpha.*",
     "@vueauth/indexeddb": "^1.1.0-alpha.1",
     "@vueauth/firebase": "^1.1.0-alpha.1",
     "@vueauth/sanctum": "^1.1.0-alpha.1",
