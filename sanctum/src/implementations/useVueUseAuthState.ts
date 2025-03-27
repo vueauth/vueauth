@@ -1,18 +1,17 @@
 import { computed, ref } from 'vue'
-import { createGlobalState } from '@vueuse/shared'
-import { UseAuthState, AuthState } from '@vueauth/core'
+import { UseAuthState } from '@vueauth/core'
 
-const useVueUseAuthState: UseAuthState = createGlobalState<AuthState>(() => {
-  const user = ref(null)
-  const isAuthenticated = computed(() => !!user.value)
-  const authIsReady = ref(false)
+const user = ref(null)
+const isAuthenticated = computed(() => !!user.value)
+const authIsReady = ref(false)
 
+const useVueUseAuthState: UseAuthState = () => {
   return {
     authIsReady,
     isAuthenticated,
     user,
   }
-})
+}
 
 export {
   useVueUseAuthState as default,

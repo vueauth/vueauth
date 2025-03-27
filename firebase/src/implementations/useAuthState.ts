@@ -1,27 +1,37 @@
 import { getAuth } from 'firebase/auth'
 import { getApp } from 'firebase/app'
-import { computed, ref } from 'vue'
-import { createGlobalState } from '@vueuse/shared'
-import { UseAuthState, AuthState } from '@vueauth/core'
+import { computed, ref, Ref } from 'vue'
+import type { UseAuthState } from '@vueauth/core'
 
-const useAuthState: UseAuthState = createGlobalState<AuthState>(() => {
-  const app = getApp()
-  const auth = getAuth(app)
+// singleton refs (created once per app instance)
+const user: Ref<ReturnType<typeof getAuth>['currentUser'] | null> = ref(null)
+const authIsReady = ref(false)
+const isAuthenticated = computed(() => !!user.value)
 
-  const user = ref(auth.currentUser)
-  const isAuthenticated = computed(() => !!user.value)
-  const authIsReady = ref(!!user.value)
+let initialized = false
 
-  auth.onIdTokenChanged(authUser => {
-    user.value = authUser
-  })
+const useAuthState: UseAuthState = () => {
+  if (!initialized) {
+    const app = getApp()
+    const auth = getAuth(app)
+
+    user.value = auth.currentUser
+    authIsReady.value = !!user.value
+
+    auth.onIdTokenChanged(authUser => {
+      user.value = authUser
+      authIsReady.value = true
+    })
+
+    initialized = true
+  }
 
   return {
     authIsReady,
     isAuthenticated,
     user,
   }
-})
+}
 
 export {
   useAuthState as default,

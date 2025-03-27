@@ -1,6 +1,5 @@
 import Requester, { ResetPasswordForm, ResetPasswordRequestForm, SanctumResponse, UpdatePasswordForm } from '../types/MakeRequester'
 import { BeforeFetchContext, createFetch, UseFetchReturn } from '@vueuse/core'
-import { useCookies } from '@vueuse/integrations/useCookies'
 import { SanctumEndpoints } from '../types/PluginOptions'
 import getSanctumConfig from '../getSanctumConfig'
 
@@ -22,8 +21,6 @@ const makeFetchRequester = (
   baseUrl = baseUrl ?? configuredBaseUrl
 
   options = Object.assign({}, options, defaultOptions)
-
-  const cookies = useCookies(['XSRF-TOKEN'])
 
   const endpoints: SanctumEndpoints = configuredEndpoints
 
@@ -62,11 +59,12 @@ const makeFetchRequester = (
           return
         }
 
-        const xsrfToken = decodeURIComponent(cookies.get('XSRF-TOKEN'))
+        const xsrfToken = getCookie('XSRF-TOKEN')
         if (!context.options.headers) {
           context.options.headers = {}
         }
         if (xsrfToken) {
+          /** @ts-expect-error unhelpful error */
           context.options.headers['X-XSRF-TOKEN'] = xsrfToken
         }
       },

@@ -1,19 +1,14 @@
-import { createGlobalState } from '@vueuse/shared'
 import { ref } from 'vue'
 import getStrapiConfig from '../getStrapiConfig'
 import useHandlesErrors from './useHandlesErrors'
 import useAuthState from './useAuthState'
 import { UseFetchUser } from '@vueauth/core'
 
+const loading = ref(false)
+
 const useFetchUser: UseFetchUser = () => {
   const { makeRequester } = getStrapiConfig()
   const { getUser } = makeRequester()
-
-  const { loading } = createGlobalState(() => {
-    return {
-      loading: ref(false),
-    }
-  })()
 
   const { user, authIsReady } = useAuthState()
   const {

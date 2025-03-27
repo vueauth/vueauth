@@ -28,9 +28,8 @@
   },
   "dependencies": {
     "@vueauth/core": "^1.1.0-alpha.1",
-    "@vueuse/core": "^8.2.3",
-    "@vueuse/shared": "^8.2.3",
-    "deepmerge": "^4.2.2"
+    "@vueuse/core": "^13.0.0",
+    "deepmerge-ts": "^7.1.5"
   },
   "peerDependencies": {
     "vue": "^3.0.0-0 || ^2.6.0",

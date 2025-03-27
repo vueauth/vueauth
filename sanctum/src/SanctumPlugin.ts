@@ -1,7 +1,7 @@
 import { App, Plugin } from 'vue'
 import PluginOptions from './types/PluginOptions'
 import { SanctumAppKey } from './types/symbols'
-import deepmerge from 'deepmerge'
+import { deepmerge } from "deepmerge-ts"
 import defaultConfig from './defaultConfig'
 import { makeFetchRequester } from './implementations/makeFetchRequester'
 

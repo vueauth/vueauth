@@ -27,8 +27,7 @@
     "unbuild": "^3.5.0"
   },
   "dependencies": {
-    "@vueauth/core": "^1.1.0-alpha.1",
-    "@vueuse/shared": "^8.2.3"
+    "@vueauth/core": "^1.1.0-alpha.1"
   },
   "peerDependencies": {
     "@supabase/supabase-js": "^1.28.5",

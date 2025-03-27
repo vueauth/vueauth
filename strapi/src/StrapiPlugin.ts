@@ -1,9 +1,9 @@
 import { App, Plugin } from 'vue'
 import PluginOptions from './types/PluginOptions'
 import { StrapiAppKey } from './types/symbols'
-import deepmerge from 'deepmerge'
 import defaultConfig from './defaultConfig'
 import { makeFetchRequester } from './implementations/makeFetchRequester'
+import { deepmerge } from 'deepmerge-ts'
 
 export const StrapiPlugin: Plugin<PluginOptions> = {
   install: (vueApp: App, options = {}) => {

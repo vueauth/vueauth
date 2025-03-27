@@ -6,8 +6,9 @@ import {
   DocumentSnapshot,
   QueryDocumentSnapshot
 } from 'firebase/firestore'
+import { isDef } from 'src/utils/isDef'
+import { tryOnScopeDispose } from 'src/utils/tryOnScopeDispose'
 import { ref, Ref } from 'vue'
-import { isDef, tryOnScopeDispose } from '@vueuse/shared'
 
 export interface FirestoreOptions {
   errorHandler?: (err: Error) => void
