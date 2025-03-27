@@ -1,7 +1,7 @@
 {
   "name": "@vueauth/quasar-app-extension-auth",
   "type": "module",
-  "version": "1.1.0-alpha.1",
+  "version": "1.1.0-alpha.2",
   "description": "Simple auth integration with the Quasar Framework",
   "author": "luke@ldiebold.com",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "type": "https://github.com/vueauth/vueauth",
     "url": "https://github.com/vueauth/vueauth"
   },
-  "script": {
+  "scripts": {
     "release": "bumpp --tag '@vueauth/quasar-app-extension-auth@v%s' && pnpm publish"
   },
   "bugs": "https://github.com/vueauth/vueauth/issues",
