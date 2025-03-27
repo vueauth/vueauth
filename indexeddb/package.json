@@ -1,6 +1,6 @@
 {
   "name": "@vueauth/indexeddb",
-  "version": "1.1.0-alpha.7",
+  "version": "1.1.0-alpha.8",
   "scripts": {
     "release": "pnpm build && bumpp --tag '@vueauth/indexeddb@v%s' && pnpm publish",
     "build": "unbuild"
