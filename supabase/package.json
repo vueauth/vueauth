@@ -26,10 +26,9 @@
     "typescript": "^5.8.2",
     "unbuild": "^3.5.0"
   },
-  "dependencies": {
-    "@vueauth/core": "^1.1.0-alpha.*"
-  },
+  "dependencies": {},
   "peerDependencies": {
+    "@vueauth/core": "^1.1.0-alpha.*",
     "@supabase/supabase-js": "^1.28.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0"

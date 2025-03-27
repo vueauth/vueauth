@@ -25,10 +25,9 @@
     "unbuild": "^3.5.0",
     "bumpp": "^10.1.0"
   },
-  "dependencies": {
-    "@vueauth/core": "^1.1.0-alpha.*"
-  },
+  "dependencies": {},
   "peerDependencies": {
+    "@vueauth/core": "^1.1.0-alpha.*",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0"
   }

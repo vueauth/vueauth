@@ -27,11 +27,11 @@
     "unbuild": "^3.5.0"
   },
   "dependencies": {
-    "@vueauth/core": "^1.1.0-alpha.*",
     "@vueuse/core": "^13.0.0",
     "deepmerge-ts": "^7.1.5"
   },
   "peerDependencies": {
+    "@vueauth/core": "^1.1.0-alpha.*",
     "vue": "^3.0.0-0 || ^2.6.0",
     "vue-router": "^4.0.0"
   }
