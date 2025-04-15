@@ -11,12 +11,13 @@
     "url": "https://github.com/vueauth/vueauth"
   },
   "scripts": {
-    "release": "bumpp --tag '@vueauth/quasar-app-extension-auth@v%s' && pnpm publish"
+    "release": "esno ../scripts/syncDeps.ts && bumpp --tag '@vueauth/quasar-app-extension-auth@v%s' && pnpm publish"
   },
   "bugs": "https://github.com/vueauth/vueauth/issues",
   "homepage": "https://vueauth.com/",
   "devDependencies": {
     "bumpp": "^10.1.0",
+    "esno": "^4.8.0",
     "unbuild": "^3.5.0"
   }
 }

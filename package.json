@@ -4,12 +4,14 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "sync-deps": "esno ./scripts/syncDeps",
     "core:release": "cd ./core && pnpm release",
     "fire:release": "cd ./firebase && pnpm release",
     "sanc:release": "cd ./sanctum && pnpm release",
     "supa:release": "cd ./supabase && pnpm release",
     "strapi:release": "cd ./strapi && pnpm release",
     "idb:release": "cd ./indexeddb && pnpm release",
+    "quasar:release": "cd ./quasar-app-extension/app-extension && pnpm release",
     "core:build": "cd ./core && pnpm build",
     "fire:build": "cd ./firebase && pnpm build",
     "sanc:build": "cd ./sanctum && pnpm build",
@@ -28,6 +30,7 @@
     "build:all": "npm-run-all core:build fire:build sanc:build supa:build"
   },
   "devDependencies": {
+    "esno": "^4.8.0",
     "npm-run-all": "^4.1.5"
   },
   "packageManager": "pnpm@10.6.5+sha512.cdf928fca20832cd59ec53826492b7dc25dc524d4370b6b4adbf65803d32efaa6c1c88147c0ae4e8d579a6c9eec715757b50d4fa35eea179d868eada4ed043af"
