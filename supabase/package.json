@@ -28,7 +28,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "@vueauth/core": "^1.1.0-alpha.*",
+    "@vueauth/core": "1.1.0-alpha.2",
     "@supabase/supabase-js": "^1.28.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0"

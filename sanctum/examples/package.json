@@ -9,7 +9,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@vueauth/core": "^1.0.0-alpha.17",
+    "@vueauth/core": "1.1.0-alpha.2",
     "axios": "^0.24.0",
     "@vueauth/sanctum": "^1.0.0-alpha.36",
     "vue": "^3.2.16",
