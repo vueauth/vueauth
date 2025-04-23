@@ -1,7 +1,7 @@
 {
   "name": "@vueauth/quasar-app-extension-auth",
   "type": "module",
-  "version": "1.1.0-alpha.10",
+  "version": "1.1.0-alpha.11",
   "description": "Simple auth integration with the Quasar Framework",
   "author": "luke@ldiebold.com",
   "license": "MIT",
