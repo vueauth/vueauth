@@ -1,3 +1,6 @@
+import addAuthenticateRoutes from "./addAuthenticateRoutes.js"
+import addAuthRoutesToRoutesFile from "./addAuthRoutesToRoutesFile.js"
+import addBootFile from "./addBootFile.js"
 import providerDependencies from "./providerDependencies.js"
 
 export default async function (api) {
@@ -20,6 +23,21 @@ export default async function (api) {
 
   if (dependencies) {
     api.extendPackageJson(dependencies)
+  }
+
+  if (api.prompts.setup.includes('injectAuthRoutes')) {
+    const routesFile = api.resolve.src(`router/routes.${subfolderName}`)
+    addAuthRoutesToRoutesFile(routesFile, subfolderName)
+  }
+
+  if (api.prompts.setup.includes('injectAuthenticateRoutes')) {
+    const appVueFile = api.resolve.src('App.vue')
+    addAuthenticateRoutes(appVueFile, subfolderName)
+  }
+
+  if (api.prompts.setup.includes('registerBootFile')) {
+    const quasarConfigFile = api.resolve.app(`quasar.config.${subfolderName}`)
+    addBootFile(quasarConfigFile, 'vueauth')
   }
 }
 

@@ -41,6 +41,31 @@ export default () => {
           }
         }
       ]
-    }
+    },
+    {
+      message: 'Automatic Setup',
+      type: 'checkbox',
+      name: 'setup',
+      choices: [
+        {
+          name: 'register boot file (quasar.conf)',
+          description: 'Injects the "vueauth" boot file into quasar.conf > boot',
+          value: 'registerBootFile',
+          checked: true,
+        },
+        {
+          name: 'add authenticateRoutes() to App.vue',
+          description: 'This will allow VueAuth to handle authenticated/unauthenticated redirects',
+          value: 'injectAuthenticateRoutes',
+          checked: true,
+        },
+        {
+          name: 'add auth routes',
+          description: 'Point to authRoutes in your routes file',
+          value: 'injectAuthRoutes',
+          checked: true,
+        },
+      ],
+    },
   ]
 }

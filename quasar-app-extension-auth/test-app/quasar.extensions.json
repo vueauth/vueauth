@@ -3,6 +3,11 @@
     "authProvider": {
       "identifier": "indexeddb",
       "packageName": "@vueauth/indexeddb"
-    }
+    },
+    "setup": [
+      "injectAuthRoutes",
+      "injectAuthenticateRoutes",
+      "registerBootFile"
+    ]
   }
 }
