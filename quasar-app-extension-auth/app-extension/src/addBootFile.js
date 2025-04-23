@@ -1,11 +1,10 @@
 import fs from 'fs'
 
-export default function addBootFile (filePath, newBootEntry) {
+export default function addBootFile(filePath, newBootEntry) {
   const file = fs.readFileSync(filePath, 'utf-8')
-  const fileName = filePath.split('/').slice(-1)
+  const fileName = filePath.split('/').slice(-1)[0]
 
-  // Match `boot: [...]` including multi-line versions, and capture indentation
-  const bootRegex = /^([ \t]*)boot\s*:\s*\[\s*([\s\S]*?)\s*^\1]/m
+  const bootRegex = /^([ \t]*)(boot\s*:\s*)\[\s*([\s\S]*?)\s*](,?)/m
   const match = file.match(bootRegex)
 
   if (!match) {
@@ -13,16 +12,11 @@ export default function addBootFile (filePath, newBootEntry) {
     return
   }
 
-  const indent = match[1]
-  const bootArrayRaw = match[2]
+  const [fullMatch, baseIndent, prefix, inside, trailingComma] = match
 
-  // Check for trailing comma
-  const hasTrailingComma = /,\s*$/.test(bootArrayRaw.trim())
-
-  // Extract existing boot entries
-  const bootEntries = bootArrayRaw
+  const bootEntries = inside
     .split(',')
-    .map(s => s.trim().replace(/^['"`]|['"`]$/g, '')) // remove quotes
+    .map(s => s.trim().replace(/^['"`]|['"`]$/g, ''))
     .filter(Boolean)
 
   if (bootEntries.includes(newBootEntry)) {
@@ -30,23 +24,17 @@ export default function addBootFile (filePath, newBootEntry) {
     return
   }
 
-  // Add new entry
   bootEntries.push(newBootEntry)
 
-  // Format the array with preserved trailing comma logic
-  const innerIndent = indent + '  '
-  const lastIndex = bootEntries.length - 1
-  const formattedEntries = bootEntries.map((entry, i) => {
-    const comma = (i < lastIndex || hasTrailingComma) ? ',' : ''
-    return `${innerIndent}'${entry}'${comma}`
-  })
+  const innerIndent = baseIndent + '  '
 
-  const newBootBlock =
-    `${indent}boot: [\n` +
-    formattedEntries.join('\n') +
-    `\n${indent}]`
+  const formatted = [
+    `${baseIndent}${prefix}[`,
+    ...bootEntries.map(e => `${innerIndent}'${e}',`),
+    `${baseIndent}]${trailingComma}`
+  ].join('\n')
 
-  const newFileContent = file.replace(bootRegex, newBootBlock)
+  const newFileContent = file.replace(bootRegex, formatted)
 
   fs.writeFileSync(filePath, newFileContent, 'utf-8')
   console.log(`✅ Added "${newBootEntry}" to ${fileName} -> boot.`)

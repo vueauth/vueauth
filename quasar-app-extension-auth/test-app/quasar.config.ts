@@ -5,10 +5,7 @@ import { defineConfig } from '#q-app/wrappers'
 
 export default defineConfig((/* ctx */) => {
   return {
-    boot: [
-      'vueauth',
-      'vuemodel',
-    ],
+    boot: [],
 
     css: [
       'app.scss',

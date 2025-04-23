@@ -5,9 +5,9 @@
       "packageName": "@vueauth/indexeddb"
     },
     "setup": [
-      "injectAuthRoutes",
+      "registerBootFile",
       "injectAuthenticateRoutes",
-      "registerBootFile"
+      "injectAuthRoutes"
     ]
   }
 }
