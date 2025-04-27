@@ -79,7 +79,7 @@ const makeFetchRequester = (
   }
 
   async function updatePassword (form: UpdatePasswordForm) {
-    await updatePasswordFetcher.put(form).json().execute()
+    await updatePasswordFetcher.post(form).json().execute();
     return makeStrapiResponse<UpdatePasswordResponse>(updatePasswordFetcher)
   }
 
